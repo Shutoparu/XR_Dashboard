@@ -210,7 +210,6 @@ function createWebRTCInput() {
     }
 
     liveKitInputMap[selectedInputStreamName] = input;
-    console.log(liveKitInputMap.length);
 }
 
 function readyStreaming() {
@@ -374,7 +373,7 @@ function renderSeats() {
 
         for (let i = 0; i < MAX_STREAM_PER_PAGE; i++) {
 
-            const streamName = STREAM_NAME + 't' + j + 's' + i;
+            const streamName = STREAM_NAME + '-t' + j + 's' + i;
 
             const seat = $(seatTemplate({
                 streamName: streamName
@@ -386,7 +385,23 @@ function renderSeats() {
 
                 selectedInputStreamName = $(this).data('stream-name');
 
-                inputDeviceModal.modal('show');
+                // document.getElementById("share-device-button").click();
+                shareMode = 'device';
+                OvenLiveKit.getDevices()
+                    .then(function (devices) {
+
+                        if (devices) {
+                            renderDevice('video', videoSourceSelect, devices.videoinput,);
+                            renderDevice('audio', audioSourceSelect, devices.audioinput);
+                        }
+
+                        createWebRTCInput();
+                        startStreaming();
+                    })
+                    .catch(function (error) {
+
+                        showErrorMessage(error);
+                    });
             });
 
             seat.on('mouseenter', function () {

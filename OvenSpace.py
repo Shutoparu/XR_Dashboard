@@ -77,7 +77,7 @@ users = User.instance()
 @app.route("/")
 def space():
     return render_template(
-        'template_2.html', # change here for your own template
+        'template.html', # change here for your own template
         app_name=OME_APP_NAME,
         stream_name=OME_STREAM_NAME,
         rtmp_input_url=OME_RTMP_INPUT_URL,
