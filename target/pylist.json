@@ -1,0 +1,328 @@
+[
+    {
+        "package": "bidict",
+        "version": "0.21.2",
+        "deps": []
+    },
+    {
+        "package": "certifi",
+        "version": "2021.5.30",
+        "deps": []
+    },
+    {
+        "package": "cffi",
+        "version": "1.14.6",
+        "deps": [
+            {
+                "package": "pycparser",
+                "version": "2.20"
+            }
+        ]
+    },
+    {
+        "package": "charset-normalizer",
+        "version": "2.0.4",
+        "deps": []
+    },
+    {
+        "package": "click",
+        "version": "8.0.1",
+        "deps": [
+            {
+                "package": "importlib-metadata",
+                "version": "4.6.3"
+            },
+            {
+                "package": "zipp",
+                "version": "3.5.0"
+            },
+            {
+                "package": "typing-extensions",
+                "version": "3.10.0.0"
+            }
+        ]
+    },
+    {
+        "package": "colorama",
+        "version": "0.4.4",
+        "deps": []
+    },
+    {
+        "package": "dataclasses",
+        "version": "0.8",
+        "deps": []
+    },
+    {
+        "package": "dnspython",
+        "version": "1.16.0",
+        "deps": []
+    },
+    {
+        "package": "eventlet",
+        "version": "0.31.1",
+        "deps": [
+            {
+                "package": "six",
+                "version": "1.16.0"
+            },
+            {
+                "package": "greenlet",
+                "version": "1.1.1"
+            },
+            {
+                "package": "dnspython",
+                "version": "1.16.0"
+            }
+        ]
+    },
+    {
+        "package": "flask",
+        "version": "2.0.1",
+        "deps": [
+            {
+                "package": "importlib-metadata",
+                "version": "4.6.3"
+            },
+            {
+                "package": "click",
+                "version": "8.0.1"
+            },
+            {
+                "package": "markupsafe",
+                "version": "2.0.1"
+            },
+            {
+                "package": "dataclasses",
+                "version": "0.8"
+            },
+            {
+                "package": "itsdangerous",
+                "version": "2.0.1"
+            },
+            {
+                "package": "zipp",
+                "version": "3.5.0"
+            },
+            {
+                "package": "typing-extensions",
+                "version": "3.10.0.0"
+            },
+            {
+                "package": "jinja2",
+                "version": "3.0.1"
+            },
+            {
+                "package": "werkzeug",
+                "version": "2.0.1"
+            }
+        ]
+    },
+    {
+        "package": "flask-socketio",
+        "version": "5.1.1",
+        "deps": [
+            {
+                "package": "python-engineio",
+                "version": "4.2.1"
+            },
+            {
+                "package": "importlib-metadata",
+                "version": "4.6.3"
+            },
+            {
+                "package": "click",
+                "version": "8.0.1"
+            },
+            {
+                "package": "markupsafe",
+                "version": "2.0.1"
+            },
+            {
+                "package": "dataclasses",
+                "version": "0.8"
+            },
+            {
+                "package": "flask",
+                "version": "2.0.1"
+            },
+            {
+                "package": "bidict",
+                "version": "0.21.2"
+            },
+            {
+                "package": "itsdangerous",
+                "version": "2.0.1"
+            },
+            {
+                "package": "zipp",
+                "version": "3.5.0"
+            },
+            {
+                "package": "typing-extensions",
+                "version": "3.10.0.0"
+            },
+            {
+                "package": "jinja2",
+                "version": "3.0.1"
+            },
+            {
+                "package": "werkzeug",
+                "version": "2.0.1"
+            },
+            {
+                "package": "python-socketio",
+                "version": "5.4.0"
+            }
+        ]
+    },
+    {
+        "package": "greenlet",
+        "version": "1.1.1",
+        "deps": []
+    },
+    {
+        "package": "gunicorn",
+        "version": "20.1.0",
+        "deps": [
+            {
+                "package": "setuptools",
+                "version": "40.6.2"
+            }
+        ]
+    },
+    {
+        "package": "idna",
+        "version": "3.2",
+        "deps": []
+    },
+    {
+        "package": "importlib-metadata",
+        "version": "4.6.3",
+        "deps": [
+            {
+                "package": "typing-extensions",
+                "version": "3.10.0.0"
+            },
+            {
+                "package": "zipp",
+                "version": "3.5.0"
+            }
+        ]
+    },
+    {
+        "package": "itsdangerous",
+        "version": "2.0.1",
+        "deps": []
+    },
+    {
+        "package": "jinja2",
+        "version": "3.0.1",
+        "deps": [
+            {
+                "package": "markupsafe",
+                "version": "2.0.1"
+            }
+        ]
+    },
+    {
+        "package": "markupsafe",
+        "version": "2.0.1",
+        "deps": []
+    },
+    {
+        "package": "pycparser",
+        "version": "2.20",
+        "deps": []
+    },
+    {
+        "package": "python-engineio",
+        "version": "4.2.1",
+        "deps": []
+    },
+    {
+        "package": "python-socketio",
+        "version": "5.4.0",
+        "deps": [
+            {
+                "package": "python-engineio",
+                "version": "4.2.1"
+            },
+            {
+                "package": "bidict",
+                "version": "0.21.2"
+            }
+        ]
+    },
+    {
+        "package": "requests",
+        "version": "2.26.0",
+        "deps": [
+            {
+                "package": "idna",
+                "version": "3.2"
+            },
+            {
+                "package": "charset-normalizer",
+                "version": "2.0.4"
+            },
+            {
+                "package": "certifi",
+                "version": "2021.5.30"
+            },
+            {
+                "package": "urllib3",
+                "version": "1.26.6"
+            }
+        ]
+    },
+    {
+        "package": "six",
+        "version": "1.16.0",
+        "deps": []
+    },
+    {
+        "package": "typing-extensions",
+        "version": "3.10.0.0",
+        "deps": []
+    },
+    {
+        "package": "urllib3",
+        "version": "1.26.6",
+        "deps": []
+    },
+    {
+        "package": "werkzeug",
+        "version": "2.0.1",
+        "deps": [
+            {
+                "package": "dataclasses",
+                "version": "0.8"
+            }
+        ]
+    },
+    {
+        "package": "zipp",
+        "version": "3.5.0",
+        "deps": []
+    },
+    {
+        "package": "zope.event",
+        "version": "4.5.0",
+        "deps": [
+            {
+                "package": "setuptools",
+                "version": "40.6.2"
+            }
+        ]
+    },
+    {
+        "package": "zope.interface",
+        "version": "5.4.0",
+        "deps": [
+            {
+                "package": "setuptools",
+                "version": "40.6.2"
+            }
+        ]
+    }
+]
