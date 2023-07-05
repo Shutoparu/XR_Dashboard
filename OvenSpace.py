@@ -100,6 +100,12 @@ def get_streams():
         return response.json(), response.status_code
     except Exception as e:
         return str(e), 500
+    
+@app.route("/dashboard.html")
+def get_dashboard():
+    return render_template('dashboard.html')
+    
+
 
 
 @socketio.on('connect')

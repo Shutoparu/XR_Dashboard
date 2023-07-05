@@ -352,18 +352,51 @@ function renderSeatPages() {
 
     for (let i = 0; i < SEAT_PAGES; i++) {
 
+        const idx = i + 1;
         const page = $(seatPageTemplate({
-            pageNum: i + 1
+            pageNum: idx,
+            pageType: 'seat-area'
         }));
 
-        const pageID = $(tabTemplate({
-            id: i + 1
+        const tabButton = $(tabTemplate({
+            id: idx
         }));
-        pageID.text("TAB " + (i + 1));
+        tabButton.text("TAB " + idx);
 
         $('#page-area').append(page);
-        $('.tab').append(pageID);
+        $('.tab').append(tabButton);
     }
+}
+
+function renderMonitorPages() {
+
+    const idx = parseInt(SEAT_PAGES) + 1
+    const page = $(seatPageTemplate({
+        pageNum: idx,
+        pageType: 'dashboard-area'
+    }));
+    const tabButton = $(tabTemplate({
+        id: idx
+    }));
+
+    tabButton.text("Dashboard");
+
+    $('#page-area').append(page);
+    $('.tab').append(tabButton);
+
+    let element = null;
+    $.get('/dashboard.html', function (data) {
+        let dummyNode = document.createElement('div');
+        $.each($(data), function (key, val) {
+            dummyNode.append(val);
+        });
+        
+        $('#dashboard-area').append($(dummyNode).find('#dashboard'));
+
+    }).catch(function (error) {
+        showErrorMessage(error);
+    });
+
 }
 
 function renderSeats() {
@@ -620,6 +653,8 @@ socket.on('user count', function (data) {
 });
 
 renderSeatPages();
+
+renderMonitorPages();
 
 renderSeats();
 
