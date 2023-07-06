@@ -54,7 +54,7 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade input-device-modal" id="input-device-modal" tabindex="-1"
+        <div class="modal fade input-device-modal" id="input-device-modal" index="-1"
             role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -230,7 +230,7 @@
         <!-- template -->
         <template id="page-template">
             <div class="container flex-grow-1 pt-4 tabcontent d-none" id="disp_<%= pageNum %>">
-                <div id="seat-area" class="row">
+                <div id="<%= pageType %>" class="row">
 
                 </div>
             </div>
