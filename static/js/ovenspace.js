@@ -380,28 +380,35 @@ function renderSeats() {
                 streamName: streamName
             }));
 
-            seat.find('.join-button ').data('stream-name', streamName);
+            if (DISABLE_REGISTER == 'True') {
 
-            seat.find('.join-button ').on('click', function (e) {
+                seat.find('.join-button ').addClass('d-none');
 
-                selectedInputStreamName = $(this).data('stream-name');
+            } else {
 
-                inputDeviceModal.modal('show');
-            });
+                seat.find('.join-button ').data('stream-name', streamName);
 
-            seat.on('mouseenter', function () {
-                seat.find('.leave-button').stop().fadeIn();
-            });
+                seat.find('.join-button ').on('click', function (e) {
 
-            seat.on('mouseleave', function () {
-                seat.find('.leave-button').stop().fadeOut();
-            });
+                    selectedInputStreamName = $(this).data('stream-name');
 
-            seat.find('.leave-button ').data('stream-name', streamName);
+                    inputDeviceModal.modal('show');
+                });
 
-            seat.find('.leave-button').on('click', function () {
-                destroyPlayer($(this).data('stream-name'))
-            });
+                seat.on('mouseenter', function () {
+                    seat.find('.leave-button').stop().fadeIn();
+                });
+
+                seat.on('mouseleave', function () {
+                    seat.find('.leave-button').stop().fadeOut();
+                });
+
+                seat.find('.leave-button ').data('stream-name', streamName);
+
+                seat.find('.leave-button').on('click', function () {
+                    destroyPlayer($(this).data('stream-name'))
+                });
+            }
 
             seatArea.eq(j).append(seat);
         }
@@ -610,6 +617,13 @@ function choosetab(tab_id, button_id) {
     document.getElementById(button_id).classList.add('curtab');
 }
 
+function setTitle(){
+    if (DISABLE_REGISTER == "False"){
+        let ogText = $('#title').html();
+        $('#title').html(ogText + " - Register Admin");
+    }
+}
+
 
 let socket = io({
     transports: ['websocket']
@@ -618,6 +632,8 @@ let socket = io({
 socket.on('user count', function (data) {
     totalUserCountSpan.text(data.user_count);
 });
+
+setTitle();
 
 renderSeatPages();
 

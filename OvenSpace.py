@@ -74,8 +74,9 @@ MAX_STREAM_PER_PAGE =app.config['MAX_STREAM_PER_PAGE']
 users = User.instance()
 
 
+@app.route("/view")
 @app.route("/")
-def space():
+def space_view():
     return render_template(
         'template.html', # change here for your own template
         app_name=OME_APP_NAME,
@@ -88,7 +89,26 @@ def space():
 
         # new config
         max_stream_per_page=MAX_STREAM_PER_PAGE,
-        seat_pages=SEAT_PAGES
+        seat_pages=SEAT_PAGES,
+        disable_register='True'
+    )
+
+@app.route("/register")
+def register():
+    return render_template(
+        'template.html', # change here for your own template
+        app_name=OME_APP_NAME,
+        stream_name=OME_STREAM_NAME,
+        rtmp_input_url=OME_RTMP_INPUT_URL,
+        srt_input_url=OME_SRT_INPUT_URL,
+        webrtc_input_host=OME_WEBRTC_INPUT_HOST,
+        webrtc_streaming_host=OME_WEBRTC_STREAMING_HOST,
+        llhls_streaming_host=OME_LLHLS_STREAMING_HOST,
+
+        # new config
+        max_stream_per_page=MAX_STREAM_PER_PAGE,
+        seat_pages=SEAT_PAGES,
+        disable_register='False'
     )
 
 
