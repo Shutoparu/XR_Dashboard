@@ -198,7 +198,7 @@ h6 {
     background: rgb(255 187 16 / 70%);
     padding: 0.1rem 0.3rem;
     border-radius: 0.2rem;
-    left: 0.5rem;
+    right: 0.5rem;
     top: 0.5rem;
     font-size: 0.5rem;
     cursor: default;
@@ -238,18 +238,16 @@ h6 {
 
 .tablinks {
     background-color: white;
-    /* Green */
-    border: none;
-    color: black;
-    padding: 15px 32px;
+    border: 2px solid black;
+    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    border: 2px solid black;
+    font-size: 12px;
+
 }
 
-.tablinks:hover{
+.tablinks:hover {
     background-color: #FFBB10;
     color: white;
 }
@@ -257,4 +255,17 @@ h6 {
 .curtab {
     background-color: #FFBB10;
     color: white;
+}
+
+#stream-name {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #fffed8;
+    text-shadow: #000 1px 2px;
+
+}
+
+.name-holder {
+    left: 10px;
+
 }

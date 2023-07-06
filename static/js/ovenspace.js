@@ -361,7 +361,7 @@ function renderSeatPages() {
         const tabButton = $(tabTemplate({
             id: idx
         }));
-        tabButton.text("TAB " + idx);
+        tabButton.text((i == 0) ? ("EDGE GPU") : ("TERMINAL"));
 
         $('#page-area').append(page);
         $('.tab').append(tabButton);
@@ -390,7 +390,7 @@ function renderMonitorPages() {
         $.each($(data), function (key, val) {
             dummyNode.append(val);
         });
-        
+
         $('#dashboard-area').append($(dummyNode).find('#dashboard'));
 
     }).catch(function (error) {
@@ -405,15 +405,19 @@ function renderSeats() {
 
     for (let j = 0; j < SEAT_PAGES; j++) {
 
+        let name_header = (j == 0) ? ("EDGE GPU") : ("TERMINAL");
+
         for (let i = 0; i < MAX_STREAM_PER_PAGE; i++) {
 
-            const streamName = STREAM_NAME + 't' + j + 's' + i;
+            const streamName = name_header + " #" + (i + 1);
 
             const seat = $(seatTemplate({
                 streamName: streamName
             }));
+            // ADD
+            seat.find('#stream-name').text(streamName);
 
-            if (DISABLE_REGISTER == 'True') {
+            if (REGISTER_MODE == 'False') {
 
                 seat.find('.join-button ').addClass('d-none');
 
@@ -650,10 +654,11 @@ function choosetab(tab_id, button_id) {
     document.getElementById(button_id).classList.add('curtab');
 }
 
-function setTitle(){
-    if (DISABLE_REGISTER == "False"){
-        let ogText = $('#title').html();
-        $('#title').html(ogText + " - Register Admin");
+function settle_register() {
+    if (REGISTER_MODE == "True") {
+        $('#title').removeClass('d-none');
+    } else {
+        renderMonitorPages();
     }
 }
 
@@ -666,11 +671,9 @@ socket.on('user count', function (data) {
     totalUserCountSpan.text(data.user_count);
 });
 
-setTitle();
+settle_register();
 
 renderSeatPages();
-
-renderMonitorPages();
 
 renderSeats();
 

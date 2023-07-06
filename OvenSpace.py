@@ -90,7 +90,7 @@ def space_view():
         # new config
         max_stream_per_page=MAX_STREAM_PER_PAGE,
         seat_pages=SEAT_PAGES,
-        disable_register='True'
+        register_mode='False'
     )
 
 @app.route("/register")
@@ -108,7 +108,7 @@ def register():
         # new config
         max_stream_per_page=MAX_STREAM_PER_PAGE,
         seat_pages=SEAT_PAGES,
-        disable_register='False'
+        register_mode='True'
     )
 
 
