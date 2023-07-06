@@ -395,8 +395,8 @@ function renderSeats() {
                             renderDevice('audio', audioSourceSelect, devices.audioinput);
                         }
 
+                        _listener = rtcListener(); // use a generator to maintain receive -> stream sequence
                         createWebRTCInput();
-                        startStreaming();
                     })
                     .catch(function (error) {
 
@@ -633,6 +633,10 @@ let socket = io({
 socket.on('user count', function (data) {
     totalUserCountSpan.text(data.user_count);
 });
+
+function* rtcListener() {
+    startStreaming();
+}
 
 renderSeatPages();
 

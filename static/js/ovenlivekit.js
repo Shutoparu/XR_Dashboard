@@ -1,3 +1,4 @@
+let _listener = null;
 const OvenLiveKit = {};
 
 const version = '1.0.4';
@@ -196,6 +197,8 @@ function addMethod(instance) {
                         elem.play();
                     };
                 }
+
+                _listener.next(); // trigger start stream function
 
                 return new Promise(function (resolve) {
 
@@ -821,4 +824,3 @@ OvenLiveKit.getDevices = async function () {
     return gotDevices(deviceInfos)
 };
 
-// export default OvenLiveKit;
