@@ -1,5 +1,8 @@
 let tab_page_map = {};
 
+let device_pair = {};
+let connectionStatus = {}
+
 let currentStreams = [];
 let localStreams = [];
 let selectedInputStreamName = null;
@@ -10,6 +13,7 @@ let tryToStreaming = false;
 const tabTemplate = _.template($('#tab-template').html());
 const pageTemplate = _.template($('#page-template').html());
 const seatTemplate = _.template($('#seat-template').html());
+const pairTemplate = _.template($('#pair-template').html());
 
 const inputVideo = document.getElementById('input-video');
 
@@ -350,42 +354,49 @@ function getDisplayConstraints() {
     return newConstraint;
 }
 
-function renderSeatPages() {
-
-    for (let i = 0; i < SEAT_PAGES; i++) {
+function renderPairMonitorPages() {
+    for (let i = 0; i < MAX_STREAM_PER_PAGE; i++) {
 
         const idx = i + 1;
 
-        const pageID = "page_" + idx;
+        const pageID = 'pair_page_' + idx;
         const page = $(pageTemplate({
-            pagdID: pageID,
-            pageType: 'seat-area'
+            pageID: pageID,
+            pageType: 'pair-area'
         }));
 
-        const tabID = "tab_" + idx;
-        const tabButton = $(tabTemplate({
+        const tabID = 'pair_tab_' + idx;
+        const tab = $(tabTemplate({
             tabID: tabID
         }));
-        tabButton.text((i == 0) ? ("EDGE GPU") : ("TERMINAL"));
+        tab.text('Pair ' + idx);
+        tab.addClass('d-none');
 
         $('#page-area').append(page);
-        $('.tab').append(tabButton);
+        $('.tab').append(tab);
 
         tab_page_map[tabID] = pageID;
+
+        const pairPage = $(pairTemplate({
+            idx: idx
+        }));
+
+        page.append(pairPage);
     }
+
 }
 
 function renderMonitorPages() {
 
     const idx = 0;
 
-    pageID = "page_" + idx;
+    const pageID = "page_" + idx;
     const page = $(pageTemplate({
-        pagdID: pageID,
+        pageID: pageID,
         pageType: 'dashboard-area'
     }));
 
-    tabID = "tab_" + idx;
+    const tabID = "tab_" + idx;
     const tabButton = $(tabTemplate({
         tabID: tabID
     }));
@@ -411,6 +422,31 @@ function renderMonitorPages() {
 
 }
 
+function renderSeatPages() {
+
+    for (let i = 0; i < SEAT_PAGES; i++) {
+
+        const idx = i + 1;
+
+        const pageID = "page_" + idx;
+        const page = $(pageTemplate({
+            pageID: pageID,
+            pageType: 'seat-area'
+        }));
+
+        const tabID = "tab_" + idx;
+        const tabButton = $(tabTemplate({
+            tabID: tabID
+        }));
+        tabButton.text((i == 0) ? ("EDGE GPU") : ("TERMINAL"));
+
+        $('#page-area').append(page);
+        $('.tab').append(tabButton);
+
+        tab_page_map[tabID] = pageID;
+    }
+}
+
 function renderSeats() {
 
     let seatArea = $('[id=seat-area]');
@@ -418,10 +454,12 @@ function renderSeats() {
     for (let j = 0; j < SEAT_PAGES; j++) {
 
         let name_header = (j == 0) ? ("EDGE_GPU") : ("TERMINAL");
+        let reverse_header = (j == 0) ? ("TERMINAL") : ("EDGE_GPU");
 
         for (let i = 0; i < MAX_STREAM_PER_PAGE; i++) {
 
-            const streamName = name_header + "_" + (i + 1);
+            const idx = i + 1;
+            const streamName = name_header + "_" + idx;
 
             const seat = $(seatTemplate({
                 streamName: streamName
@@ -461,6 +499,8 @@ function renderSeats() {
             }
 
             seatArea.eq(j).append(seat);
+            device_pair[streamName] = reverse_header + "_" + idx;
+            connectionStatus[streamName] = false;
         }
     }
 
@@ -480,10 +520,15 @@ function createLocalPlayer(streamName) {
 function createPlayer(streamName) {
 
     const seat = $('#seat-' + streamName);
-
     seat.addClass('seat-on');
-
     seat.find('.player-area').removeClass('d-none');
+
+    let seat_name = null
+    if (streamName.substring(0, 1) == "E") {
+        seat_name = 'pair_edge_' + streamName.substring(streamName.length - 1);
+    } else {
+        seat_name = 'pair_terminal_' + streamName.substring(streamName.length - 1);
+    }
 
     const playerOption = {
         // image: OME_THUMBNAIL_HOST + '/' + APP_NAME + '/' + streamName + '/thumb.png',
@@ -503,7 +548,7 @@ function createPlayer(streamName) {
         ]
     };
 
-    const player = OvenPlayer.create(document.getElementById('player-' + streamName), playerOption);
+    const player = OvenPlayer.create(document.getElementById('player-' + streamName), playerOption); // Create player
 
     player.on('error', function (error) {
 
@@ -511,6 +556,18 @@ function createPlayer(streamName) {
 
         destroyPlayer(streamName);
     });
+
+    const player2 = OvenPlayer.create(document.getElementById(seat_name), playerOption); // Create player
+
+    player2.on('error', function (error) {
+
+        console.log('App Error On Player2', error);
+
+        destroyPlayer(streamName);
+    });
+
+    connectionStatus[streamName] = true;
+    checkPairStreaming(streamName);
 }
 
 function removeInputStream(streamName) {
@@ -549,6 +606,8 @@ function destroyPlayer(streamName) {
     }
 
     removeInputStream(streamName);
+    connectionStatus[streamName] = false;
+    checkPairStreaming(streamName);
 }
 
 async function getStreams() {
@@ -668,6 +727,18 @@ function choosetab(tab_id) {
     document.getElementById(tab_id).classList.add('curtab');
 }
 
+function checkPairStreaming(streamName) {
+    let pairStreamName = device_pair[streamName];
+    let tab_name = "pair_tab_" + streamName.substring(streamName.length - 1);
+    if (REGISTER_MODE == "False") {
+        if (connectionStatus[streamName] && connectionStatus[pairStreamName]) {
+            $('#' + tab_name).removeClass('d-none');
+        } else {
+            $('#' + tab_name).addClass('d-none');
+            // choosetab('tab_0');
+        }
+    }
+}
 
 let socket = io({
     transports: ['websocket']
@@ -688,6 +759,8 @@ if (REGISTER_MODE == "True") {
 renderSeatPages();
 
 renderSeats();
+
+renderPairMonitorPages();
 
 if (REGISTER_MODE == "True") {
     choosetab('tab_1');

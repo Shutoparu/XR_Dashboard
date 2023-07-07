@@ -205,9 +205,27 @@
 
         <!-- template -->
         <template id="page-template">
-            <div class="container flex-grow-1 pt-4 tabcontent d-none" id="<%= pagdID %>">
+            <div class="container flex-grow-1 pt-4 tabcontent d-none" id="<%= pageID %>">
                 <div id="<%= pageType %>" class="row">
 
+                </div>
+            </div>
+        </template>
+
+        <!-- template -->
+        <template id="pair-template">
+            <div class="col-6 col-md-6 col-lg-4">
+                <div id="pair_<%= idx %>" class="d-flex flex-row">
+                    <div class="seat mb-4 ratio ratio-16x9">
+                        <div id="pair_edge_<%= idx %>">
+
+                        </div>
+                    </div>
+                    <div class="seat mb-4 ratio ratio-16x9">
+                        <div id="pair_terminal_<%= idx %>">
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </template>
