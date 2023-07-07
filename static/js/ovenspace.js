@@ -1,3 +1,5 @@
+let tab_page_map = {};
+
 let currentStreams = [];
 let localStreams = [];
 let selectedInputStreamName = null;
@@ -6,7 +8,7 @@ let liveKitInputMap = {};
 let tryToStreaming = false;
 
 const tabTemplate = _.template($('#tab-template').html());
-const seatPageTemplate = _.template($('#page-template').html());
+const pageTemplate = _.template($('#page-template').html());
 const seatTemplate = _.template($('#seat-template').html());
 
 const inputVideo = document.getElementById('input-video');
@@ -353,36 +355,46 @@ function renderSeatPages() {
     for (let i = 0; i < SEAT_PAGES; i++) {
 
         const idx = i + 1;
-        const page = $(seatPageTemplate({
-            pageNum: idx,
+
+        const pageID = "page_" + idx;
+        const page = $(pageTemplate({
+            pagdID: pageID,
             pageType: 'seat-area'
         }));
 
+        const tabID = "tab_" + idx;
         const tabButton = $(tabTemplate({
-            id: idx
+            tabID: tabID
         }));
         tabButton.text((i == 0) ? ("EDGE GPU") : ("TERMINAL"));
 
         $('#page-area').append(page);
         $('.tab').append(tabButton);
+
+        tab_page_map[tabID] = pageID;
     }
 }
 
 function renderMonitorPages() {
 
-    const idx = parseInt(SEAT_PAGES) + 1
-    const page = $(seatPageTemplate({
-        pageNum: idx,
+    const idx = 0;
+
+    pageID = "page_" + idx;
+    const page = $(pageTemplate({
+        pagdID: pageID,
         pageType: 'dashboard-area'
     }));
-    const tabButton = $(tabTemplate({
-        id: idx
-    }));
 
-    tabButton.text("Dashboard");
+    tabID = "tab_" + idx;
+    const tabButton = $(tabTemplate({
+        tabID: tabID
+    }));
+    tabButton.text("Overview");
 
     $('#page-area').append(page);
     $('.tab').append(tabButton);
+
+    tab_page_map[tabID] = pageID;
 
     let element = null;
     $.get('/dashboard.html', function (data) {
@@ -405,17 +417,18 @@ function renderSeats() {
 
     for (let j = 0; j < SEAT_PAGES; j++) {
 
-        let name_header = (j == 0) ? ("EDGE GPU") : ("TERMINAL");
+        let name_header = (j == 0) ? ("EDGE_GPU") : ("TERMINAL");
 
         for (let i = 0; i < MAX_STREAM_PER_PAGE; i++) {
 
-            const streamName = name_header + " #" + (i + 1);
+            const streamName = name_header + "_" + (i + 1);
 
             const seat = $(seatTemplate({
                 streamName: streamName
             }));
-            // ADD
-            seat.find('#stream-name').text(streamName);
+
+            let proper_name = streamName.replace(/_/g, ' ');
+            seat.find('#stream-name').text(proper_name);
 
             if (REGISTER_MODE == 'False') {
 
@@ -641,7 +654,8 @@ function startStreamCheckTimer() {
 }
 
 // add
-function choosetab(tab_id, button_id) {
+function choosetab(tab_id) {
+    let page_id = tab_page_map[tab_id];
     let tabs = document.getElementsByClassName("tabcontent");
     for (let i = 0; i < tabs.length; i++) {
         tabs[i].classList.add('d-none');
@@ -650,16 +664,8 @@ function choosetab(tab_id, button_id) {
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].classList.remove('curtab');
     }
-    document.getElementById(tab_id).classList.remove('d-none');
-    document.getElementById(button_id).classList.add('curtab');
-}
-
-function settle_register() {
-    if (REGISTER_MODE == "True") {
-        $('#title').removeClass('d-none');
-    } else {
-        renderMonitorPages();
-    }
+    document.getElementById(page_id).classList.remove('d-none');
+    document.getElementById(tab_id).classList.add('curtab');
 }
 
 
@@ -671,12 +677,22 @@ socket.on('user count', function (data) {
     totalUserCountSpan.text(data.user_count);
 });
 
-settle_register();
+// "main" starts here, check if register mode
+
+if (REGISTER_MODE == "True") {
+    $('#title').removeClass('d-none');
+} else {
+    renderMonitorPages();
+}
 
 renderSeatPages();
 
 renderSeats();
 
-choosetab('disp_1', 'button_1');
+if (REGISTER_MODE == "True") {
+    choosetab('tab_1');
+} else {
+    choosetab('tab_0');
+}
 
 startStreamCheckTimer();

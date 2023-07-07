@@ -44,7 +44,7 @@
                         <span id="video-user-count-span" class="fw-bold">0</span>
                     </div>
                 </div>
-                <div class="container d-flex flex-row-reverse">
+                <div class="container d-flex flex-row">
                     <div class="tab">
 
                     </div>
@@ -199,8 +199,17 @@
 
         <!-- template -->
         <template id="tab-template">
-            <button class="tablinks" id="button_<%= id %>"
-                onclick="choosetab('disp_<%= id %>','button_<%= id %>')">DEFAULT</button>
+            <button class="tablinks" id="<%= tabID %>"
+                onclick="choosetab('<%= tabID %>')">DEFAULT</button>
+        </template>
+
+        <!-- template -->
+        <template id="page-template">
+            <div class="container flex-grow-1 pt-4 tabcontent d-none" id="<%= pagdID %>">
+                <div id="<%= pageType %>" class="row">
+
+                </div>
+            </div>
         </template>
 
         <!-- template -->
@@ -231,15 +240,6 @@
                     <div class="name-holder h-25">
                         <p id="stream-name" class="fa-2x"></p>
                     </div>
-                </div>
-            </div>
-        </template>
-
-        <!-- template -->
-        <template id="page-template">
-            <div class="container flex-grow-1 pt-4 tabcontent d-none" id="disp_<%= pageNum %>">
-                <div id="<%= pageType %>" class="row">
-
                 </div>
             </div>
         </template>
