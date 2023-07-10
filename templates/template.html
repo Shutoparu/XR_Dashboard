@@ -214,20 +214,53 @@
 
         <!-- template -->
         <template id="pair-template">
-            <div class="col-6 col-md-6 col-lg-4">
-                <div id="pair_<%= idx %>" class="d-flex flex-row">
-                    <div class="seat mb-4 ratio ratio-16x9">
-                        <div id="pair_edge_<%= idx %>">
 
+            <div id="pair_<%= idx %>" class="d-flex justify-content-center">
+                <div class="col-6 col-md-6 col-lg-4">
+                    <div id="pair_edge_<%= idx %>" class="seat mb-4 ratio ratio-16x9">
+                        <div
+                            class="join-area d-flex justify-content-center align-items-center w-100 h-100">
+                        </div>
+                        <div class="player-area">
+                            <div id="player_edge_<%= idx %>">
+
+                            </div>
+                        </div>
+                        <div class="name-holder h-25">
+                            <p id="stream-name" class="fa-2x">a</p>
                         </div>
                     </div>
-                    <div class="seat mb-4 ratio ratio-16x9">
-                        <div id="pair_terminal_<%= idx %>">
+                </div>
 
+                <div class="col-6 col-md-6 col-lg-4">
+                    <div class="ratio ratio-16x9" style="background-color: lightgray;">
+                        <div class="d-flex flex-column align-items-center">
+                            <h3><u>XR Connection #<span id="connect_no"></span></u></h3>
+                            <p style="font-size: medium;"><b>Edge IP:</b> <span id="edge_ip"></span></p>
+                            <p style="font-size: medium;"><b>Edge Resolution:</b> <span id="edge_resolution"></span></p>
+                            <p style="font-size: medium;"><b>Terminal IP:</b> <span id="terminal_ip"></span></p>
+                            <p style="font-size: medium;"><b>Terminal Resolution:</b> <span id="terminal_resolution"></span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-6 col-lg-4">
+                    <div id="pair_terminal_<%= idx %>" class="seat mb-4 ratio ratio-16x9">
+                        <div
+                            class="join-area d-flex justify-content-center align-items-center h-100">
+                        </div>
+                        <div class="player-area">
+                            <div id="player_terminal_<%= idx %>">
+
+                            </div>
+                        </div>
+                        <div class="name-holder h-25">
+                            <p id="stream-name" class="fa-2x">b</p>
                         </div>
                     </div>
                 </div>
             </div>
+
         </template>
 
         <!-- template -->

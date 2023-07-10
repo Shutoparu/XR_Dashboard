@@ -216,7 +216,6 @@ function createWebRTCInput() {
     }
 
     liveKitInputMap[selectedInputStreamName] = input;
-    console.log(liveKitInputMap.length);
 }
 
 function readyStreaming() {
@@ -381,6 +380,9 @@ function renderPairMonitorPages() {
             idx: idx
         }));
 
+        pairPage.find('#pair_edge_' + idx).find('#stream-name').text('EDGE GPU ' + idx);
+        pairPage.find('#pair_terminal_' + idx).find('#stream-name').text('TERMINAL ' + idx);
+
         page.append(pairPage);
     }
 
@@ -408,7 +410,7 @@ function renderMonitorPages() {
     tab_page_map[tabID] = pageID;
 
     let element = null;
-    $.get('/dashboard.html', function (data) {
+    $.get('/dashboard', function (data) {
         let dummyNode = document.createElement('div');
         $.each($(data), function (key, val) {
             dummyNode.append(val);
@@ -523,11 +525,11 @@ function createPlayer(streamName) {
     seat.addClass('seat-on');
     seat.find('.player-area').removeClass('d-none');
 
-    let seat_name = null
+    let player_name = null;
     if (streamName.substring(0, 1) == "E") {
-        seat_name = 'pair_edge_' + streamName.substring(streamName.length - 1);
+        player_name = 'player_edge_' + streamName.substring(streamName.length - 1);
     } else {
-        seat_name = 'pair_terminal_' + streamName.substring(streamName.length - 1);
+        player_name = 'player_terminal_' + streamName.substring(streamName.length - 1);
     }
 
     const playerOption = {
@@ -557,7 +559,7 @@ function createPlayer(streamName) {
         destroyPlayer(streamName);
     });
 
-    const player2 = OvenPlayer.create(document.getElementById(seat_name), playerOption); // Create player
+    const player2 = OvenPlayer.create(document.getElementById(player_name), playerOption); // Create player
 
     player2.on('error', function (error) {
 
@@ -735,7 +737,9 @@ function checkPairStreaming(streamName) {
             $('#' + tab_name).removeClass('d-none');
         } else {
             $('#' + tab_name).addClass('d-none');
-            // choosetab('tab_0');
+            if ($('#' + tab_name).hasClass('curtab')) { // might need to stay on page
+                choosetab('tab_1');
+            }
         }
     }
 }

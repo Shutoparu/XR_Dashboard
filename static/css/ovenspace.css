@@ -245,7 +245,7 @@ h6 {
     text-decoration: none;
     display: inline-block;
     font-size: 12px;
-    
+
 
 }
 
@@ -258,7 +258,7 @@ h6 {
 .curtab {
     background-color: #edeae3;
     color: black;
-    
+
 }
 
 #stream-name {
@@ -271,4 +271,25 @@ h6 {
 
 .name-holder {
     left: 10px;
+}
+
+.arrow {
+    width: 120px;
+}
+
+.line {
+    margin-top: 15px;
+    width: 90px;
+    background: blue;
+    height: 10px;
+    float: left;
+}
+
+.point {
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 30px solid blue;
+    float: right;
 }

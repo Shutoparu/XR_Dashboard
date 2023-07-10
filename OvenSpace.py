@@ -121,13 +121,11 @@ def get_streams():
     except Exception as e:
         return str(e), 500
     
-@app.route("/dashboard.html")
+@app.route("/dashboard")
 def get_dashboard():
     return render_template('dashboard.html')
     
-
-
-
+    
 @socketio.on('connect')
 def on_connect():
     users.add_user()
