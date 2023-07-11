@@ -729,12 +729,22 @@ function choosetab(tab_id) {
     document.getElementById(tab_id).classList.add('curtab');
 }
 
+
 function checkPairStreaming(streamName) {
-    let pairStreamName = device_pair[streamName];
-    let tab_name = "pair_tab_" + streamName.substring(streamName.length - 1);
+
     if (REGISTER_MODE == "False") {
-        if (connectionStatus[streamName] && connectionStatus[pairStreamName]) {
-            $('#' + tab_name).removeClass('d-none');
+
+        let pairStreamName = device_pair[streamName];
+        let tab_name = "pair_tab_" + streamName.substring(streamName.length - 1);
+
+        if (connectionStatus[streamName]) {
+
+            const handler = _inputHandler(streamName);
+            handler.next();
+            getInputInfo(streamName, handler);
+            if (connectionStatus[pairStreamName]) {
+                $('#' + tab_name).removeClass('d-none');
+            }
         } else {
             $('#' + tab_name).addClass('d-none');
             if ($('#' + tab_name).hasClass('curtab')) { // might need to stay on page
@@ -744,6 +754,55 @@ function checkPairStreaming(streamName) {
     }
 }
 
+function* _inputHandler(streamName) {
+
+    let tab_name = "pair_tab_" + streamName.substring(streamName.length - 1);
+    let page_name = tab_page_map[tab_name];
+
+    let source_info = yield;
+
+    let sourceUrl;
+    let input_height;
+    let input_width;
+
+    sourceUrl = source_info.input.sourceUrl;
+    source_info.input.tracks.forEach(function (track) {
+        if (track.type == 'Video') {
+            input_height = track.video.height;
+            input_width = track.video.width;
+        }
+    });
+
+    const page = $('#' + page_name);
+    if (streamName.substring(0, 1) == 'E') {
+        page.find('#edge_resolution').text(input_width + ' x ' + input_height);
+        page.find('#edge_ip').text(sourceUrl);
+    } else {
+        page.find('#terminal_resolution').text(input_width + ' x ' + input_height);
+        page.find('#terminal_ip').text(sourceUrl);
+    }
+}
+
+
+function getInputInfo(streamName, handler) {
+    requestInfo(streamName).then(function (resp) {
+        if (resp.statusCode === 200) {
+            // source_info = resp.response; //DEBUG
+            handler.next(resp.response);
+        }
+    }).catch(function (e) {
+        console.error(e);
+    });
+}
+
+async function requestInfo(streamName) {
+    const promise = await $.ajax({
+        method: 'get',
+        url: '/info/' + streamName,
+    });
+    return promise;
+}
+
 let socket = io({
     transports: ['websocket']
 });
@@ -751,8 +810,6 @@ let socket = io({
 socket.on('user count', function (data) {
     totalUserCountSpan.text(data.user_count);
 });
-
-// "main" starts here, check if register mode
 
 if (REGISTER_MODE == "True") {
     $('#title').removeClass('d-none');

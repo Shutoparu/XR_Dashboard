@@ -120,6 +120,19 @@ def get_streams():
         return response.json(), response.status_code
     except Exception as e:
         return str(e), 500
+
+
+# create a request that handles ajax request for stream info
+@app.route("/info/<string:name>")
+def get_stream_info(name):
+    try:
+        response = requests.get(OME_API_GET_STREAMS +'/' + name,
+                                headers=OME_API_AUTH_HEADER,timeout=0.3)
+        return response.json(), response.status_code
+        
+    except Exception as e:
+        return str(e), 500
+
     
 @app.route("/dashboard")
 def get_dashboard():
