@@ -409,8 +409,7 @@ function renderMonitorPages() {
 
     tab_page_map[tabID] = pageID;
 
-    let element = null;
-    $.get('/dashboard', function (data) {
+    $.get('/dashboard', function (data) { // TODO try to simplify process
         let dummyNode = document.createElement('div');
         $.each($(data), function (key, val) {
             dummyNode.append(val);
@@ -790,8 +789,8 @@ function getInputInfo(streamName, handler) {
             // source_info = resp.response; //DEBUG
             handler.next(resp.response);
         }
-    }).catch(function (e) {
-        console.error(e);
+    }).catch(function (error) {
+        console.error(error);
     });
 }
 
