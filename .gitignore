@@ -3,4 +3,4 @@ __pycache__
 components
 */.DS_Store
 *.out
-env/*
+env
