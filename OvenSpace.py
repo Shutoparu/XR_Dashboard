@@ -133,11 +133,11 @@ def get_stream_info(name):
     except Exception as e:
         return str(e), 500
 
-    
+
 @app.route("/dashboard")
 def get_dashboard():
     return render_template('dashboard.html')
-    
+
     
 @socketio.on('connect')
 def on_connect():

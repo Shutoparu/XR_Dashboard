@@ -497,6 +497,15 @@ function renderSeats() {
                 seat.find('.leave-button').on('click', function () {
                     destroyPlayer($(this).data('stream-name'))
                 });
+
+                seat.find('.local-player-span').data('stream-name', streamName);
+
+                seat.find('.local-player-span').on('click', function () {
+
+                    console.log('hit');
+
+
+                });
             }
 
             seatArea.eq(j).append(seat);
@@ -798,6 +807,15 @@ async function requestInfo(streamName) {
     const promise = await $.ajax({
         method: 'get',
         url: '/info/' + streamName,
+    });
+    return promise;
+}
+
+// Test
+async function test() {
+    const promise = await $.ajax({
+        method: 'get',
+        url: '/test'
     });
     return promise;
 }

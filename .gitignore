@@ -1,0 +1,6 @@
+__pycache__
+.vscode
+components
+*/.DS_Store
+*.out
+env/*
