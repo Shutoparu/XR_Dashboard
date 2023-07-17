@@ -174,12 +174,24 @@ h6 {
     object-fit: cover;
 }
 
+.show-stat-modal .modal-header {
+    background: #FFBB10;
+}
+
 .input-device-modal .modal-header {
     background: #FFBB10;
 }
 
+.show-stat-modal .modal-header h5 {
+    color: var(--ovenspace-body-font-color);
+}
+
 .input-device-modal .modal-header h5 {
     color: var(--ovenspace-body-font-color);
+}
+
+.show-stat-modal .modal-content {
+    background: #edeae4;
 }
 
 .input-device-modal .modal-content {
@@ -192,7 +204,7 @@ h6 {
     color: var(--ovenspace-body-font-color) !important;
 }
 
-.local-player-span {
+.local-player-stat {
     position: absolute;
     color: var(--ovenspace-body-font-color);
     background: rgb(255 187 16 / 70%);

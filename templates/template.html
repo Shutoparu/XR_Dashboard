@@ -198,6 +198,24 @@
             </div>
         </div>
 
+        <!-- Modal -->
+        <div class="modal fade show-stat-modal" id="show-stat-modal" index="-1" role="dialog"
+            aria-hidden="true">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Statistics</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h5>IP: <span id="src-ip-modal"></span></h5>
+                        <h5>Resolution: <span id="src-res-modal"></span></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- template -->
         <template id="tab-template">
             <button class="tablinks" id="<%= tabID %>"
@@ -292,7 +310,8 @@
                             class="leave-area d-flex justify-content-center align-items-center w-100 h-100 position-absolute top-0 left-0">
                             <button class="leave-button btn btn-warning">Leave</button>
                         </div>
-                        <span class="local-player-span">Stats</span>
+                        <button class="local-player-stat btn btn-warning"
+                            style="display: none;">Stats</button>
                     </div>
                     <div class="name-holder h-25">
                         <p id="stream-name" class="fa-2x"></p>

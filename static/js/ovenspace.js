@@ -44,13 +44,15 @@ const startShareButton = $('#start-share-button');
 const inputErrorMessage = $('#input-error-message');
 
 const inputDeviceModal = $('#input-device-modal');
+const inputStatModal = $('#show-stat-modal');
 
 const totalUserCountSpan = $('#total-user-count-span');
 const videoUserCountSpan = $('#video-user-count-span');
 
-if (!navigator.mediaDevices.getDisplayMedia) {
-    shareDisplayButton.addClass('d-none');
-}
+// comment for mobile debug purpose
+// if (!navigator.mediaDevices.getDisplayMedia) {
+shareDisplayButton.addClass('d-none');
+// }
 
 shareDeviceButton.on('click', function () {
 
@@ -317,6 +319,11 @@ inputDeviceModal.on('hidden.bs.modal', function () {
     resetInputUI();
 });
 
+inputStatModal.on('hidden.bs.modal', function () {
+    inputStatModal.find('#src-ip-modal').text('');
+    inputStatModal.find('#src-res-modal').text('');
+});
+
 function getDeviceConstraints() {
 
     let videoDeviceId = videoSourceSelect.val();
@@ -486,10 +493,12 @@ function renderSeats() {
 
                 seat.on('mouseenter', function () {
                     seat.find('.leave-button').stop().fadeIn();
+                    seat.find('.local-player-stat').stop().fadeIn();
                 });
 
                 seat.on('mouseleave', function () {
                     seat.find('.leave-button').stop().fadeOut();
+                    seat.find('.local-player-stat').stop().fadeOut();
                 });
 
                 seat.find('.leave-button ').data('stream-name', streamName);
@@ -498,13 +507,13 @@ function renderSeats() {
                     destroyPlayer($(this).data('stream-name'))
                 });
 
-                seat.find('.local-player-span').data('stream-name', streamName);
+                seat.find('.local-player-stat').data('stream-name', streamName);
 
-                seat.find('.local-player-span').on('click', function () {
-
-                    console.log('hit');
-
-
+                seat.find('.local-player-stat').on('click', function () {
+                    // TODO add modal
+                    const handler = _setSrcStat(streamName);
+                    handler.next();
+                    getInputInfo(streamName, handler);
                 });
             }
 
@@ -514,6 +523,34 @@ function renderSeats() {
         }
     }
 
+}
+
+function* _setSrcStat(streamName) {
+    let source_info;
+    let sourceUrl;
+    let input_height = 0;
+    let input_width;
+
+    while (1) {
+        source_info = yield 0;
+        if (source_info.outputs.length != 0) {
+            break;
+        }
+    }
+
+    console.log(source_info);
+    sourceUrl = source_info.input.sourceUrl;
+    source_info.input.tracks.forEach(function (track) {
+        if (track.type == 'Video') {
+            input_height = track.video.height;
+            input_width = track.video.width;
+        }
+    });
+
+
+    inputStatModal.find('#src-ip-modal').text(sourceUrl);
+    inputStatModal.find('#src-res-modal').text(input_height + 'x' + input_width);
+    inputStatModal.modal('show');
 }
 
 function createLocalPlayer(streamName) {
@@ -795,8 +832,10 @@ function* _inputHandler(streamName) {
 function getInputInfo(streamName, handler) {
     requestInfo(streamName).then(function (resp) {
         if (resp.statusCode === 200) {
-            // source_info = resp.response; //DEBUG
-            handler.next(resp.response);
+            let ret = handler.next(resp.response);
+            if (ret.value === 0) {
+                getInputInfo(streamName, handler); // TODO try fix this so no recurssion is used
+            }
         }
     }).catch(function (error) {
         console.error(error);
