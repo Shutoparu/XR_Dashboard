@@ -5,3 +5,6 @@ components
 .DS_Store
 *.out
 env
+node_modules
+package.json
+package-lock.json

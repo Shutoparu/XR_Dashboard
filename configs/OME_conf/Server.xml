@@ -4,7 +4,7 @@
     <Name>OvenMediaEngine</Name>
     <Type>origin</Type>
     <IP>*</IP>
-    <IP>::</IP>
+    <!-- <IP>::</IP> -->
     <StunServer>stun.l.google.com:19302</StunServer>
     <Bind>
         <Providers>
@@ -18,13 +18,13 @@
             <WebRTC>
                 <Signalling>
                     <Port>3333</Port>
-                    <!-- <TLSPort>3333</TLSPort> -->
+                    <TLSPort>3334</TLSPort>
                 </Signalling>
                 <IceCandidates>
                     <TcpRelay>*:3478</TcpRelay>
-                    <TcpRelay>[::]:3478</TcpRelay>
+                    <!-- <TcpRelay>[::]:3478</TcpRelay> -->
                     <IceCandidate>*:10000-10005/udp</IceCandidate>
-                    <IceCandidate>[::]:10000-10005/udp</IceCandidate>
+                    <!-- <IceCandidate>[::]:10000-10005/udp</IceCandidate> -->
                 </IceCandidates>
             </WebRTC>
         </Providers>
@@ -32,25 +32,25 @@
             <WebRTC>
                 <Signalling>
                     <Port>3333</Port>
-                    <!-- <TLSPort>3333</TLSPort> -->
+                    <TLSPort>3334</TLSPort>
                 </Signalling>
                 <IceCandidates>
                     <TcpRelay>*:3478</TcpRelay>
-                    <TcpRelay>[::]:3478</TcpRelay>
+                    <!-- <TcpRelay>[::]:3478</TcpRelay> -->
                     <IceCandidate>*:10000-10005/udp</IceCandidate>
-                    <IceCandidate>[::]:10000-10005/udp</IceCandidate>
+                    <!-- <IceCandidate>[::]:10000-10005/udp</IceCandidate> -->
                 </IceCandidates>
             </WebRTC>
             <LLHLS>
                 <Port>3333</Port>
-                <!-- <TLSPort>3333</TLSPort> -->
+                <TLSPort>3334</TLSPort>
                 <WorkerCount>1</WorkerCount>
             </LLHLS>
         </Publishers>
         <Managers>
             <API>
                 <Port>8081</Port>
-                <!-- <TLSPort>8082</TLSPort> -->
+                <TLSPort>8082</TLSPort>
             </API>
         </Managers>
     </Bind>
@@ -59,11 +59,11 @@
             <Names>
                 <Name>*</Name>
             </Names>
-            <!-- <TLS>
-                <CertPath>/your/path/to/cert_file.crt</CertPath>
-                <ChainCertPath>/your/path/to/chain_cert_file.crt</ChainCertPath>
-                <KeyPath>/your/path/to/key_file.key</KeyPath>
-            </TLS> -->
+            <TLS>
+                <CertPath>/etc/cert/cert.pem</CertPath>
+                <ChainCertPath>/etc/cert/chain.pem</ChainCertPath>
+                <KeyPath>/etc/cert/cert-key.pem</KeyPath>
+            </TLS>
         </Host>
         <API>
             <AccessToken>admin:admin</AccessToken>
@@ -79,11 +79,11 @@
                 <Names>
                     <Name>*</Name>
                 </Names>
-                <!-- <TLS>
-                    <CertPath>/your/path/to/cert_file.crt</CertPath>
-                    <ChainCertPath>/your/path/to/chain_cert_file.crt</ChainCertPath>
-                    <KeyPath>/your/path/to/key_file.key</KeyPath>
-                </TLS> -->
+                <TLS>
+                    <CertPath>/etc/cert/cert.pem</CertPath>
+                    <ChainCertPath>/etc/cert/chain.pem</ChainCertPath>
+                    <KeyPath>/etc/cert/cert-key.pem</KeyPath>
+                </TLS>
             </Host>
             <!-- Settings for applications -->
             <Applications>

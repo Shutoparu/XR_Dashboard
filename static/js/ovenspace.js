@@ -753,9 +753,10 @@ function startStreamCheckTimer() {
 
     checkStream();
 
+    // remove for debug purpose
     setInterval(() => {
 
-        checkStream();
+        checkStream(); 
     }, 2500);
 }
 
