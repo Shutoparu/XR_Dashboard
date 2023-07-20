@@ -5,7 +5,7 @@ pip install -r requirements.txt
 
 # Set up configs
 touch ssl_pem/extfile.conf
-chmod 544 ssl_pem/extfile.conf
+chmod 744 ssl_pem/extfile.conf
 python parse_config.py
 
 # Set up certificates
