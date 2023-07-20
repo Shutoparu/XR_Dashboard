@@ -7,12 +7,22 @@
 
     <body>
         <div id="dashboard">
-            <iframe
-                src="http://localhost:3000/d-solo/ceb159fe-e53f-4742-a5c6-fe8f71d7d1b9/prometheus-test?orgId=1&from=now-24h&to=now&refresh=5s&panelId=1"
-                width="550" height="350" frameborder="0"></iframe>
-            <iframe
-                src="http://localhost:3000/d-solo/ceb159fe-e53f-4742-a5c6-fe8f71d7d1b9/prometheus-test?orgId=1&from=now-24h&to=now&refresh=5s&panelId=2"
-                width="550" height="350" frameborder="0"></iframe>
+
+
+            <!-- <iframe id="panel1" src="404.html" width="550" height="350" frameborder="0"></iframe> -->
+            <iframe id='panel1' src="" width="450" height="200" frameborder="0"></iframe>
+
+
+            <script>
+                // let host = 'localhost';
+                // let host = '192.168.4.240';
+
+                let src1 = "https://192.168.4.240:3000/d-solo/b41605a1-5f86-4a3a-b12d-3d2b6ca54646/new-dashboard?orgId=1&from=now-6h&to=now&panelId=1"
+
+
+                document.getElementById("panel1").src = src1;
+
+            </script>
         </div>
     </body>
 

@@ -1,0 +1,12 @@
+__pycache__
+.vscode
+components
+*/.DS_Store
+.DS_Store
+*.out
+env
+node_modules
+package.json
+package-lock.json
+target
+ssl_pem/*

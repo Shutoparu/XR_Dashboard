@@ -174,12 +174,24 @@ h6 {
     object-fit: cover;
 }
 
+.show-stat-modal .modal-header {
+    background: #FFBB10;
+}
+
 .input-device-modal .modal-header {
     background: #FFBB10;
 }
 
+.show-stat-modal .modal-header h5 {
+    color: var(--ovenspace-body-font-color);
+}
+
 .input-device-modal .modal-header h5 {
     color: var(--ovenspace-body-font-color);
+}
+
+.show-stat-modal .modal-content {
+    background: #edeae4;
 }
 
 .input-device-modal .modal-content {
@@ -192,14 +204,14 @@ h6 {
     color: var(--ovenspace-body-font-color) !important;
 }
 
-.local-player-span {
+.local-player-stat {
     position: absolute;
     color: var(--ovenspace-body-font-color);
     background: rgb(255 187 16 / 70%);
     padding: 0.1rem 0.3rem;
     border-radius: 0.2rem;
     right: 0.5rem;
-    top: 0.5rem;
+    bottom: 0.5rem;
     font-size: 0.5rem;
     cursor: default;
 }

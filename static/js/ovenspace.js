@@ -44,10 +44,12 @@ const startShareButton = $('#start-share-button');
 const inputErrorMessage = $('#input-error-message');
 
 const inputDeviceModal = $('#input-device-modal');
+const inputStatModal = $('#show-stat-modal');
 
 const totalUserCountSpan = $('#total-user-count-span');
 const videoUserCountSpan = $('#video-user-count-span');
 
+// comment for mobile debug purpose
 if (!navigator.mediaDevices.getDisplayMedia) {
     shareDisplayButton.addClass('d-none');
 }
@@ -317,6 +319,11 @@ inputDeviceModal.on('hidden.bs.modal', function () {
     resetInputUI();
 });
 
+inputStatModal.on('hidden.bs.modal', function () {
+    inputStatModal.find('#src-ip-modal').text('');
+    inputStatModal.find('#src-res-modal').text('');
+});
+
 function getDeviceConstraints() {
 
     let videoDeviceId = videoSourceSelect.val();
@@ -409,8 +416,7 @@ function renderMonitorPages() {
 
     tab_page_map[tabID] = pageID;
 
-    let element = null;
-    $.get('/dashboard', function (data) {
+    $.get('/dashboard', function (data) { // TODO try to simplify process
         let dummyNode = document.createElement('div');
         $.each($(data), function (key, val) {
             dummyNode.append(val);
@@ -487,16 +493,27 @@ function renderSeats() {
 
                 seat.on('mouseenter', function () {
                     seat.find('.leave-button').stop().fadeIn();
+                    seat.find('.local-player-stat').stop().fadeIn();
                 });
 
                 seat.on('mouseleave', function () {
                     seat.find('.leave-button').stop().fadeOut();
+                    seat.find('.local-player-stat').stop().fadeOut();
                 });
 
                 seat.find('.leave-button ').data('stream-name', streamName);
 
                 seat.find('.leave-button').on('click', function () {
                     destroyPlayer($(this).data('stream-name'))
+                });
+
+                seat.find('.local-player-stat').data('stream-name', streamName);
+
+                seat.find('.local-player-stat').on('click', function () {
+                    // TODO add modal
+                    const handler = _setSrcStat(streamName);
+                    handler.next();
+                    getInputInfo(streamName, handler);
                 });
             }
 
@@ -506,6 +523,34 @@ function renderSeats() {
         }
     }
 
+}
+
+function* _setSrcStat(streamName) {
+    let source_info;
+    let sourceUrl;
+    let input_height = 0;
+    let input_width;
+
+    while (1) {
+        source_info = yield 0;
+        if (source_info.outputs.length != 0) {
+            break;
+        }
+    }
+
+    console.log(source_info);
+    sourceUrl = source_info.input.sourceUrl;
+    source_info.input.tracks.forEach(function (track) {
+        if (track.type == 'Video') {
+            input_height = track.video.height;
+            input_width = track.video.width;
+        }
+    });
+
+
+    inputStatModal.find('#src-ip-modal').text(sourceUrl);
+    inputStatModal.find('#src-res-modal').text(input_height + 'x' + input_width);
+    inputStatModal.modal('show');
 }
 
 function createLocalPlayer(streamName) {
@@ -708,6 +753,7 @@ function startStreamCheckTimer() {
 
     checkStream();
 
+    // remove for debug purpose
     setInterval(() => {
 
         checkStream();
@@ -729,12 +775,22 @@ function choosetab(tab_id) {
     document.getElementById(tab_id).classList.add('curtab');
 }
 
+
 function checkPairStreaming(streamName) {
-    let pairStreamName = device_pair[streamName];
-    let tab_name = "pair_tab_" + streamName.substring(streamName.length - 1);
+
     if (REGISTER_MODE == "False") {
-        if (connectionStatus[streamName] && connectionStatus[pairStreamName]) {
-            $('#' + tab_name).removeClass('d-none');
+
+        let pairStreamName = device_pair[streamName];
+        let tab_name = "pair_tab_" + streamName.substring(streamName.length - 1);
+
+        if (connectionStatus[streamName]) {
+
+            const handler = _inputHandler(streamName);
+            handler.next();
+            getInputInfo(streamName, handler);
+            if (connectionStatus[pairStreamName]) {
+                $('#' + tab_name).removeClass('d-none');
+            }
         } else {
             $('#' + tab_name).addClass('d-none');
             if ($('#' + tab_name).hasClass('curtab')) { // might need to stay on page
@@ -744,6 +800,66 @@ function checkPairStreaming(streamName) {
     }
 }
 
+function* _inputHandler(streamName) {
+
+    let tab_name = "pair_tab_" + streamName.substring(streamName.length - 1);
+    let page_name = tab_page_map[tab_name];
+
+    let source_info = yield;
+
+    let sourceUrl;
+    let input_height;
+    let input_width;
+
+    sourceUrl = source_info.input.sourceUrl;
+    source_info.input.tracks.forEach(function (track) {
+        if (track.type == 'Video') {
+            input_height = track.video.height;
+            input_width = track.video.width;
+        }
+    });
+
+    const page = $('#' + page_name);
+    if (streamName.substring(0, 1) == 'E') {
+        page.find('#edge_resolution').text(input_width + ' x ' + input_height);
+        page.find('#edge_ip').text(sourceUrl);
+    } else {
+        page.find('#terminal_resolution').text(input_width + ' x ' + input_height);
+        page.find('#terminal_ip').text(sourceUrl);
+    }
+}
+
+
+function getInputInfo(streamName, handler) {
+    requestInfo(streamName).then(function (resp) {
+        if (resp.statusCode === 200) {
+            let ret = handler.next(resp.response);
+            if (ret.value === 0) {
+                getInputInfo(streamName, handler); // TODO try fix this so no recurssion is used
+            }
+        }
+    }).catch(function (error) {
+        console.error(error);
+    });
+}
+
+async function requestInfo(streamName) {
+    const promise = await $.ajax({
+        method: 'get',
+        url: '/info/' + streamName,
+    });
+    return promise;
+}
+
+// Test
+async function test() {
+    const promise = await $.ajax({
+        method: 'get',
+        url: '/test'
+    });
+    return promise;
+}
+
 let socket = io({
     transports: ['websocket']
 });
@@ -751,8 +867,6 @@ let socket = io({
 socket.on('user count', function (data) {
     totalUserCountSpan.text(data.user_count);
 });
-
-// "main" starts here, check if register mode
 
 if (REGISTER_MODE == "True") {
     $('#title').removeClass('d-none');

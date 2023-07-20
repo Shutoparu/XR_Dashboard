@@ -7,7 +7,7 @@ from urllib import parse
 from components.user import User
 
 app = Flask(__name__)
-app.config.from_pyfile('ovenspace.cfg')
+app.config.from_pyfile('configs/OvenSpace_conf/ovenspace.cfg')
 socketio = SocketIO(app, cors_allowed_origins="*", async_handlers=True)
 
 
@@ -76,7 +76,7 @@ users = User.instance()
 
 @app.route("/view")
 @app.route("/")
-def space_view():
+def view():
     return render_template(
         'template.html', # change here for your own template
         app_name=OME_APP_NAME,
@@ -116,15 +116,29 @@ def register():
 def get_streams():
     try:
         response = requests.get(OME_API_GET_STREAMS,
-                                headers=OME_API_AUTH_HEADER, timeout=0.3)
+                                headers=OME_API_AUTH_HEADER, timeout=0.3, verify='./ssl_pem/chain.pem')
         return response.json(), response.status_code
     except Exception as e:
+        print(e)
         return str(e), 500
-    
+
+
+# create a request that handles ajax request for stream info
+@app.route("/info/<string:name>")
+def get_stream_info(name):
+    try:
+        response = requests.get(OME_API_GET_STREAMS +'/' + name,
+                                headers=OME_API_AUTH_HEADER,timeout=0.3, verify='./ssl_pem/chain.pem')
+        return response.json(), response.status_code
+        
+    except Exception as e:
+        return str(e), 500
+
+
 @app.route("/dashboard")
 def get_dashboard():
     return render_template('dashboard.html')
-    
+
     
 @socketio.on('connect')
 def on_connect():

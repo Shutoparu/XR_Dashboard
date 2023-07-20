@@ -5,11 +5,12 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="OvenMediaEngine OvenPlayer WebRTC Input Conference Demo">
-        <meta name="author" content="Airensoft">
+        <meta name="description" content="Monitoring dashboard for XR Cube">
+        <meta name="author" content="Thomas Peng">
 
         <title>XR Dashboard</title>
 
+        <link rel="shortcut icon" href="/static/img/xrcube_logo.ico">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
             rel="stylesheet">
         <link
@@ -28,6 +29,8 @@
         <div class="app-wrapper d-flex flex-column">
 
             <div class="header">
+                <!-- This is a debug button -->
+                <!-- <div id="temp_btn"><button onclick="checkStream()">btn</button></div> -->
                 <div
                     class=" container d-flex flex-column flex-sm-row align-items-sm-end justify-content-between py-4">
                     <div>
@@ -197,6 +200,24 @@
             </div>
         </div>
 
+        <!-- Modal -->
+        <div class="modal fade show-stat-modal" id="show-stat-modal" index="-1" role="dialog"
+            aria-hidden="true">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Statistics</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h5>IP: <span id="src-ip-modal"></span></h5>
+                        <h5>Resolution: <span id="src-res-modal"></span></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- template -->
         <template id="tab-template">
             <button class="tablinks" id="<%= tabID %>"
@@ -236,10 +257,14 @@
                     <div class="ratio ratio-16x9" style="background-color: lightgray;">
                         <div class="d-flex flex-column align-items-center">
                             <h3><u>XR Connection #<span id="connect_no"></span></u></h3>
-                            <p style="font-size: medium;"><b>Edge IP:</b> <span id="edge_ip"></span></p>
-                            <p style="font-size: medium;"><b>Edge Resolution:</b> <span id="edge_resolution"></span></p>
-                            <p style="font-size: medium;"><b>Terminal IP:</b> <span id="terminal_ip"></span></p>
-                            <p style="font-size: medium;"><b>Terminal Resolution:</b> <span id="terminal_resolution"></span></p>
+                            <p style="font-size: medium;"><b>Edge IP:</b> <span id="edge_ip"></span>
+                            </p>
+                            <p style="font-size: medium;"><b>Edge Resolution:</b> <span
+                                    id="edge_resolution"></span></p>
+                            <p style="font-size: medium;"><b>Terminal IP:</b> <span
+                                    id="terminal_ip"></span></p>
+                            <p style="font-size: medium;"><b>Terminal Resolution:</b> <span
+                                    id="terminal_resolution"></span></p>
                         </div>
                     </div>
                 </div>
@@ -282,11 +307,13 @@
                             autoplay playsinline>
 
                         </video>
-                        <span class="local-player-span">Local Stream</span>
+
                         <div
                             class="leave-area d-flex justify-content-center align-items-center w-100 h-100 position-absolute top-0 left-0">
                             <button class="leave-button btn btn-warning">Leave</button>
                         </div>
+                        <button class="local-player-stat btn btn-warning"
+                            style="display: none;">Stats</button>
                     </div>
                     <div class="name-holder h-25">
                         <p id="stream-name" class="fa-2x"></p>
@@ -324,14 +351,11 @@
         <!-- Load OvenLiveKit For Web -->
         <script
             src="https://cdn.jsdelivr.net/npm/ovenlivekit@1.0.4/dist/OvenLiveKit.min.js"></script>
+
         <!-- Load OvenPlayer -->
         <script src="https://cdn.jsdelivr.net/npm/ovenplayer/dist/ovenplayer.js"></script>
 
         <script src="/static/js/ovenspace.js"></script>
-
-
-
-
 
     </body>
 
