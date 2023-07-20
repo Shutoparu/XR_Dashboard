@@ -4,11 +4,13 @@ source env/bin/activate
 pip install -r requirements.txt
 
 # Set up configs
+touch ssl_pem/extfile.conf
+chmod 544 ssl_pem/extfile.conf
 python parse_config.py
 
 # Set up certificates
 openssl genrsa -out ssl_pem/ca-key.pem 4096
-openssl req -new -x509 -sha256 -days 3650 -key ssl_pem/ca-key.pem -out ca.pem
+openssl req -new -x509 -sha256 -days 3650 -key ssl_pem/ca-key.pem -out ssl_pem/ca.pem
 ./generate_cert.sh
 
 # Set up docker containers
