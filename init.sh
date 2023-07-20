@@ -6,12 +6,12 @@ pip install -r requirements.txt
 # Set up configs
 touch ssl_pem/extfile.conf
 chmod 744 ssl_pem/extfile.conf
-python parse_config.py
+python misc/parse_config.py
 
 # Set up certificates
 openssl genrsa -out ssl_pem/ca-key.pem 4096
 openssl req -new -x509 -sha256 -days 3650 -key ssl_pem/ca-key.pem -out ssl_pem/ca.pem
-./generate_cert.sh
+./misc/generate_cert.sh
 
 # Set up docker containers
 docker run -v ./configs/OME_conf/Server.xml:/opt/ovenmediaengine/bin/origin_conf/Server.xml -v ./ssl_pem:/etc/cert -p 3333:3333 -p 3334:3334 -p 3478:3478 -p 8081:8081 -p 8082:8082 -p 10000-10010:10000-10010/udp --name OME -d airensoft/ovenmediaengine:dev
