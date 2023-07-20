@@ -5,7 +5,7 @@ with open('ip.txt','r') as f:
     ip = f.readline().strip().split(' ')[1]
     f.close()
 
-with open('../config_template/grafana.ini', 'r') as f:
+with open('config_template/grafana.ini', 'r') as f:
     with open('configs/grafana_conf/grafana.ini', 'w') as g:
         for line in f:
             if line.startswith('domain ='):
@@ -16,7 +16,7 @@ with open('../config_template/grafana.ini', 'r') as f:
         g.close()
     f.close()
 
-with open('../config_template/nginx.conf','r') as f:
+with open('config_template/nginx.conf','r') as f:
     with open('configs/nginx_conf/nginx.conf','w') as g:
         for line in f:
             if line.strip().split(' ')[0] == 'server_name':
@@ -30,7 +30,7 @@ with open('../config_template/nginx.conf','r') as f:
         g.close()
     f.close()
 
-with open ('../config_template/ovenspace.cfg','r') as f:
+with open ('config_template/ovenspace.cfg','r') as f:
     with open('configs/OvenSpace_conf/ovenspace.cfg','w') as g:
         for line in f:
             if line.strip().split(' ')[0] == 'OME_HOST':
@@ -41,6 +41,6 @@ with open ('../config_template/ovenspace.cfg','r') as f:
         g.close()
     f.close()
 
-with open('../ssl_pem/extfile.conf','w') as f:
+with open('ssl_pem/extfile.conf','w') as f:
     f.write('subjectAltName = DNS:' + host + ',IP:' + ip + '\n')
 

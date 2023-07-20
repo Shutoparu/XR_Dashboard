@@ -4,6 +4,7 @@ source env/bin/activate
 pip install -r requirements.txt
 
 # Set up configs
+mkdir ssl_pem
 touch ssl_pem/extfile.conf
 chmod 744 ssl_pem/extfile.conf
 python misc/parse_config.py
