@@ -50,9 +50,9 @@ const totalUserCountSpan = $('#total-user-count-span');
 const videoUserCountSpan = $('#video-user-count-span');
 
 // comment for mobile debug purpose
-// if (!navigator.mediaDevices.getDisplayMedia) {
-shareDisplayButton.addClass('d-none');
-// }
+if (!navigator.mediaDevices.getDisplayMedia) {
+    shareDisplayButton.addClass('d-none');
+}
 
 shareDeviceButton.on('click', function () {
 
@@ -756,7 +756,7 @@ function startStreamCheckTimer() {
     // remove for debug purpose
     setInterval(() => {
 
-        checkStream(); 
+        checkStream();
     }, 2500);
 }
 

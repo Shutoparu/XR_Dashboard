@@ -7,7 +7,7 @@ from urllib import parse
 from components.user import User
 
 app = Flask(__name__)
-app.config.from_pyfile('ovenspace.cfg')
+app.config.from_pyfile('configs/OvenSpace_conf/ovenspace.cfg')
 socketio = SocketIO(app, cors_allowed_origins="*", async_handlers=True)
 
 
