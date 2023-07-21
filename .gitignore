@@ -1,6 +1,6 @@
 __pycache__
 .vscode
-components
+components/__pycache__
 */.DS_Store
 .DS_Store
 *.out
@@ -13,3 +13,4 @@ ssl_pem/
 configs/grafana_conf
 configs/nginx_conf
 configs/OvenSpace_conf
+*.log
