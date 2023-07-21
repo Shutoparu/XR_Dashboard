@@ -12,4 +12,4 @@ target
 ssl_pem/
 configs/grafana_conf
 configs/nginx_conf
-configs/OME_conf
+configs/OvenSpace_conf
