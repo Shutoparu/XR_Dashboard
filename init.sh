@@ -26,13 +26,21 @@ fi
 # Set up docker containers if doesn't exist
 if [ ! "$(docker ps -aq -f name=OME_XR)" ]; then
     docker run -v ./configs/OME_conf/Server.xml:/opt/ovenmediaengine/bin/origin_conf/Server.xml -v ./ssl_pem:/etc/cert -p 3333:3333 -p 3334:3334 -p 3478:3478 -p 8081:8081 -p 8082:8082 -p 10000-10010:10000-10010/udp --name OME_XR -d airensoft/ovenmediaengine:dev
+else
+    docker start OME_XR
 fi
 if [ ! "$(docker ps -aq -f name=Nginx_XR)" ]; then
     docker run -v ./configs/nginx_conf/nginx.conf:/etc/nginx/conf.d/default.conf -v ./ssl_pem:/etc/nginx/cert -p 7777:80 -p 7778:443 --name Nginx_XR -d nginx
+else
+    docker start Nginx_XR
 fi
 if [ ! "$(docker ps -aq -f name=Grafana_XR)" ]; then
     docker run -v ./configs/grafana_conf/grafana.ini:/etc/grafana/grafana.ini -v ./ssl_pem:/etc/grafana/cert -p 3000:3000 --name Grafana_XR -d grafana/grafana-enterprise
+else
+    docker start Grafana_XR
 fi
 if [ ! "$(docker ps -aq -f name=Prometheus_XR)" ]; then
     docker run -v ./configs/prometheus_conf/prometheus.yml:/etc/prometheus/prometheus.yml -p 9090:9090 --name Prometheus_XR -d prom/prometheus
+else
+    docker start Prometheus_XR
 fi
