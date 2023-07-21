@@ -1,4 +1,12 @@
 #!/bin/bash
+
+# Create new configs and certificates
 source env/bin/activate
-python parse_config.py
-./generate_cert.sh
+python misc/parse_config.py
+./misc/generate_cert.sh
+
+# Restart docker containers
+docker restart OME_XR
+docker restart Nginx_XR
+docker restart Grafana_XR
+docker restart Prometheus_XR

@@ -1,2 +1,2 @@
-DNS/Hostname: lululul
-IP_address: 1.1.1.1
+DNS/Hostname: hsnu-ap
+IP_address: 192.168.4.240
