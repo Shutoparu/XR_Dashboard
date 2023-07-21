@@ -12,6 +12,9 @@ if[ ! -d ssl_pem ]; then
     touch ssl_pem/extfile.conf
     chmod 755 ssl_pem/extfile.conf
 fi
+mkdir configs/grafana_conf
+mkdir configs/nginx_conf
+mkdir configs/OvenSpace_conf
 python misc/parse_config.py
 
 
