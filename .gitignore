@@ -14,4 +14,3 @@ configs/grafana_conf
 configs/nginx_conf
 configs/OvenSpace_conf
 *.log
-init_windows.txt

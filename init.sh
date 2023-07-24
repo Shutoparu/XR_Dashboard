@@ -10,7 +10,7 @@ pip install -r requirements.txt
 if[ ! -d ssl_pem ]; then
     mkdir ssl_pem
     touch ssl_pem/extfile.conf
-    chmod 755 ssl_pem/extfile.conf
+    chmod 777 ssl_pem/extfile.conf
 fi
 mkdir configs/grafana_conf
 mkdir configs/nginx_conf
