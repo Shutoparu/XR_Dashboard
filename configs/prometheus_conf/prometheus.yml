@@ -1,43 +1,124 @@
-# my global config
 global:
-  scrape_interval: 15s
+  scrape_interval:     15s
   evaluation_interval: 15s
 
-# Alertmanager configuration
-alerting:
-  alertmanagers:
-    - static_configs:
-        - targets:
-          # - alertmanager:9093
-
-# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
-  # - "first_rules.yml"
-  # - "second_rules.yml"
+  # - "first.rules"
+  # - "second.rules"
 
-# A scrape configuration containing exactly one endpoint to scrape:
 scrape_configs:
-  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-  - job_name: "prometheus"
+  - job_name: prometheus
     static_configs:
-      - targets: ["localhost:9090"]
+      - targets: ['localhost:9090']
 
-  - job_name: "node_exporter"
+  - job_name: NVIDIA1
     static_configs:
-      - targets: ["host.docker.internal:9100"]
+      - targets: ['']
+  
 
-  - job_name: "blackbox"
-    metrics_path: /probe
-    params:
-      module: [http_2xx]
+  - job_name: windows_exporter1
     static_configs:
-      - targets:
-        - localhost:9090
-        
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        replacement: host.docker.internal:9115  # The address of the Blackbox exporter
+      - targets: ['']
+
+  - job_name: ping_exporter1
+    static_configs:
+      - targets: ['']
+
+  - job_name: NVIDIA2
+    static_configs:
+      - targets: ['']
+  
+
+  - job_name: windows_exporter2
+    static_configs:
+      - targets: ['']
+
+  - job_name: ping_exporter2
+    static_configs:
+      - targets: ['']
+
+
+  - job_name: NVIDIA3
+    static_configs:
+      - targets: ['']
+  
+
+  - job_name: windows_exporter3
+    static_configs:
+      - targets: ['']
+
+  - job_name: ping_exporter3
+    static_configs:
+      - targets: ['']
+
+
+  - job_name: NVIDIA4
+    static_configs:
+      - targets: ['']
+  
+
+  - job_name: windows_exporter4
+    static_configs:
+      - targets: ['']
+
+  - job_name: ping_exporter4
+    static_configs:
+      - targets: ['']
+
+  - job_name: NVIDIA5
+    static_configs:
+      - targets: ['']
+  
+
+  - job_name: windows_exporter5
+    static_configs:
+      - targets: ['']
+
+  - job_name: ping_exporter5
+    static_configs:
+      - targets: ['']
+
+
+  - job_name: NVIDIA6
+    static_configs:
+      - targets: ['']
+  
+
+  - job_name: windows_exporter6
+    static_configs:
+      - targets: ['']
+
+  - job_name: ping_exporter6
+    static_configs:
+      - targets: ['']
+
+  - job_name: NVIDIA7
+    static_configs:
+      - targets: ['']
+  
+
+  - job_name: windows_exporter7
+    static_configs:
+      - targets: ['']
+
+  - job_name: ping_exporter7
+    static_configs:
+      - targets: ['']
+
+  - job_name: NVIDIA8
+    static_configs:
+      - targets: ['']
+  
+
+  - job_name: windows_exporter8
+    static_configs:
+      - targets: ['']
+
+  - job_name: ping_exporter8
+    static_configs:
+      - targets: ['']
+
+
+ 
+
+
