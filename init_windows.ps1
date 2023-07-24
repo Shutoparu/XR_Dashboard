@@ -7,7 +7,10 @@ pip install -r requirements.txt
 if (-Not (Test-Path "ssl_pem" -PathType Container)) {
     mkdir ssl_pem
     New-Item -Path "ssl_pem\extfile.conf" -ItemType File
-    attrib +R "ssl_pem\extfile.conf"
+    $acl = Get-Acl "ssl_pem\extfile.conf"
+    $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("Everyone", "FullControl", "Allow")
+    $acl.SetAccessRule($accessRule)
+    Set-Acl -Path "ssl_pem\extfile.conf" -AclObject $acl
 }
 mkdir configs\grafana_conf
 mkdir configs\nginx_conf
