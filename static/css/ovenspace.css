@@ -248,6 +248,18 @@ h6 {
     font-size: 1.2rem;
 }
 
+.tab {
+    display: block;
+    overflow-y: hidden;
+    overflow-x: auto;
+    width: 700px;
+    white-space: nowrap;
+}
+
+.tab::-webkit-scrollbar {
+    display: none;
+}
+
 .tablinks {
     background-color: lightgray;
     /* border: 2px solid black; */
@@ -257,8 +269,6 @@ h6 {
     text-decoration: none;
     display: inline-block;
     font-size: 12px;
-
-
 }
 
 .tablinks:hover {

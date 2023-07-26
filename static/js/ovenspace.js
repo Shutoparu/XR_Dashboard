@@ -376,7 +376,7 @@ function renderPairMonitorPages() {
             tabID: tabID
         }));
         tab.text('Pair ' + idx);
-        tab.addClass('d-none');
+        tab.addClass('d-none'); //TODO debug
 
         $('#page-area').append(page);
         $('.tab').append(tab);
@@ -388,9 +388,26 @@ function renderPairMonitorPages() {
         }));
 
         pairPage.find('#pair_edge_' + idx).find('#stream-name').text('EDGE GPU ' + idx);
-        pairPage.find('#pair_terminal_' + idx).find('#stream-name').text('TERMINAL ' + idx);
+        $.get('/dashboard', function (data) {
+            
+            let info_template = _.template($(data).find('#info_template').html());
+            const info = info_template({
+                idx: idx
+            });
+            let hw = $(info).find('#hardware_' + idx);
+            pairPage.find("#hardware").append(hw);
+            let net = $(info).find('#net_' + idx);
+            pairPage.find("#net").append(net);
+            pairPage.find("#script").append($(info).find("#src_" + idx).html());
+            pairPage.append($(info).find("#src_" + idx))
+            // $(info).find("#src_" + idx).data("idx",idx); //TODO fix here
+        }).catch(function (error) {
+            showErrorMessage(error);
+        });
 
-        page.append(pairPage);
+
+        // page.append(pairPage);
+        page.find("#pair-area").append(pairPage);
     }
 
 }
@@ -416,14 +433,9 @@ function renderMonitorPages() {
 
     tab_page_map[tabID] = pageID;
 
-    $.get('/dashboard', function (data) { // TODO try to simplify process
-        let dummyNode = document.createElement('div');
-        $.each($(data), function (key, val) {
-            dummyNode.append(val);
-        });
-
-        $('#dashboard-area').append($(dummyNode).find('#dashboard'));
-
+    $.get('/dashboard', function (data) {
+        $('#dashboard-area').append($(data).find('#must').html());
+        $('#dashboard-area').append($(data).find('#dashboard').html());
     }).catch(function (error) {
         showErrorMessage(error);
     });
@@ -510,7 +522,6 @@ function renderSeats() {
                 seat.find('.local-player-stat').data('stream-name', streamName);
 
                 seat.find('.local-player-stat').on('click', function () {
-                    // TODO add modal
                     const handler = _setSrcStat(streamName);
                     handler.next();
                     getInputInfo(streamName, handler);
@@ -570,12 +581,7 @@ function createPlayer(streamName) {
     seat.addClass('seat-on');
     seat.find('.player-area').removeClass('d-none');
 
-    let player_name = null;
-    if (streamName.substring(0, 1) == "E") {
-        player_name = 'player_edge_' + streamName.substring(streamName.length - 1);
-    } else {
-        player_name = 'player_terminal_' + streamName.substring(streamName.length - 1);
-    }
+
 
     const playerOption = {
         // image: OME_THUMBNAIL_HOST + '/' + APP_NAME + '/' + streamName + '/thumb.png',
@@ -604,14 +610,16 @@ function createPlayer(streamName) {
         destroyPlayer(streamName);
     });
 
-    const player2 = OvenPlayer.create(document.getElementById(player_name), playerOption); // Create player
+    if (streamName.substring(0, 1) == "E") {
+        let player_name = 'player_edge_' + streamName.substring(streamName.length - 1);
+        const player2 = OvenPlayer.create(document.getElementById(player_name), playerOption); // Create player
+        player2.on('error', function (error) {
 
-    player2.on('error', function (error) {
+            console.log('App Error On Player2', error);
 
-        console.log('App Error On Player2', error);
-
-        destroyPlayer(streamName);
-    });
+            destroyPlayer(streamName);
+        });
+    }
 
     connectionStatus[streamName] = true;
     checkPairStreaming(streamName);

@@ -2,27 +2,137 @@
 <html>
 
     <head>
+        <link rel="shortcut icon" href="/static/img/xrcube_logo.ico">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+            rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&amp;display=swap"
+            rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+            crossorigin="anonymous">
+
+        <link rel="stylesheet" href="/static/css/ovenspace.css">
+
         <title>Dashboard</title>
     </head>
 
     <body>
-        <div id="dashboard">
+        <div id="dummy">
+            <div id="must">
+                <script>
+                    const protocal = "https";
+                    const GRAFANA_HOST = "{{grafana_host}}";
+                    const port = "3000";
+                    const dashboardId = "XR_Cube"
+                    const dashboard_name = "xrcube"
+                    const theme = "dark"
+                    const hours = 6;
 
+                    function get_src(panel_id) {
+                        return protocal + "://" + GRAFANA_HOST + ":" + port
+                            + "/d-solo/" + dashboardId + "/" + dashboard_name
+                            + "?orgId=1&refresh=5s&from=now-" + hours + "h&to=now&theme=" + theme
+                            + "&panelId=" + panel_id;
+                    }
 
-            <!-- <iframe id="panel1" src="404.html" width="550" height="350" frameborder="0"></iframe> -->
-            <iframe id='panel1' src="" width="450" height="200" frameborder="0"></iframe>
+                </script>
+                <style>
+                    iframe {
+                        padding-top: 5px;
+                        padding-left: 5px;
+                        padding-right: 5px;
+                        padding-bottom: 5px;
+                    }
 
+                    .info h2 {
+                        color: white;
+                        font-size: 50px;
+                        text-shadow: #1e232c 0.05em 0.05em 0.2em
+                    }
 
-            <script>
-                // let host = 'localhost';
-                // let host = '192.168.4.240';
+                    .info p {
+                        color: white;
+                        font-size: 25px;
+                        text-shadow: #1e232c 0.05em 0.05em 0.2em
+                    }
 
-                let src1 = "https://hsnu-ap:3000/d-solo/a0291635-70f8-4e1e-a20d-f888fd62677a/new-dashboard?orgId=1&from=now-6h&to=now&panelId=1";
+                </style>
+            </div>
+            <div id="dashboard" class="container d-flex flex-column display-panel">
+                <div id="general_info" class="container d-flex flex-row justify-content-center">
+                    <div class="info container d-flex flex-column align-items-center" width="500"
+                        height="400">
+                        <div class="d-flex flex-column align-items-center pt-4 pb-3"
+                            style="background-color: #353d4c; width: 110%;">
+                            <h2>3</h2>
+                            <p>XR Connections</p>
+                        </div>
+                    </div>
+                    <div class="info container d-flex flex-column align-items-center" width="500"
+                        height="400">
+                        <div class="d-flex flex-column align-items-center pt-4 pb-3"
+                            style="background-color: #37c3ca; width: 110%;">
+                            <p>Edge GPUs</p>
+                            <h2>8</h2>
+                        </div>
+                    </div>
+                    <div class="info container d-flex flex-column align-items-center" width="500"
+                        height="400">
+                        <div class="d-flex flex-column align-items-center pt-4 pb-3"
+                            style="background-color: #37c3ca; width: 110%;">
+                            <p>Terminal Devices</p>
+                            <h2>6</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="container d-flex flex-row">
+                    <iframe id='panel1' width="750" height="250" frameborder="0"></iframe>
+                    <iframe id='panel2' width="750" height="250" frameborder="0"></iframe>
+                </div>
+                <div class="container d-flex flex-row">
+                    <iframe id='panel3' width="500" height="250" frameborder="0"></iframe>
+                    <iframe id='panel4' width="500" height="250" frameborder="0"></iframe>
+                    <iframe id='panel5' width="500" height="250" frameborder="0"></iframe>
+                </div>
+                <script>
+                    document.getElementById("panel1").src = get_src(1);
+                    document.getElementById("panel2").src = get_src(5);
+                </script>
+            </div>
 
+            <!-- template -->
+            <template id="info_template">
+                <div id="dummy">
+                    <div id="hardware_<%= idx %>"
+                        class="container d-flex flex-row justify-content-center">
+                        <iframe id='cpu_<%= idx %>' width="200" height="200"
+                            frameborder="0"></iframe>
+                        <iframe id='gpu_<%= idx %>' width="200" height="200"
+                            frameborder="0"></iframe>
+                    </div>
+                    <div id="net_<%= idx %>">
+                        <iframe id='latency_<%= idx %>' width="500" height="250"
+                            frameborder="0"></iframe>
+                        <iframe id='throughput_<%= idx %>' width="500" height="250"
+                            frameborder="0"></iframe>
+                        <iframe id='packet_loss_<%= idx %>' width="500" height="250"
+                            frameborder="0"></iframe>
+                    </div>
+                    <script id="src_<%= idx %>">
+                        
+                        document.getElementById("gpu_<%= idx %>").src = get_src(parseInt("<%= idx %>"));
+                        document.getElementById("cpu_<%= idx %>").src = get_src(parseInt("<%= idx %>"));
+                        document.getElementById("latency_<%= idx %>").src = get_src(parseInt("<%= idx %>"));
+                        document.getElementById("throughput_<%= idx %>").src = get_src(parseInt("<%= idx %>"));
+                        document.getElementById("packet_loss_<%= idx %>").src = get_src(parseInt("<%= idx %>"));
 
-                document.getElementById("panel1").src = src1;
+                    </script>
+                </div>
 
-            </script>
+            </template>
+
         </div>
     </body>
 

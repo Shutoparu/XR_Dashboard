@@ -67,10 +67,6 @@ OME_LLHLS_STREAMING_PROTOCOL = get_http_protocol(
     app.config['OME_LLHLS_PUBLISHER_ENABLE_TLS'])
 OME_LLHLS_STREAMING_HOST = f'{OME_LLHLS_STREAMING_PROTOCOL}://{OME_HOST}:{app.config["OME_LLHLS_PUBLISHER_PORT"]}'
 
-# new config
-SEAT_PAGES = app.config['SEAT_PAGES']
-MAX_STREAM_PER_PAGE =app.config['MAX_STREAM_PER_PAGE']
-
 users = User.instance()
 
 
@@ -88,8 +84,6 @@ def view():
         llhls_streaming_host=OME_LLHLS_STREAMING_HOST,
 
         # new config
-        max_stream_per_page=MAX_STREAM_PER_PAGE,
-        seat_pages=SEAT_PAGES,
         register_mode='False'
     )
 
@@ -106,8 +100,6 @@ def register():
         llhls_streaming_host=OME_LLHLS_STREAMING_HOST,
 
         # new config
-        max_stream_per_page=MAX_STREAM_PER_PAGE,
-        seat_pages=SEAT_PAGES,
         register_mode='True'
     )
 
@@ -116,7 +108,7 @@ def register():
 def get_streams():
     try:
         response = requests.get(OME_API_GET_STREAMS,
-                                headers=OME_API_AUTH_HEADER, timeout=0.3, verify='./ssl_pem/chain.pem')
+                                headers=OME_API_AUTH_HEADER, timeout=1, verify='./ssl_pem/chain.pem')
         return response.json(), response.status_code
     except Exception as e:
         print(e)
@@ -128,7 +120,7 @@ def get_streams():
 def get_stream_info(name):
     try:
         response = requests.get(OME_API_GET_STREAMS +'/' + name,
-                                headers=OME_API_AUTH_HEADER,timeout=0.3, verify='./ssl_pem/chain.pem')
+                                headers=OME_API_AUTH_HEADER,timeout=1, verify='./ssl_pem/chain.pem')
         return response.json(), response.status_code
         
     except Exception as e:
@@ -137,7 +129,9 @@ def get_stream_info(name):
 
 @app.route("/dashboard")
 def get_dashboard():
-    return render_template('dashboard.html')
+    return render_template(
+        'dashboard.html',
+        grafana_host = OME_HOST)
 
     
 @socketio.on('connect')
