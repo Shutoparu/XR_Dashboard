@@ -1,55 +1,5 @@
-// NEW deprecated
-function renderPairMonitorPages() {
-    for (let i = 0; i < MAX_STREAM_PER_PAGE; i++) {
-
-        const idx = i + 1;
-
-        const pageID = 'pair_page_' + idx;
-        const page = $(pageTemplate({
-            pageID: pageID,
-            pageType: 'pair-area'
-        }));
-
-        const tabID = 'pair_tab_' + idx;
-        const tab = $(tabTemplate({
-            tabID: tabID
-        }));
-        tab.text('Pair ' + idx);
-        // tab.addClass('d-none'); //TODO debug
-
-        $('#page-area').append(page);
-        $('.tab').append(tab);
-
-        tab_page_map[tabID] = pageID;
-
-        const pairPage = $(pairTemplate({
-            idx: idx
-        }));
-
-        pairPage.find('#pair_edge_' + idx).find('#stream-name').text('EDGE GPU ' + idx);
-        $.get('/dashboard', function (data) {
-
-            let info_template = _.template($(data).find('#info_template').html());
-            const info = info_template({
-                idx: idx
-            });
-            let hw = $(info).find('#hardware_' + idx);
-            pairPage.find("#hardware").append(hw);
-            let net = $(info).find('#net_' + idx);
-            pairPage.find("#net").append(net);
-            pairPage.find("#script").append($(info).find("#src_" + idx).html());
-            pairPage.append($(info).find("#src_" + idx))
-            // $(info).find("#src_" + idx).data("idx",idx); //TODO fix here
-        }).catch(function (error) {
-            showErrorMessage(error);
-        });
-
-
-        // page.append(pairPage);
-        page.find("#pair-area").append(pairPage);
-    }
-
-}
+let curStream = null;
+let variable;
 
 // NEW
 function checkPairStreaming(streamName) {
@@ -106,16 +56,142 @@ function* _inputHandler(streamName) {
     }
 }
 
-// NEW
-function getInputInfo(streamName, handler) {
-    requestInfo(streamName).then(function (resp) {
-        if (resp.statusCode === 200) {
-            let ret = handler.next(resp.response);
-            if (ret.value === 0) {
-                getInputInfo(streamName, handler); // TODO try fix this so no recurssion is used
+async function requestInfo(streamName) {
+    const promise = await $.ajax({
+        method: 'get',
+        url: '/info/' + streamName,
+    });
+    return promise;
+}
+
+
+function destroyPlayer(streamName) {
+    console.log('>>> destroyPlayer', streamName);
+
+    clearInterval(variable);
+
+    const seat = $('#seat');
+    seat.removeClass('seat-on');
+
+    seat.find('.player-area').addClass('d-none');
+
+    const player = OvenPlayer.getPlayerByContainerId('player_edge');
+
+    if (player) {
+        player.remove();
+    }
+
+    seat.find('#edge_resolution').text('Cannot get resolution');
+}
+
+// NEW partial
+function createPlayer(streamName) {
+
+    const seat = $('#seat');
+    seat.addClass('seat-on');
+    seat.find('.player-area').removeClass('d-none');
+
+    const playerOption = {
+        // image: OME_THUMBNAIL_HOST + '/' + APP_NAME + '/' + streamName + '/thumb.png',
+        autoFallback: false,
+        autoStart: true,
+        sources: [
+            {
+                label: 'WebRTC',
+                type: 'webrtc',
+                file: OME_WEBRTC_STREAMING_HOST + '/' + APP_NAME + '/' + streamName + '?transport=tcp'
+            },
+            {
+                label: 'LLHLS',
+                type: 'llhls',
+                file: OME_LLHLS_STREAMING_HOST + '/' + APP_NAME + '/' + streamName + '/llhls.m3u8'
             }
+        ]
+    };
+
+    const player = OvenPlayer.create(document.getElementById('player_edge'), playerOption); // Create player
+
+    player.on('error', function (error) {
+        console.log('App Error On Player', error);
+        curStream = null;
+        destroyPlayer(streamName);
+    });
+
+    variable = setInterval(() => {
+        requestInfo(streamName).then(function (resp) {
+            if (resp.statusCode === 200) {
+                resp.response.input.tracks.forEach(function (track) {
+                    if (track.type == 'Video') {
+                        seat.find('#edge_resolution').text(track.video.width + ' x ' + track.video.height);
+                    }
+                });
+            }
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }, 2500);
+}
+
+function gotStreams(resp) {
+
+    if (resp.statusCode === 200) {
+
+        const streams = resp.response;
+
+        // console.log(streams);
+
+        streams.forEach(streamName => {
+            if (streamName.substring(streamName.length - 1) == EDGE_ID && curStream == null) {
+                console.log(curStream);
+                console.log('>>> createPlayer', streamName);
+                createPlayer(streamName);
+                curStream = streamName;
+            }
+        });
+
+        if (curStream != null && !streams.includes(curStream)) {
+            curStream = null;
+            destroyPlayer(curStream);
         }
-    }).catch(function (error) {
-        console.error(error);
+    }
+}
+
+async function getStreams() {
+
+    const promise = await $.ajax({
+        method: 'get',
+        url: '/getStreams',
+    });
+
+    return promise;
+}
+
+function checkStream() {
+
+    getStreams().then(gotStreams).catch(function (e) {
+        console.error(e);
+        console.error('Could not get streams from OME.');
     });
 }
+
+function startStreamCheckTimer() {
+
+    checkStream();
+
+    setInterval(() => {
+
+        checkStream();
+    }, 2500);
+}
+
+function create_dropdown() {
+    for (let i = 0; i < 8; i++) {
+        $("#edge_detail_redirect").append(
+            '<li><a class="dropdown-item" href="/edge/' + (i + 1)
+            + '">Edge ' + (i + 1) + '</a></li>')
+    }
+}
+
+// main
+create_dropdown();
+startStreamCheckTimer();

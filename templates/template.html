@@ -39,10 +39,18 @@
                     </div>
 
                     <nav class="navbar d-flex flex-row justify-content-end flex-nowrap">
-                        <div class="container-fluid">
-                            <button class="tablinks nav-item dropdown" id="navbarDropdown"
+                        <div class="container-fluid d-flex">
+                            <style>
+                                .dropdown-menu {
+                                    max-width: max-content;
+                                    min-width: unset;
+                                }
+
+                            </style>
+                            <button class="tablinks nav-item dropdown d-none" id="navbarDropdown"
                                 data-bs-toggle="dropdown" aria-expanded="false"><img
-                                    src="/static/img/menu.png" width="30px" height="30px"></button>
+                                    src="/static/img/menu.png" width="30px" height="30px"
+                                    alt="menu"></button>
                             <ul id="edge_detail_redirect" class="dropdown-menu"
                                 aria-labelledby="navbarDropdown">
                                 <li>

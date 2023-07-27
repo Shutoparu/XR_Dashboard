@@ -1,6 +1,4 @@
 
-let connectionStatus = {}
-
 let currentStreams = [];
 let localStreams = [];
 let selectedInputStreamName = null;
@@ -430,7 +428,7 @@ function renderSeats() {
         }
 
         seatArea.append(seat);
-        connectionStatus[streamName] = false;
+
     }
 }
 
@@ -510,18 +508,16 @@ function createPlayer(streamName) {
         destroyPlayer(streamName);
     });
 
-    if (streamName.substring(0, 1) == "E") {
-        let player_name = 'player_edge_' + streamName.substring(streamName.length - 1);
-        const player2 = OvenPlayer.create(document.getElementById(player_name), playerOption); // Create player
-        player2.on('error', function (error) {
+    // if (streamName.substring(0, 1) == "E") {
+    //     let player_name = 'player_edge_' + streamName.substring(streamName.length - 1);
+    //     const player2 = OvenPlayer.create(document.getElementById(player_name), playerOption); // Create player
+    //     player2.on('error', function (error) {
 
-            console.log('App Error On Player2', error);
+    //         console.log('App Error On Player2', error);
 
-            destroyPlayer(streamName);
-        });
-    }
-
-    connectionStatus[streamName] = true;
+    //         destroyPlayer(streamName);
+    //     });
+    // }
 }
 
 function removeInputStream(streamName) {
@@ -560,7 +556,7 @@ function destroyPlayer(streamName) {
     }
 
     removeInputStream(streamName);
-    connectionStatus[streamName] = false;
+
 }
 
 async function getStreams() {
@@ -713,7 +709,7 @@ function click_edge() {
 
 // NEW change href
 function create_dropdown() {
-    for (let i = 0; i < MAX_STREAM_PER_PAGE; i++) {
+    for (let i = 0; i < parseInt(MAX_STREAM_PER_PAGE) - 1; i++) {
         $("#edge_detail_redirect").append(
             '<li><a class="dropdown-item" href="/edge/' + (i + 1)
             + '" target="_blank">Edge ' + (i + 1) + '</a></li>')
@@ -727,10 +723,10 @@ renderSeats();
 
 if (REGISTER_MODE == "True") {
     $('#title').removeClass('d-none');
-    $('#navigation').addClass('d-none');
     click_edge();
 } else {
     create_dropdown();
+    $('#navbarDropdown').removeClass('d-none');
     renderOverviewPages();
     click_overview();
 }

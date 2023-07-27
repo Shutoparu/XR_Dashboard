@@ -140,7 +140,15 @@ def show_edge(edge_id):
         'edge.html',
         edge_id = edge_id,
         grafana_host = OME_HOST,
-        theme = 'light'
+        theme = 'light',
+
+        app_name=OME_APP_NAME,
+        stream_name=OME_STREAM_NAME,
+        rtmp_input_url=OME_RTMP_INPUT_URL,
+        srt_input_url=OME_SRT_INPUT_URL,
+        webrtc_input_host=OME_WEBRTC_INPUT_HOST,
+        webrtc_streaming_host=OME_WEBRTC_STREAMING_HOST,
+        llhls_streaming_host=OME_LLHLS_STREAMING_HOST,
     )
 
     

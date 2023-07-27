@@ -36,6 +36,26 @@
                                 alt="XR Cube"> |
                             Dashboard - Edge {{edge_id}}</h3>
                     </div>
+                    <nav class="navbar d-flex flex-row justify-content-end flex-nowrap">
+                        <div class="container-fluid d-flex">
+                            <style>
+                                .dropdown-menu {
+                                    max-width: max-content;
+                                    min-width: unset;
+                                }
+
+                            </style>
+                            <button class="tablinks nav-item dropdown" id="navbarDropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false"><img
+                                    src="/static/img/menu.png" width="30px" height="30px"
+                                    alt="menu"></button>
+                            <ul id="edge_detail_redirect" class="dropdown-menu"
+                                aria-labelledby="navbarDropdown">
+                                <!-- Add <li> if need -->
+                            </ul>
+
+                        </div>
+                    </nav>
                 </div>
 
             </div>
@@ -45,7 +65,9 @@
                         <div class="container d-flex flex-column align-items-center">
                             <div class="container row d-flex">
                                 <div class="col-8">
-                                    <div class="seat mb-4 ratio ratio-16x9">
+
+
+                                    <div class="seat mb-4 ratio ratio-16x9" id="seat">
                                         <div class="player-area">
                                             <div id="player_edge"></div>
                                         </div>
@@ -56,6 +78,8 @@
                                             </p>
                                         </div>
                                     </div>
+
+
                                 </div>
                                 <div class="container col-4 d-flex flex-column">
                                     <div>
@@ -96,33 +120,10 @@
                         </div>
                     </div>
                 </div>
-
-                <script>
-                    const protocal = "https";
-                    const GRAFANA_HOST = "{{grafana_host}}";
-                    const port = "3000";
-                    const dashboardId = "b4307069-b390-4c30-adac-e7397c3e672bd"
-                    const dashboard_name = "xrcubee"
-                    const theme = "{{theme}}"
-                    const hours = 6;
-
-                    function get_src(panel_id) {
-                        return protocal + "://" + GRAFANA_HOST + ":" + port
-                            + "/d-solo/" + dashboardId + "/" + dashboard_name
-                            + "?orgId=1&refresh=5s&from=now-" + hours + "h&to=now&theme=" + theme
-                            + "&panelId=" + panel_id;
-                    }
-
-                    document.getElementById("gpu").src = get_src('{{edge_id}}');
-                    document.getElementById("cpu").src = get_src('{{edge_id}}');
-                    document.getElementById("latency").src = get_src('{{edge_id}}');
-                    document.getElementById("throughput").src = get_src('{{edge_id}}');
-                    document.getElementById("packet_loss").src = get_src('{{edge_id}}');
-                </script>
             </div>
         </div>
 
-        <!-- <script>
+        <script>
             const APP_NAME = '{{app_name}}';
             const STREAM_NAME = '{{stream_name}}';
             const OME_RTMP_INPUT_URL = '{{rtmp_input_url}}';
@@ -131,10 +132,16 @@
             const OME_WEBRTC_STREAMING_HOST = '{{webrtc_streaming_host}}';
             const OME_LLHLS_STREAMING_HOST = '{{llhls_streaming_host}}';
 
-            // new config
-            const MAX_STREAM_PER_PAGE = '8';
+            const EDGE_ID = '{{edge_id}}';
 
-        </script> -->
+            const protocal = "https";
+            const GRAFANA_HOST = "{{grafana_host}}";
+            const port = "3000";
+            const dashboardId = "b4307069-b390-4c30-adac-e7397c3e672bd"
+            const dashboard_name = "xrcubee"
+            const theme = "{{theme}}"
+            const hours = 6;
+        </script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
             crossorigin="anonymous"></script>
@@ -158,6 +165,20 @@
         <!-- <script src="/static/js/ovenspace.js"></script> -->
         <script src="/static/js/edge_monitor.js"></script>
 
+        <script>
+            function get_src(panel_id) {
+                return protocal + "://" + GRAFANA_HOST + ":" + port
+                    + "/d-solo/" + dashboardId + "/" + dashboard_name
+                    + "?orgId=1&refresh=5s&from=now-" + hours + "h&to=now&theme=" + theme
+                    + "&panelId=" + panel_id;
+            }
+
+            document.getElementById("gpu").src = get_src('{{edge_id}}');
+            document.getElementById("cpu").src = get_src('{{edge_id}}');
+            document.getElementById("latency").src = get_src('{{edge_id}}');
+            document.getElementById("throughput").src = get_src('{{edge_id}}');
+            document.getElementById("packet_loss").src = get_src('{{edge_id}}');
+        </script>
     </body>
 
 
