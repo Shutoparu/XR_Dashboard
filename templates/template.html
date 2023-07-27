@@ -37,15 +37,42 @@
                             Dashboard<span id="title" class="d-none" style="color:black"> - Register
                                 Admin</span></h3>
                     </div>
-                    <div class="container d-flex flex-row" style="width:40%">
-                        <div class="tab">
+
+                    <nav class="navbar d-flex flex-row justify-content-end flex-nowrap">
+                        <div class="container-fluid">
+                            <button class="tablinks nav-item dropdown" id="navbarDropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false"><img
+                                    src="/static/img/menu.png" width="30px" height="30px"></button>
+                            <ul id="edge_detail_redirect" class="dropdown-menu"
+                                aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item" role="button"
+                                        onclick="click_overview()">Overview</a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" role="button"
+                                        onclick="click_edge()">Monitor</a>
+                                </li>
+                            </ul>
 
                         </div>
-                    </div>
+                    </nav>
+
                 </div>
             </div>
 
             <div class="body" id="page-area">
+                <div class="container flex-grow-1 pt-4 tabcontent d-none" id="overview_page">
+                    <div id="overview_page_inner" class="row">
+
+                    </div>
+                </div>
+                <div class="container flex-grow-1 pt-4 tabcontent d-none" id="edge_page">
+                    <div id="edge_page_inner" class="row">
+
+                    </div>
+                </div>
 
             </div>
 
@@ -210,67 +237,6 @@
         </div>
 
         <!-- template -->
-        <template id="tab-template">
-            <button class="tablinks" id="<%= tabID %>"
-                onclick="choosetab('<%= tabID %>')">DEFAULT</button>
-        </template>
-
-        <!-- template -->
-        <template id="page-template">
-            <div class="container flex-grow-1 pt-4 tabcontent d-none" id="<%= pageID %>">
-                <div id="<%= pageType %>" class="row">
-
-                </div>
-            </div>
-        </template>
-
-        <!-- template -->
-        <template id="pair-template">
-
-            <div id="pair_<%= idx %>" class="container d-flex flex-column align-items-center">
-
-                <div class="container row d-flex">
-                    <script id="script">
-
-                    </script>
-                    <div class="col-8">
-                        <div id="pair_edge_<%= idx %>" class="seat mb-4 ratio ratio-16x9">
-                            <div class="player-area">
-                                <div id="player_edge_<%= idx %>"></div>
-                            </div>
-                            <div class="name-holder h-25">
-                                <p id="stream-name" class="fa-2x">a</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container col-4 d-flex flex-column">
-                        <div class="row" style="background-color: lightgray;">
-                            <div class="d-flex flex-column align-items-center">
-                                <h3><u>XR Connection #<span id="connect_no"></span></u></h3>
-                                <p style="font-size: medium;"><b>Edge IP:</b> <span
-                                        id="edge_ip"></span></p>
-                                <p style="font-size: medium;"><b>Edge Resolution:</b> <span
-                                        id="edge_resolution"></span></p>
-                                <p style="font-size: medium;"><b>Terminal IP:</b> <span
-                                        id="terminal_ip"></span></p>
-                                <p style="font-size: medium;"><b>Terminal Resolution:</b> <span
-                                        id="terminal_resolution"></span></p>
-                            </div>
-                        </div>
-                        <div id="hardware" class="container">
-
-                        </div>
-                    </div>
-                </div>
-                <div id="net" class="container row">
-
-                </div>
-
-            </div>
-
-        </template>
-
-        <!-- template -->
         <template id="seat-template">
             <div class="col-6 col-md-6 col-lg-4">
 
@@ -314,8 +280,7 @@
             const OME_LLHLS_STREAMING_HOST = '{{llhls_streaming_host}}';
 
             // new config
-            const SEAT_PAGES = '2';
-            const MAX_STREAM_PER_PAGE = '8';
+            const MAX_STREAM_PER_PAGE = '9';
             const REGISTER_MODE = '{{register_mode}}';
         </script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"

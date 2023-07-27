@@ -1,6 +1,4 @@
-let tab_page_map = {};
 
-let device_pair = {};
 let connectionStatus = {}
 
 let currentStreams = [];
@@ -10,10 +8,7 @@ let shareMode = null;
 let liveKitInputMap = {};
 let tryToStreaming = false;
 
-const tabTemplate = _.template($('#tab-template').html());
-const pageTemplate = _.template($('#page-template').html());
 const seatTemplate = _.template($('#seat-template').html());
-const pairTemplate = _.template($('#pair-template').html());
 
 const inputVideo = document.getElementById('input-video');
 
@@ -49,7 +44,7 @@ const inputStatModal = $('#show-stat-modal');
 const totalUserCountSpan = $('#total-user-count-span');
 const videoUserCountSpan = $('#video-user-count-span');
 
-// comment for mobile debug purpose
+
 if (!navigator.mediaDevices.getDisplayMedia) {
     shareDisplayButton.addClass('d-none');
 }
@@ -360,183 +355,87 @@ function getDisplayConstraints() {
     return newConstraint;
 }
 
-function renderPairMonitorPages() {
-    for (let i = 0; i < MAX_STREAM_PER_PAGE; i++) {
 
-        const idx = i + 1;
-
-        const pageID = 'pair_page_' + idx;
-        const page = $(pageTemplate({
-            pageID: pageID,
-            pageType: 'pair-area'
-        }));
-
-        const tabID = 'pair_tab_' + idx;
-        const tab = $(tabTemplate({
-            tabID: tabID
-        }));
-        tab.text('Pair ' + idx);
-        tab.addClass('d-none'); //TODO debug
-
-        $('#page-area').append(page);
-        $('.tab').append(tab);
-
-        tab_page_map[tabID] = pageID;
-
-        const pairPage = $(pairTemplate({
-            idx: idx
-        }));
-
-        pairPage.find('#pair_edge_' + idx).find('#stream-name').text('EDGE GPU ' + idx);
-        $.get('/dashboard', function (data) {
-            
-            let info_template = _.template($(data).find('#info_template').html());
-            const info = info_template({
-                idx: idx
-            });
-            let hw = $(info).find('#hardware_' + idx);
-            pairPage.find("#hardware").append(hw);
-            let net = $(info).find('#net_' + idx);
-            pairPage.find("#net").append(net);
-            pairPage.find("#script").append($(info).find("#src_" + idx).html());
-            pairPage.append($(info).find("#src_" + idx))
-            // $(info).find("#src_" + idx).data("idx",idx); //TODO fix here
-        }).catch(function (error) {
-            showErrorMessage(error);
-        });
-
-
-        // page.append(pairPage);
-        page.find("#pair-area").append(pairPage);
-    }
-
-}
-
-function renderMonitorPages() {
-
-    const idx = 0;
-
-    const pageID = "page_" + idx;
-    const page = $(pageTemplate({
-        pageID: pageID,
-        pageType: 'dashboard-area'
-    }));
-
-    const tabID = "tab_" + idx;
-    const tabButton = $(tabTemplate({
-        tabID: tabID
-    }));
-    tabButton.text("Overview");
-
-    $('#page-area').append(page);
-    $('.tab').append(tabButton);
-
-    tab_page_map[tabID] = pageID;
+// NEW
+function renderOverviewPages() {
 
     $.get('/dashboard', function (data) {
-        $('#dashboard-area').append($(data).find('#must').html());
-        $('#dashboard-area').append($(data).find('#dashboard').html());
+        // $('#overview_page_inner').append($(data).find('#must').html());
+        $('#overview_page_inner').append($(data).find('#dashboard').html());
     }).catch(function (error) {
         showErrorMessage(error);
     });
 
 }
 
-function renderSeatPages() {
 
-    for (let i = 0; i < SEAT_PAGES; i++) {
-
-        const idx = i + 1;
-
-        const pageID = "page_" + idx;
-        const page = $(pageTemplate({
-            pageID: pageID,
-            pageType: 'seat-area'
-        }));
-
-        const tabID = "tab_" + idx;
-        const tabButton = $(tabTemplate({
-            tabID: tabID
-        }));
-        tabButton.text((i == 0) ? ("EDGE GPU") : ("TERMINAL"));
-
-        $('#page-area').append(page);
-        $('.tab').append(tabButton);
-
-        tab_page_map[tabID] = pageID;
-    }
-}
-
+// NEW partial
 function renderSeats() {
 
-    let seatArea = $('[id=seat-area]');
+    let seatArea = $('#edge_page_inner');
 
-    for (let j = 0; j < SEAT_PAGES; j++) {
+    for (let i = 0; i < MAX_STREAM_PER_PAGE; i++) {
 
-        let name_header = (j == 0) ? ("EDGE_GPU") : ("TERMINAL");
-        let reverse_header = (j == 0) ? ("TERMINAL") : ("EDGE_GPU");
+        const idx = i + 1;
+        const streamName = "EDGE_GPU_" + idx;
 
-        for (let i = 0; i < MAX_STREAM_PER_PAGE; i++) {
 
-            const idx = i + 1;
-            const streamName = name_header + "_" + idx;
+        const seat = $(seatTemplate({
+            streamName: streamName
+        }));
 
-            const seat = $(seatTemplate({
-                streamName: streamName
-            }));
-
-            let proper_name = streamName.replace(/_/g, ' ');
+        let proper_name = streamName.replace(/_/g, ' ');
+        if (idx != 9) {
             seat.find('#stream-name').text(proper_name);
-
-            if (REGISTER_MODE == 'False') {
-
-                seat.find('.join-button ').addClass('d-none');
-
-            } else {
-
-                seat.find('.join-button ').data('stream-name', streamName);
-
-                seat.find('.join-button ').on('click', function (e) {
-
-                    selectedInputStreamName = $(this).data('stream-name');
-
-                    inputDeviceModal.modal('show');
-                });
-
-                seat.on('mouseenter', function () {
-                    seat.find('.leave-button').stop().fadeIn();
-                    seat.find('.local-player-stat').stop().fadeIn();
-                });
-
-                seat.on('mouseleave', function () {
-                    seat.find('.leave-button').stop().fadeOut();
-                    seat.find('.local-player-stat').stop().fadeOut();
-                });
-
-                seat.find('.leave-button ').data('stream-name', streamName);
-
-                seat.find('.leave-button').on('click', function () {
-                    destroyPlayer($(this).data('stream-name'))
-                });
-
-                seat.find('.local-player-stat').data('stream-name', streamName);
-
-                seat.find('.local-player-stat').on('click', function () {
-                    const handler = _setSrcStat(streamName);
-                    handler.next();
-                    getInputInfo(streamName, handler);
-                });
-            }
-
-            seatArea.eq(j).append(seat);
-            device_pair[streamName] = reverse_header + "_" + idx;
-            connectionStatus[streamName] = false;
         }
-    }
 
+        if (REGISTER_MODE == 'False' || idx == 9) {
+
+            seat.find('.join-button ').addClass('d-none'); // TODO fix here
+
+        } else {
+
+            seat.find('.join-button ').data('stream-name', streamName);
+
+            seat.find('.join-button ').on('click', function (e) {
+
+                selectedInputStreamName = $(this).data('stream-name');
+
+                inputDeviceModal.modal('show');
+            });
+
+            seat.on('mouseenter', function () {
+                seat.find('.leave-button').stop().fadeIn();
+                seat.find('.local-player-stat').stop().fadeIn();
+            });
+
+            seat.on('mouseleave', function () {
+                seat.find('.leave-button').stop().fadeOut();
+                seat.find('.local-player-stat').stop().fadeOut();
+            });
+
+            seat.find('.leave-button ').data('stream-name', streamName);
+
+            seat.find('.leave-button').on('click', function () {
+                destroyPlayer($(this).data('stream-name'))
+            });
+
+            seat.find('.local-player-stat').data('stream-name', streamName);
+
+            seat.find('.local-player-stat').on('click', function () {
+                const handler = _getSrcStat(streamName);
+                handler.next();
+                getInputInfo(streamName, handler);
+            });
+        }
+
+        seatArea.append(seat);
+        connectionStatus[streamName] = false;
+    }
 }
 
-function* _setSrcStat(streamName) {
+// NEW
+function* _getSrcStat(streamName) {
     let source_info;
     let sourceUrl;
     let input_height = 0;
@@ -575,6 +474,7 @@ function createLocalPlayer(streamName) {
     document.getElementById('local-player-' + streamName).srcObject = liveKitInputMap[streamName].inputStream;
 }
 
+// NEW partial
 function createPlayer(streamName) {
 
     const seat = $('#seat-' + streamName);
@@ -622,7 +522,6 @@ function createPlayer(streamName) {
     }
 
     connectionStatus[streamName] = true;
-    checkPairStreaming(streamName);
 }
 
 function removeInputStream(streamName) {
@@ -662,7 +561,6 @@ function destroyPlayer(streamName) {
 
     removeInputStream(streamName);
     connectionStatus[streamName] = false;
-    checkPairStreaming(streamName);
 }
 
 async function getStreams() {
@@ -761,83 +659,16 @@ function startStreamCheckTimer() {
 
     checkStream();
 
-    // remove for debug purpose
     setInterval(() => {
 
         checkStream();
     }, 2500);
 }
 
-// add
-function choosetab(tab_id) {
-    let page_id = tab_page_map[tab_id];
-    let tabs = document.getElementsByClassName("tabcontent");
-    for (let i = 0; i < tabs.length; i++) {
-        tabs[i].classList.add('d-none');
-    }
-    let buttons = document.getElementsByClassName("tablinks");
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].classList.remove('curtab');
-    }
-    document.getElementById(page_id).classList.remove('d-none');
-    document.getElementById(tab_id).classList.add('curtab');
-}
 
 
-function checkPairStreaming(streamName) {
 
-    if (REGISTER_MODE == "False") {
-
-        let pairStreamName = device_pair[streamName];
-        let tab_name = "pair_tab_" + streamName.substring(streamName.length - 1);
-
-        if (connectionStatus[streamName]) {
-
-            const handler = _inputHandler(streamName);
-            handler.next();
-            getInputInfo(streamName, handler);
-            if (connectionStatus[pairStreamName]) {
-                $('#' + tab_name).removeClass('d-none');
-            }
-        } else {
-            $('#' + tab_name).addClass('d-none');
-            if ($('#' + tab_name).hasClass('curtab')) { // might need to stay on page
-                choosetab('tab_1');
-            }
-        }
-    }
-}
-
-function* _inputHandler(streamName) {
-
-    let tab_name = "pair_tab_" + streamName.substring(streamName.length - 1);
-    let page_name = tab_page_map[tab_name];
-
-    let source_info = yield;
-
-    let sourceUrl;
-    let input_height;
-    let input_width;
-
-    sourceUrl = source_info.input.sourceUrl;
-    source_info.input.tracks.forEach(function (track) {
-        if (track.type == 'Video') {
-            input_height = track.video.height;
-            input_width = track.video.width;
-        }
-    });
-
-    const page = $('#' + page_name);
-    if (streamName.substring(0, 1) == 'E') {
-        page.find('#edge_resolution').text(input_width + ' x ' + input_height);
-        page.find('#edge_ip').text(sourceUrl);
-    } else {
-        page.find('#terminal_resolution').text(input_width + ' x ' + input_height);
-        page.find('#terminal_ip').text(sourceUrl);
-    }
-}
-
-
+// NEW
 function getInputInfo(streamName, handler) {
     requestInfo(streamName).then(function (resp) {
         if (resp.statusCode === 200) {
@@ -851,6 +682,7 @@ function getInputInfo(streamName, handler) {
     });
 }
 
+// NEW
 async function requestInfo(streamName) {
     const promise = await $.ajax({
         method: 'get',
@@ -859,14 +691,6 @@ async function requestInfo(streamName) {
     return promise;
 }
 
-// Test
-async function test() {
-    const promise = await $.ajax({
-        method: 'get',
-        url: '/test'
-    });
-    return promise;
-}
 
 let socket = io({
     transports: ['websocket']
@@ -876,22 +700,39 @@ socket.on('user count', function (data) {
     totalUserCountSpan.text(data.user_count);
 });
 
-if (REGISTER_MODE == "True") {
-    $('#title').removeClass('d-none');
-} else {
-    renderMonitorPages();
+// NEW
+function click_overview() {
+    $("#overview_page").removeClass("d-none");
+    $("#edge_page").addClass("d-none");
 }
 
-renderSeatPages();
+function click_edge() {
+    $("#overview_page").addClass("d-none");
+    $("#edge_page").removeClass("d-none");
+}
 
+// NEW change href
+function create_dropdown() {
+    for (let i = 0; i < MAX_STREAM_PER_PAGE; i++) {
+        $("#edge_detail_redirect").append(
+            '<li><a class="dropdown-item" href="/edge/' + (i + 1)
+            + '" target="_blank">Edge ' + (i + 1) + '</a></li>')
+    }
+}
+
+
+// NEW
+// idea = main()
 renderSeats();
 
-renderPairMonitorPages();
-
 if (REGISTER_MODE == "True") {
-    choosetab('tab_1');
+    $('#title').removeClass('d-none');
+    $('#navigation').addClass('d-none');
+    click_edge();
 } else {
-    choosetab('tab_0');
+    create_dropdown();
+    renderOverviewPages();
+    click_overview();
 }
 
 startStreamCheckTimer();

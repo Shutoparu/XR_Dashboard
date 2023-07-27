@@ -9,7 +9,8 @@ body {
     --bs-body-font-size: var(--ovenspace-body-font-size);
     font-weight: 400;
     line-height: 1.625;
-    color: #6c757d;
+    /* color: #6c757d; */
+    background-color:white;
 }
 
 
@@ -135,7 +136,7 @@ h6 {
 /* OvenSpace styles. */
 .app-wrapper {
     min-height: 100vh;
-    background: #edeae4;
+    /* background: #edeae4; */ /* changed to default white */
 }
 
 .header {
@@ -248,17 +249,6 @@ h6 {
     font-size: 1.2rem;
 }
 
-.tab {
-    display: block;
-    overflow-y: hidden;
-    overflow-x: auto;
-    width: 700px;
-    white-space: nowrap;
-}
-
-.tab::-webkit-scrollbar {
-    display: none;
-}
 
 .tablinks {
     background-color: lightgray;
@@ -295,23 +285,21 @@ h6 {
     left: 10px;
 }
 
-.arrow {
-    width: 120px;
+iframe {
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
 }
 
-.line {
-    margin-top: 15px;
-    width: 90px;
-    background: blue;
-    height: 10px;
-    float: left;
+.info h2 {
+    color: white;
+    font-size: 50px;
+    text-shadow: #1e232c 0.05em 0.05em 0.2em
 }
 
-.point {
-    width: 0;
-    height: 0;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-left: 30px solid blue;
-    float: right;
+.info p {
+    color: white;
+    font-size: 25px;
+    text-shadow: #1e232c 0.05em 0.05em 0.2em
 }

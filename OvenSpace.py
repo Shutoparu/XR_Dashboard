@@ -70,7 +70,6 @@ OME_LLHLS_STREAMING_HOST = f'{OME_LLHLS_STREAMING_PROTOCOL}://{OME_HOST}:{app.co
 users = User.instance()
 
 
-@app.route("/view")
 @app.route("/")
 def view():
     return render_template(
@@ -131,7 +130,18 @@ def get_stream_info(name):
 def get_dashboard():
     return render_template(
         'dashboard.html',
-        grafana_host = OME_HOST)
+        grafana_host = OME_HOST,
+        theme = 'light'
+    )
+
+@app.route("/edge/<int:edge_id>")
+def show_edge(edge_id):
+    return render_template(
+        'edge.html',
+        edge_id = edge_id,
+        grafana_host = OME_HOST,
+        theme = 'light'
+    )
 
     
 @socketio.on('connect')

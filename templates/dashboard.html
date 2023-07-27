@@ -20,49 +20,9 @@
 
     <body>
         <div id="dummy">
-            <div id="must">
-                <script>
-                    const protocal = "https";
-                    const GRAFANA_HOST = "{{grafana_host}}";
-                    const port = "3000";
-                    const dashboardId = "b4307069-b390-4c30-adac-e7397c3e672bd"
-                    const dashboard_name = "xrcubee"
-                    const theme = "dark"
-                    const hours = 6;
-
-                    function get_src(panel_id) {
-                        return protocal + "://" + GRAFANA_HOST + ":" + port
-                            + "/d-solo/" + dashboardId + "/" + dashboard_name
-                            + "?orgId=1&refresh=5s&from=now-" + hours + "h&to=now&theme=" + theme
-                            + "&panelId=" + panel_id;
-                    }
-
-                </script>
-                <style>
-                    iframe {
-                        padding-top: 5px;
-                        padding-left: 5px;
-                        padding-right: 5px;
-                        padding-bottom: 5px;
-                    }
-
-                    .info h2 {
-                        color: white;
-                        font-size: 50px;
-                        text-shadow: #1e232c 0.05em 0.05em 0.2em
-                    }
-
-                    .info p {
-                        color: white;
-                        font-size: 25px;
-                        text-shadow: #1e232c 0.05em 0.05em 0.2em
-                    }
-
-                </style>
-            </div>
-            <div id="dashboard" class="container d-flex flex-column display-panel">
+            <div id="dashboard" class="row container d-flex flex-column display-panel">
                 <div id="general_info" class="container d-flex flex-row justify-content-center">
-                    <div class="info container d-flex flex-column align-items-center" width="500"
+                    <div class="info container d-flex flex-column align-items-center col-4"
                         height="400">
                         <div class="d-flex flex-column align-items-center pt-4 pb-3"
                             style="background-color: #353d4c; width: 110%;">
@@ -70,7 +30,7 @@
                             <p>XR Connections</p>
                         </div>
                     </div>
-                    <div class="info container d-flex flex-column align-items-center" width="500"
+                    <div class="info container d-flex flex-column align-items-center col-4"
                         height="400">
                         <div class="d-flex flex-column align-items-center pt-4 pb-3"
                             style="background-color: #37c3ca; width: 110%;">
@@ -78,7 +38,7 @@
                             <h2>8</h2>
                         </div>
                     </div>
-                    <div class="info container d-flex flex-column align-items-center" width="500"
+                    <div class="info container d-flex flex-column align-items-center col-4"
                         height="400">
                         <div class="d-flex flex-column align-items-center pt-4 pb-3"
                             style="background-color: #37c3ca; width: 110%;">
@@ -88,53 +48,36 @@
                     </div>
                 </div>
                 <div class="container d-flex flex-row">
-                    <iframe id='panel1' width="750" height="250" frameborder="0"></iframe>
-                    <iframe id='panel2' width="750" height="250" frameborder="0"></iframe>
+                    <iframe class="col-6" id='download' height="200" frameborder="0"></iframe>
+                    <iframe class="col-6" id='upload' height="200" frameborder="0"></iframe>
                 </div>
                 <div class="container d-flex flex-row">
-                    <iframe id='panel3' width="500" height="250" frameborder="0"></iframe>
-                    <iframe id='panel4' width="500" height="250" frameborder="0"></iframe>
-                    <iframe id='panel5' width="500" height="250" frameborder="0"></iframe>
+                    <iframe class="col-6" id='packet_loss' height="200" frameborder="0"></iframe>
+                    <iframe class="col-6" id='latency' height="200" frameborder="0"></iframe>
                 </div>
                 <script>
-                    document.getElementById("panel1").src = get_src(1);
-                    document.getElementById("panel2").src = get_src(5);
+                    const protocal = "https";
+                    const GRAFANA_HOST = "{{grafana_host}}";
+                    const port = "3000";
+                    const dashboardId = "b4307069-b390-4c30-adac-e7397c3e672bd"
+                    const dashboard_name = "xrcubee"
+                    const theme = "{{theme}}"
+                    const hours = 6;
+
+                    function get_src(panel_id) {
+                        return protocal + "://" + GRAFANA_HOST + ":" + port
+                            + "/d-solo/" + dashboardId + "/" + dashboard_name
+                            + "?orgId=1&refresh=5s&from=now-" + hours + "h&to=now&theme=" + theme
+                            + "&panelId=" + panel_id;
+                    }
+
+                    document.getElementById("download").src = get_src(1);
+                    document.getElementById("upload").src = get_src(2);
+                    document.getElementById("packet_loss").src = get_src(3);
+                    document.getElementById("latency").src = get_src(4);
                 </script>
             </div>
-
-            <!-- template -->
-            <template id="info_template">
-                <div id="dummy">
-                    <div id="hardware_<%= idx %>"
-                        class="container d-flex flex-row justify-content-center">
-                        <iframe id='cpu_<%= idx %>' width="200" height="200"
-                            frameborder="0"></iframe>
-                        <iframe id='gpu_<%= idx %>' width="200" height="200"
-                            frameborder="0"></iframe>
-                    </div>
-                    <div id="net_<%= idx %>">
-                        <iframe id='latency_<%= idx %>' width="500" height="250"
-                            frameborder="0"></iframe>
-                        <iframe id='throughput_<%= idx %>' width="500" height="250"
-                            frameborder="0"></iframe>
-                        <iframe id='packet_loss_<%= idx %>' width="500" height="250"
-                            frameborder="0"></iframe>
-                    </div>
-                    <script id="src_<%= idx %>">
-                        
-                        document.getElementById("gpu_<%= idx %>").src = get_src(parseInt("<%= idx %>"));
-                        document.getElementById("cpu_<%= idx %>").src = get_src(parseInt("<%= idx %>"));
-                        document.getElementById("latency_<%= idx %>").src = get_src(parseInt("<%= idx %>"));
-                        document.getElementById("throughput_<%= idx %>").src = get_src(parseInt("<%= idx %>"));
-                        document.getElementById("packet_loss_<%= idx %>").src = get_src(parseInt("<%= idx %>"));
-
-                    </script>
-                </div>
-
-            </template>
-
         </div>
     </body>
-
 
 </html>
