@@ -1,61 +1,6 @@
 let curStream = null;
 let variable;
 
-// NEW
-function checkPairStreaming(streamName) {
-
-    if (REGISTER_MODE == "False") {
-
-        let pairStreamName = device_pair[streamName];
-        let tab_name = "pair_tab_" + streamName.substring(streamName.length - 1);
-
-        if (connectionStatus[streamName]) {
-
-            const handler = _inputHandler(streamName);
-            handler.next();
-            getInputInfo(streamName, handler);
-            if (connectionStatus[pairStreamName]) {
-                $('#' + tab_name).removeClass('d-none');
-            }
-        } else {
-            $('#' + tab_name).addClass('d-none');
-            if ($('#' + tab_name).hasClass('curtab')) { // might need to stay on page
-                choosetab('tab_1');
-            }
-        }
-    }
-}
-
-// NEW
-function* _inputHandler(streamName) {
-
-    let tab_name = "pair_tab_" + streamName.substring(streamName.length - 1);
-    let page_name = tab_page_map[tab_name];
-
-    let source_info = yield;
-
-    let sourceUrl;
-    let input_height;
-    let input_width;
-
-    sourceUrl = source_info.input.sourceUrl;
-    source_info.input.tracks.forEach(function (track) {
-        if (track.type == 'Video') {
-            input_height = track.video.height;
-            input_width = track.video.width;
-        }
-    });
-
-    const page = $('#' + page_name);
-    if (streamName.substring(0, 1) == 'E') {
-        page.find('#edge_resolution').text(input_width + ' x ' + input_height);
-        page.find('#edge_ip').text(sourceUrl);
-    } else {
-        page.find('#terminal_resolution').text(input_width + ' x ' + input_height);
-        page.find('#terminal_ip').text(sourceUrl);
-    }
-}
-
 async function requestInfo(streamName) {
     const promise = await $.ajax({
         method: 'get',

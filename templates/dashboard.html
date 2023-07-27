@@ -56,18 +56,16 @@
                     <iframe class="col-6" id='latency' height="200" frameborder="0"></iframe>
                 </div>
                 <script>
-                    const protocal = "https";
+
                     const GRAFANA_HOST = "{{grafana_host}}";
-                    const port = "3000";
-                    const dashboardId = "b4307069-b390-4c30-adac-e7397c3e672bd"
-                    const dashboard_name = "xrcubee"
-                    const theme = "{{theme}}"
-                    const hours = 6;
+                    const DASHBOARD_ID = "{{dashboard_id}}"
+                    const DASHBOARD_NAME = "{{dashboard_name}}"
+                    const THEME = "{{theme}}"
+                    const TIME_SPAN = "{{time_span}}";
 
                     function get_src(panel_id) {
-                        return protocal + "://" + GRAFANA_HOST + ":" + port
-                            + "/d-solo/" + dashboardId + "/" + dashboard_name
-                            + "?orgId=1&refresh=5s&from=now-" + hours + "h&to=now&theme=" + theme
+                        return GRAFANA_HOST + "/d-solo/" + DASHBOARD_ID + "/" + DASHBOARD_NAME
+                            + "?orgId=1&refresh=5s&from=now-" + TIME_SPAN + "&to=now&theme=" + THEME
                             + "&panelId=" + panel_id;
                     }
 

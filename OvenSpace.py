@@ -67,6 +67,13 @@ OME_LLHLS_STREAMING_PROTOCOL = get_http_protocol(
     app.config['OME_LLHLS_PUBLISHER_ENABLE_TLS'])
 OME_LLHLS_STREAMING_HOST = f'{OME_LLHLS_STREAMING_PROTOCOL}://{OME_HOST}:{app.config["OME_LLHLS_PUBLISHER_PORT"]}'
 
+
+GRAFANA_HOST = f'{get_http_protocol(app.config["OME_API_ENABLE_TLS"])}://{OME_HOST}:{app.config["GRAFANA_PORT"]}'
+DASHBOARD_ID = app.config['DASHBOARD_ID']
+DASHBOARD_NAME = app.config['DASHBOARD_NAME']
+THEME = app.config['THEME']
+TIME_SPAN = app.config['TIME_SPAN']
+
 users = User.instance()
 
 
@@ -130,8 +137,12 @@ def get_stream_info(name):
 def get_dashboard():
     return render_template(
         'dashboard.html',
-        grafana_host = OME_HOST,
-        theme = 'light'
+        grafana_host = GRAFANA_HOST,
+        dashboard_id = DASHBOARD_ID,
+        dashboard_name = DASHBOARD_NAME,
+        theme = THEME,
+        time_span = TIME_SPAN
+        
     )
 
 @app.route("/edge/<int:edge_id>")
@@ -139,8 +150,12 @@ def show_edge(edge_id):
     return render_template(
         'edge.html',
         edge_id = edge_id,
-        grafana_host = OME_HOST,
-        theme = 'light',
+        
+        grafana_host = GRAFANA_HOST,
+        dashboard_id = DASHBOARD_ID,
+        dashboard_name = DASHBOARD_NAME,
+        theme = THEME,
+        time_span = TIME_SPAN,
 
         app_name=OME_APP_NAME,
         stream_name=OME_STREAM_NAME,
