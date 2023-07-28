@@ -1,4 +1,47 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "Prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "gauge",
+      "name": "Gauge",
+      "version": ""
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "10.0.2"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -18,14 +61,14 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 6,
+  "id": null,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -75,7 +118,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -92,7 +135,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -151,7 +194,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "nvidia_smi_utilization_gpu_ratio{job=\"NVIDIA1\"}",
@@ -166,7 +209,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -215,7 +258,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter1\", instance=\"192.168.4.167:9182\",mode=\"idle\"}[2m])))*100",
@@ -230,7 +273,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -309,7 +352,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -327,7 +370,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -380,7 +423,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -399,7 +442,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -449,7 +492,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter1\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -464,7 +507,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -543,7 +586,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter1\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -558,7 +601,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -608,7 +651,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter1\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -623,7 +666,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -703,7 +746,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter1\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -718,7 +761,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -796,7 +839,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg_over_time(ping_avg_time{job=\"ping_exporter1\"}[5m])",
@@ -811,7 +854,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -889,7 +932,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "rate(windows_net_packets_outbound_errors_total{job=\"windows_exporter1\"}[5m]) + rate(windows_net_packets_received_errors_total{job=\"windows_exporter1\"}[5m])/ rate(windows_net_packets_total{job=\"windows_exporter1\"}[5m])",
@@ -904,7 +947,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -916,8 +959,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -954,7 +996,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -971,7 +1013,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -985,8 +1027,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#6ED0E0",
@@ -1030,7 +1071,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "nvidia_smi_utilization_gpu_ratio{job=\"NVIDIA2\"}",
@@ -1045,7 +1086,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1057,8 +1098,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "green",
@@ -1094,7 +1134,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter2\",mode=\"idle\"}[2m])))*100",
@@ -1109,7 +1149,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1151,8 +1191,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1188,7 +1227,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1206,7 +1245,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1218,8 +1257,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1259,7 +1297,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1278,7 +1316,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1291,8 +1329,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "light-green",
@@ -1328,7 +1365,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter2\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -1343,7 +1380,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1385,8 +1422,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "light-green",
@@ -1422,7 +1458,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter2\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -1437,7 +1473,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1450,8 +1486,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -1487,7 +1522,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter2\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -1502,7 +1537,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1545,8 +1580,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -1582,7 +1616,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter2\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -1597,7 +1631,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1639,8 +1673,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1675,7 +1708,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg_over_time(ping_avg_time{job=\"ping_exporter2\"}[5m])",
@@ -1690,7 +1723,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1732,8 +1765,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1768,7 +1800,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "rate(windows_net_packets_outbound_errors_total{job=\"windows_exporter2\"}[5m]) + rate(windows_net_packets_received_errors_total{job=\"windows_exporter2\"}[5m])/ rate(windows_net_packets_total{job=\"windows_exporter2\"}[5m])",
@@ -1783,7 +1815,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1795,8 +1827,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1833,7 +1864,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1850,7 +1881,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1864,8 +1895,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#6ED0E0",
@@ -1909,7 +1939,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "nvidia_smi_utilization_gpu_ratio{job=\"NVIDIA3\"}",
@@ -1924,7 +1954,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1936,8 +1966,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "green",
@@ -1973,7 +2002,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter3\", instance=\"192.168.4.167:9182\",mode=\"idle\"}[2m])))*100",
@@ -1988,7 +2017,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2030,8 +2059,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2067,7 +2095,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2085,7 +2113,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2097,8 +2125,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2138,7 +2165,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2157,7 +2184,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2170,8 +2197,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "light-green",
@@ -2207,7 +2233,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter3\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -2222,7 +2248,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2264,8 +2290,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "light-green",
@@ -2301,7 +2326,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter3\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -2316,7 +2341,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2329,8 +2354,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -2366,7 +2390,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter3\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -2381,7 +2405,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2424,8 +2448,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -2461,7 +2484,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter3\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -2476,7 +2499,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2518,8 +2541,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2554,7 +2576,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg_over_time(ping_avg_time{job=\"ping_exporter3\"}[5m])",
@@ -2569,7 +2591,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2611,8 +2633,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2647,7 +2668,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "rate(windows_net_packets_outbound_errors_total{job=\"windows_exporter1\"}[5m]) + rate(windows_net_packets_received_errors_total{job=\"windows_exporter1\"}[5m])/ rate(windows_net_packets_total{job=\"windows_exporter1\"}[5m])",
@@ -2662,7 +2683,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2674,8 +2695,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2712,7 +2732,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2729,7 +2749,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2743,8 +2763,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#6ED0E0",
@@ -2788,7 +2807,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "nvidia_smi_utilization_gpu_ratio{job=\"NVIDIA4\"}",
@@ -2803,7 +2822,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2815,8 +2834,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "green",
@@ -2852,7 +2870,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter4\", instance=\"192.168.4.167:9182\",mode=\"idle\"}[2m])))*100",
@@ -2867,7 +2885,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2909,8 +2927,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2946,7 +2963,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2964,7 +2981,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2976,8 +2993,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3017,7 +3033,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -3036,7 +3052,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3049,8 +3065,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "light-green",
@@ -3086,7 +3101,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter4\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -3101,7 +3116,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3143,8 +3158,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "light-green",
@@ -3180,7 +3194,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter4\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -3195,7 +3209,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3208,8 +3222,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -3245,7 +3258,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter4\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -3260,7 +3273,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3303,8 +3316,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -3340,7 +3352,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter4\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -3355,7 +3367,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3397,8 +3409,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3433,7 +3444,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg_over_time(ping_avg_time{job=\"ping_exporter4\"}[5m])",
@@ -3448,7 +3459,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3490,8 +3501,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3526,7 +3536,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "rate(windows_net_packets_outbound_errors_total{job=\"windows_exporter4\"}[5m]) + rate(windows_net_packets_received_errors_total{job=\"windows_exporter4\"}[5m])/ rate(windows_net_packets_total{job=\"windows_exporter4\"}[5m])",
@@ -3541,7 +3551,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3553,8 +3563,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3591,7 +3600,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -3608,7 +3617,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3622,8 +3631,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#6ED0E0",
@@ -3667,7 +3675,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "nvidia_smi_utilization_gpu_ratio{job=\"NVIDIA5\"}",
@@ -3682,7 +3690,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3694,8 +3702,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "green",
@@ -3731,7 +3738,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter5\", instance=\"192.168.4.167:9182\",mode=\"idle\"}[2m])))*100",
@@ -3746,7 +3753,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3788,8 +3795,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3825,7 +3831,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -3843,7 +3849,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3855,8 +3861,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3896,7 +3901,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -3915,7 +3920,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3928,8 +3933,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "light-green",
@@ -3965,7 +3969,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter5\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -3980,7 +3984,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4022,8 +4026,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "light-green",
@@ -4059,7 +4062,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter5\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -4074,7 +4077,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4087,8 +4090,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -4124,7 +4126,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter5\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -4139,7 +4141,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4182,8 +4184,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -4219,7 +4220,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter5\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -4234,7 +4235,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4276,8 +4277,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4312,7 +4312,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg_over_time(ping_avg_time{job=\"ping_exporter5\"}[5m])",
@@ -4327,7 +4327,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4369,8 +4369,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4405,7 +4404,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "rate(windows_net_packets_outbound_errors_total{job=\"windows_exporter5\"}[5m]) + rate(windows_net_packets_received_errors_total{job=\"windows_exporter5\"}[5m])/ rate(windows_net_packets_total{job=\"windows_exporter5\"}[5m])",
@@ -4420,7 +4419,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4432,8 +4431,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4470,7 +4468,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -4487,7 +4485,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4501,8 +4499,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#6ED0E0",
@@ -4546,7 +4543,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "nvidia_smi_utilization_gpu_ratio{job=\"NVIDIA6\"}",
@@ -4561,7 +4558,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4573,8 +4570,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "green",
@@ -4610,7 +4606,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter6\", instance=\"192.168.4.167:9182\",mode=\"idle\"}[2m])))*100",
@@ -4625,7 +4621,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4667,8 +4663,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4704,7 +4699,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -4722,7 +4717,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4734,8 +4729,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4775,7 +4769,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -4794,7 +4788,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4807,8 +4801,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "light-green",
@@ -4844,7 +4837,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter6\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -4859,7 +4852,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4901,8 +4894,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "light-green",
@@ -4938,7 +4930,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter6\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -4953,7 +4945,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4966,8 +4958,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -5003,7 +4994,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter6\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -5018,7 +5009,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5061,8 +5052,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -5098,7 +5088,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter6\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -5113,7 +5103,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5155,8 +5145,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -5191,7 +5180,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg_over_time(ping_avg_time{job=\"ping_exporter6\"}[5m])",
@@ -5206,7 +5195,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5248,8 +5237,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -5284,7 +5272,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "rate(windows_net_packets_outbound_errors_total{job=\"windows_exporter6\"}[5m]) + rate(windows_net_packets_received_errors_total{job=\"windows_exporter6\"}[5m])/ rate(windows_net_packets_total{job=\"windows_exporter6\"}[5m])",
@@ -5299,7 +5287,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5311,8 +5299,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -5349,7 +5336,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -5366,7 +5353,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5380,8 +5367,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#6ED0E0",
@@ -5425,7 +5411,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "nvidia_smi_utilization_gpu_ratio{job=\"NVIDIA7\"}",
@@ -5440,7 +5426,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5452,8 +5438,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "green",
@@ -5489,7 +5474,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter7\", instance=\"192.168.4.167:9182\",mode=\"idle\"}[2m])))*100",
@@ -5504,7 +5489,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5546,8 +5531,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -5583,7 +5567,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -5601,7 +5585,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5613,8 +5597,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -5654,7 +5637,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -5673,7 +5656,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5686,8 +5669,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "light-green",
@@ -5723,7 +5705,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter7\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -5738,7 +5720,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5780,8 +5762,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "light-green",
@@ -5817,7 +5798,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter7\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -5832,7 +5813,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5845,8 +5826,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -5882,7 +5862,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter7\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -5897,7 +5877,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5940,8 +5920,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -5977,7 +5956,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter7\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -5992,7 +5971,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6034,8 +6013,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -6070,7 +6048,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg_over_time(ping_avg_time{job=\"ping_exporter7\"}[5m])",
@@ -6085,7 +6063,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6127,8 +6105,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -6163,7 +6140,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "rate(windows_net_packets_outbound_errors_total{job=\"windows_exporter7\"}[5m]) + rate(windows_net_packets_received_errors_total{job=\"windows_exporter7\"}[5m])/ rate(windows_net_packets_total{job=\"windows_exporter7\"}[5m])",
@@ -6178,7 +6155,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6190,8 +6167,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -6228,7 +6204,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -6245,7 +6221,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6259,8 +6235,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#6ED0E0",
@@ -6304,7 +6279,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "nvidia_smi_utilization_gpu_ratio{job=\"NVIDIA8\"}",
@@ -6319,7 +6294,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6331,8 +6306,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "green",
@@ -6368,7 +6342,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter8\", instance=\"192.168.4.167:9182\",mode=\"idle\"}[2m])))*100",
@@ -6383,7 +6357,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6425,8 +6399,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -6462,7 +6435,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -6480,7 +6453,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6492,8 +6465,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -6533,7 +6505,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -6552,7 +6524,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6565,8 +6537,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "light-green",
@@ -6602,7 +6573,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter8\",nic!~'isatap.|VPN.'}[5m])*8/1000000\n",
@@ -6617,7 +6588,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6659,8 +6630,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "light-green",
@@ -6696,7 +6666,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter8\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -6711,7 +6681,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6724,8 +6694,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -6761,7 +6730,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter8\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -6776,7 +6745,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6819,8 +6788,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -6856,7 +6824,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter8\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -6871,7 +6839,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6913,8 +6881,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -6949,7 +6916,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg_over_time(ping_avg_time{job=\"ping_exporter8\"}[5m])",
@@ -6964,7 +6931,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7006,8 +6973,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -7042,7 +7008,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "rate(windows_net_packets_outbound_errors_total{job=\"windows_exporter8\"}[5m]) + rate(windows_net_packets_received_errors_total{job=\"windows_exporter8\"}[5m])/ rate(windows_net_packets_total{job=\"windows_exporter8\"}[5m])",
@@ -7057,7 +7023,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7070,8 +7036,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "light-green",
@@ -7107,7 +7072,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(irate(windows_net_bytes_received_total{job=~\"windows_exporter[1-8]\",nic!~'isatap.|VPN.'}[5m])*8/1000000)\n",
@@ -7122,7 +7087,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7164,8 +7129,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "light-green",
@@ -7201,7 +7165,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(irate(windows_net_bytes_received_total{job=~\"windows_exporter[1-8]\",nic!~'isatap.|VPN.'}[5m])*8/1000000)",
@@ -7216,7 +7180,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7229,8 +7193,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -7266,7 +7229,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(irate(windows_net_bytes_sent_total{job=~\"windows_exporter[1-8]\",nic!~'isatap.|VPN.'}[5m])*8/1000000)",
@@ -7281,7 +7244,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7324,8 +7287,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -7361,7 +7323,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(irate(windows_net_bytes_sent_total{job=~\"windows_exporter[1-8]\",nic!~'isatap.|VPN.'}[5m])*8/1000000)",
@@ -7376,7 +7338,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7418,8 +7380,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -7454,7 +7415,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(\n    (\n        rate(windows_net_packets_outbound_errors_total{job=~\"windows_exporter[1-8]\"}[5m]) + \n        rate(windows_net_packets_received_errors_total{job=~\"windows_exporter[1-8]\"}[5m])\n    ) \n    / \n    rate(windows_net_packets_total{job=~\"windows_exporter[1-8]\"}[5m])\n)\n",
@@ -7464,6 +7425,98 @@
         }
       ],
       "title": "[AVG]Packet Loss",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 69,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 11,
+        "x": 6,
+        "y": 154
+      },
+      "id": 125,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "avg(avg_over_time(ping_avg_time{job=~\"ping_exporter[1-8]\"}[5m]))",
+          "instant": false,
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "[AVG]latency",
       "type": "timeseries"
     }
   ],
@@ -7480,8 +7533,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "XRtesting",
+  "title": "XR_CUBE",
   "uid": "b4307069-b390-4c30-adac-e7397c3e672bdsk",
-  "version": 11,
+  "version": 13,
   "weekStart": ""
 }
