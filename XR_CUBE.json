@@ -261,7 +261,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter1\", instance=\"192.168.4.167:9182\",mode=\"idle\"}[2m])))*100",
+          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter1\",mode=\"idle\"}[2m])))*100",
           "instant": false,
           "range": true,
           "refId": "A"
@@ -427,7 +427,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "windows_os_info{job=\"windows_exporter7\"}",
+          "expr": "windows_os_info{job=\"windows_exporter1\"}",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -2005,7 +2005,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter3\", instance=\"192.168.4.167:9182\",mode=\"idle\"}[2m])))*100",
+          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter3\",mode=\"idle\"}[2m])))*100",
           "instant": false,
           "range": true,
           "refId": "A"
@@ -2671,7 +2671,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "rate(windows_net_packets_outbound_errors_total{job=\"windows_exporter1\"}[5m]) + rate(windows_net_packets_received_errors_total{job=\"windows_exporter1\"}[5m])/ rate(windows_net_packets_total{job=\"windows_exporter1\"}[5m])",
+          "expr": "rate(windows_net_packets_outbound_errors_total{job=\"windows_exporter3\"}[5m]) + rate(windows_net_packets_received_errors_total{job=\"windows_exporter3\"}[5m])/ rate(windows_net_packets_total{job=\"windows_exporter3\"}[5m])",
           "instant": false,
           "range": true,
           "refId": "A"
@@ -2873,7 +2873,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter4\", instance=\"192.168.4.167:9182\",mode=\"idle\"}[2m])))*100",
+          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter4\",mode=\"idle\"}[2m])))*100",
           "instant": false,
           "range": true,
           "refId": "A"
@@ -3741,7 +3741,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter5\", instance=\"192.168.4.167:9182\",mode=\"idle\"}[2m])))*100",
+          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter5\",mode=\"idle\"}[2m])))*100",
           "instant": false,
           "range": true,
           "refId": "A"
@@ -4609,7 +4609,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter6\", instance=\"192.168.4.167:9182\",mode=\"idle\"}[2m])))*100",
+          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter6\",mode=\"idle\"}[2m])))*100",
           "instant": false,
           "range": true,
           "refId": "A"
@@ -5477,7 +5477,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter7\", instance=\"192.168.4.167:9182\",mode=\"idle\"}[2m])))*100",
+          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter7\",mode=\"idle\"}[2m])))*100",
           "instant": false,
           "range": true,
           "refId": "A"
@@ -6345,7 +6345,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter8\", instance=\"192.168.4.167:9182\",mode=\"idle\"}[2m])))*100",
+          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter8\",mode=\"idle\"}[2m])))*100",
           "instant": false,
           "range": true,
           "refId": "A"
@@ -7490,7 +7490,7 @@
         "x": 6,
         "y": 154
       },
-      "id": 125,
+      "id": 94,
       "options": {
         "legend": {
           "calcs": [],
@@ -7535,6 +7535,6 @@
   "timezone": "",
   "title": "XR_CUBE",
   "uid": "b4307069-b390-4c30-adac-e7397c3e672bdsk",
-  "version": 13,
+  "version": 3,
   "weekStart": ""
 }
