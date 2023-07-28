@@ -1,4 +1,47 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "Prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "gauge",
+      "name": "Gauge",
+      "version": ""
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "10.0.2"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -18,14 +61,14 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 6,
+  "id": null,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -55,7 +98,7 @@
         "x": 0,
         "y": 0
       },
-      "id": 34,
+      "id": 1,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -75,7 +118,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -92,7 +135,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -133,7 +176,7 @@
         "x": 5,
         "y": 0
       },
-      "id": 1,
+      "id": 2,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -151,7 +194,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "nvidia_smi_utilization_gpu_ratio{job=\"NVIDIA1\"}",
@@ -166,7 +209,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -197,7 +240,7 @@
         "x": 8,
         "y": 0
       },
-      "id": 37,
+      "id": 3,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -215,10 +258,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter1\", instance=\"192.168.4.167:9182\",mode=\"idle\"}[2m])))*100",
+          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter1\",mode=\"idle\"}[2m])))*100",
           "instant": false,
           "range": true,
           "refId": "A"
@@ -230,7 +273,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -291,7 +334,7 @@
         "x": 11,
         "y": 0
       },
-      "id": 3,
+      "id": 4,
       "options": {
         "legend": {
           "calcs": [],
@@ -309,7 +352,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -327,7 +370,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -357,7 +400,7 @@
         "x": 0,
         "y": 3
       },
-      "id": 38,
+      "id": 5,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -380,11 +423,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "windows_os_info{job=\"windows_exporter7\"}",
+          "expr": "windows_os_info{job=\"windows_exporter1\"}",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -399,7 +442,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -431,7 +474,7 @@
         "x": 0,
         "y": 6
       },
-      "id": 39,
+      "id": 6,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -449,7 +492,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter1\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -464,7 +507,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -525,7 +568,7 @@
         "x": 4,
         "y": 6
       },
-      "id": 36,
+      "id": 7,
       "options": {
         "legend": {
           "calcs": [],
@@ -543,7 +586,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter1\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -558,7 +601,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -590,7 +633,7 @@
         "x": 12,
         "y": 6
       },
-      "id": 40,
+      "id": 8,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -608,7 +651,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter1\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -623,7 +666,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -685,7 +728,7 @@
         "x": 16,
         "y": 6
       },
-      "id": 35,
+      "id": 9,
       "options": {
         "legend": {
           "calcs": [],
@@ -703,7 +746,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter1\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -718,7 +761,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -779,7 +822,7 @@
         "x": 0,
         "y": 12
       },
-      "id": 116,
+      "id": 10,
       "options": {
         "legend": {
           "calcs": [],
@@ -796,7 +839,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg_over_time(ping_avg_time{job=\"ping_exporter1\"}[5m])",
@@ -811,7 +854,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -872,7 +915,7 @@
         "x": 12,
         "y": 12
       },
-      "id": 8,
+      "id": 11,
       "options": {
         "legend": {
           "calcs": [],
@@ -889,7 +932,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "rate(windows_net_packets_outbound_errors_total{job=\"windows_exporter1\"}[5m]) + rate(windows_net_packets_received_errors_total{job=\"windows_exporter1\"}[5m])/ rate(windows_net_packets_total{job=\"windows_exporter1\"}[5m])",
@@ -904,7 +947,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -934,7 +977,7 @@
         "x": 0,
         "y": 18
       },
-      "id": 41,
+      "id": 12,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -954,7 +997,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -971,7 +1014,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1012,7 +1055,7 @@
         "x": 5,
         "y": 18
       },
-      "id": 43,
+      "id": 13,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -1030,7 +1073,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "nvidia_smi_utilization_gpu_ratio{job=\"NVIDIA2\"}",
@@ -1045,7 +1088,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1076,7 +1119,7 @@
         "x": 8,
         "y": 18
       },
-      "id": 44,
+      "id": 14,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -1094,7 +1137,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter2\",mode=\"idle\"}[2m])))*100",
@@ -1109,7 +1152,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1170,7 +1213,7 @@
         "x": 11,
         "y": 18
       },
-      "id": 45,
+      "id": 15,
       "options": {
         "legend": {
           "calcs": [],
@@ -1188,7 +1231,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1206,7 +1249,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1236,7 +1279,7 @@
         "x": 0,
         "y": 21
       },
-      "id": 42,
+      "id": 16,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -1259,7 +1302,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1278,7 +1321,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1310,7 +1353,7 @@
         "x": 0,
         "y": 24
       },
-      "id": 47,
+      "id": 17,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -1328,7 +1371,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter2\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -1343,7 +1386,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1404,7 +1447,7 @@
         "x": 4,
         "y": 24
       },
-      "id": 48,
+      "id": 18,
       "options": {
         "legend": {
           "calcs": [],
@@ -1422,7 +1465,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter2\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -1437,7 +1480,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1469,7 +1512,7 @@
         "x": 12,
         "y": 24
       },
-      "id": 49,
+      "id": 19,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -1487,7 +1530,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter2\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -1502,7 +1545,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1564,7 +1607,7 @@
         "x": 16,
         "y": 24
       },
-      "id": 50,
+      "id": 20,
       "options": {
         "legend": {
           "calcs": [],
@@ -1582,7 +1625,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter2\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -1597,7 +1640,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1658,7 +1701,7 @@
         "x": 0,
         "y": 30
       },
-      "id": 117,
+      "id": 21,
       "options": {
         "legend": {
           "calcs": [],
@@ -1675,7 +1718,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg_over_time(ping_avg_time{job=\"ping_exporter2\"}[5m])",
@@ -1690,7 +1733,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1751,7 +1794,7 @@
         "x": 12,
         "y": 30
       },
-      "id": 46,
+      "id": 22,
       "options": {
         "legend": {
           "calcs": [],
@@ -1768,7 +1811,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "rate(windows_net_packets_outbound_errors_total{job=\"windows_exporter2\"}[5m]) + rate(windows_net_packets_received_errors_total{job=\"windows_exporter2\"}[5m])/ rate(windows_net_packets_total{job=\"windows_exporter2\"}[5m])",
@@ -1783,7 +1826,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1813,7 +1856,7 @@
         "x": 0,
         "y": 36
       },
-      "id": 51,
+      "id": 23,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -1833,7 +1876,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1850,7 +1893,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1891,7 +1934,7 @@
         "x": 5,
         "y": 36
       },
-      "id": 53,
+      "id": 24,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -1909,7 +1952,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "nvidia_smi_utilization_gpu_ratio{job=\"NVIDIA3\"}",
@@ -1924,7 +1967,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1955,7 +1998,7 @@
         "x": 8,
         "y": 36
       },
-      "id": 54,
+      "id": 25,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -1973,10 +2016,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter3\", instance=\"192.168.4.167:9182\",mode=\"idle\"}[2m])))*100",
+          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter3\",mode=\"idle\"}[2m])))*100",
           "instant": false,
           "range": true,
           "refId": "A"
@@ -1988,7 +2031,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2049,7 +2092,7 @@
         "x": 11,
         "y": 36
       },
-      "id": 55,
+      "id": 26,
       "options": {
         "legend": {
           "calcs": [],
@@ -2067,7 +2110,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2085,7 +2128,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2115,7 +2158,7 @@
         "x": 0,
         "y": 39
       },
-      "id": 52,
+      "id": 27,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -2138,7 +2181,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2157,7 +2200,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2189,7 +2232,7 @@
         "x": 0,
         "y": 42
       },
-      "id": 57,
+      "id": 28,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -2207,7 +2250,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter3\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -2222,7 +2265,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2283,7 +2326,7 @@
         "x": 4,
         "y": 42
       },
-      "id": 58,
+      "id": 29,
       "options": {
         "legend": {
           "calcs": [],
@@ -2301,7 +2344,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter3\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -2316,7 +2359,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2348,7 +2391,7 @@
         "x": 12,
         "y": 42
       },
-      "id": 59,
+      "id": 30,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -2366,7 +2409,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter3\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -2381,7 +2424,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2443,7 +2486,7 @@
         "x": 16,
         "y": 42
       },
-      "id": 60,
+      "id": 31,
       "options": {
         "legend": {
           "calcs": [],
@@ -2461,7 +2504,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter3\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -2476,7 +2519,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2537,7 +2580,7 @@
         "x": 0,
         "y": 48
       },
-      "id": 118,
+      "id": 32,
       "options": {
         "legend": {
           "calcs": [],
@@ -2554,7 +2597,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg_over_time(ping_avg_time{job=\"ping_exporter3\"}[5m])",
@@ -2569,7 +2612,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2630,7 +2673,7 @@
         "x": 12,
         "y": 48
       },
-      "id": 56,
+      "id": 33,
       "options": {
         "legend": {
           "calcs": [],
@@ -2647,10 +2690,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "rate(windows_net_packets_outbound_errors_total{job=\"windows_exporter1\"}[5m]) + rate(windows_net_packets_received_errors_total{job=\"windows_exporter1\"}[5m])/ rate(windows_net_packets_total{job=\"windows_exporter1\"}[5m])",
+          "expr": "rate(windows_net_packets_outbound_errors_total{job=\"windows_exporter3\"}[5m]) + rate(windows_net_packets_received_errors_total{job=\"windows_exporter3\"}[5m])/ rate(windows_net_packets_total{job=\"windows_exporter3\"}[5m])",
           "instant": false,
           "range": true,
           "refId": "A"
@@ -2662,7 +2705,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2692,7 +2735,7 @@
         "x": 0,
         "y": 54
       },
-      "id": 61,
+      "id": 34,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -2712,7 +2755,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2729,7 +2772,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2770,7 +2813,7 @@
         "x": 5,
         "y": 54
       },
-      "id": 63,
+      "id": 35,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -2788,7 +2831,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "nvidia_smi_utilization_gpu_ratio{job=\"NVIDIA4\"}",
@@ -2803,7 +2846,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2834,7 +2877,7 @@
         "x": 8,
         "y": 54
       },
-      "id": 64,
+      "id": 36,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -2852,10 +2895,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter4\", instance=\"192.168.4.167:9182\",mode=\"idle\"}[2m])))*100",
+          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter4\",mode=\"idle\"}[2m])))*100",
           "instant": false,
           "range": true,
           "refId": "A"
@@ -2867,7 +2910,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2928,7 +2971,7 @@
         "x": 11,
         "y": 54
       },
-      "id": 65,
+      "id": 37,
       "options": {
         "legend": {
           "calcs": [],
@@ -2946,7 +2989,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2964,7 +3007,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2994,7 +3037,7 @@
         "x": 0,
         "y": 57
       },
-      "id": 62,
+      "id": 38,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -3017,7 +3060,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -3036,7 +3079,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3068,7 +3111,7 @@
         "x": 0,
         "y": 60
       },
-      "id": 67,
+      "id": 39,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -3086,7 +3129,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter4\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -3101,7 +3144,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3162,7 +3205,7 @@
         "x": 4,
         "y": 60
       },
-      "id": 68,
+      "id": 40,
       "options": {
         "legend": {
           "calcs": [],
@@ -3180,7 +3223,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter4\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -3195,7 +3238,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3227,7 +3270,7 @@
         "x": 12,
         "y": 60
       },
-      "id": 69,
+      "id": 41,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -3245,7 +3288,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter4\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -3260,7 +3303,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3322,7 +3365,7 @@
         "x": 16,
         "y": 60
       },
-      "id": 70,
+      "id": 42,
       "options": {
         "legend": {
           "calcs": [],
@@ -3340,7 +3383,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter4\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -3355,7 +3398,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3416,7 +3459,7 @@
         "x": 0,
         "y": 66
       },
-      "id": 119,
+      "id": 43,
       "options": {
         "legend": {
           "calcs": [],
@@ -3433,7 +3476,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg_over_time(ping_avg_time{job=\"ping_exporter4\"}[5m])",
@@ -3448,7 +3491,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3509,7 +3552,7 @@
         "x": 12,
         "y": 66
       },
-      "id": 66,
+      "id": 44,
       "options": {
         "legend": {
           "calcs": [],
@@ -3526,7 +3569,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "rate(windows_net_packets_outbound_errors_total{job=\"windows_exporter4\"}[5m]) + rate(windows_net_packets_received_errors_total{job=\"windows_exporter4\"}[5m])/ rate(windows_net_packets_total{job=\"windows_exporter4\"}[5m])",
@@ -3541,7 +3584,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3571,7 +3614,7 @@
         "x": 0,
         "y": 73
       },
-      "id": 71,
+      "id": 45,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -3591,7 +3634,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -3608,7 +3651,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3649,7 +3692,7 @@
         "x": 5,
         "y": 73
       },
-      "id": 72,
+      "id": 46,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -3667,7 +3710,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "nvidia_smi_utilization_gpu_ratio{job=\"NVIDIA5\"}",
@@ -3682,7 +3725,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3713,7 +3756,7 @@
         "x": 8,
         "y": 73
       },
-      "id": 73,
+      "id": 47,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -3731,10 +3774,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter5\", instance=\"192.168.4.167:9182\",mode=\"idle\"}[2m])))*100",
+          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter5\",mode=\"idle\"}[2m])))*100",
           "instant": false,
           "range": true,
           "refId": "A"
@@ -3746,7 +3789,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3807,7 +3850,7 @@
         "x": 11,
         "y": 73
       },
-      "id": 75,
+      "id": 48,
       "options": {
         "legend": {
           "calcs": [],
@@ -3825,7 +3868,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -3843,7 +3886,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3873,7 +3916,7 @@
         "x": 0,
         "y": 76
       },
-      "id": 74,
+      "id": 49,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -3896,7 +3939,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -3915,7 +3958,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3947,7 +3990,7 @@
         "x": 0,
         "y": 79
       },
-      "id": 77,
+      "id": 50,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -3965,7 +4008,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter5\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -3980,7 +4023,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4041,7 +4084,7 @@
         "x": 4,
         "y": 79
       },
-      "id": 78,
+      "id": 51,
       "options": {
         "legend": {
           "calcs": [],
@@ -4059,7 +4102,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter5\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -4074,7 +4117,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4106,7 +4149,7 @@
         "x": 12,
         "y": 79
       },
-      "id": 79,
+      "id": 52,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -4124,7 +4167,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter5\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -4139,7 +4182,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4201,7 +4244,7 @@
         "x": 16,
         "y": 79
       },
-      "id": 80,
+      "id": 53,
       "options": {
         "legend": {
           "calcs": [],
@@ -4219,7 +4262,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter5\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -4234,7 +4277,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4295,7 +4338,7 @@
         "x": 0,
         "y": 85
       },
-      "id": 120,
+      "id": 54,
       "options": {
         "legend": {
           "calcs": [],
@@ -4312,7 +4355,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg_over_time(ping_avg_time{job=\"ping_exporter5\"}[5m])",
@@ -4327,7 +4370,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4388,7 +4431,7 @@
         "x": 12,
         "y": 85
       },
-      "id": 76,
+      "id": 55,
       "options": {
         "legend": {
           "calcs": [],
@@ -4405,7 +4448,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "rate(windows_net_packets_outbound_errors_total{job=\"windows_exporter5\"}[5m]) + rate(windows_net_packets_received_errors_total{job=\"windows_exporter5\"}[5m])/ rate(windows_net_packets_total{job=\"windows_exporter5\"}[5m])",
@@ -4420,7 +4463,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4450,7 +4493,7 @@
         "x": 0,
         "y": 92
       },
-      "id": 81,
+      "id": 56,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -4470,7 +4513,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -4487,7 +4530,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4528,7 +4571,7 @@
         "x": 5,
         "y": 92
       },
-      "id": 83,
+      "id": 57,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -4546,7 +4589,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "nvidia_smi_utilization_gpu_ratio{job=\"NVIDIA6\"}",
@@ -4561,7 +4604,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4592,7 +4635,7 @@
         "x": 8,
         "y": 92
       },
-      "id": 84,
+      "id": 58,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -4610,10 +4653,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter6\", instance=\"192.168.4.167:9182\",mode=\"idle\"}[2m])))*100",
+          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter6\",mode=\"idle\"}[2m])))*100",
           "instant": false,
           "range": true,
           "refId": "A"
@@ -4625,7 +4668,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4686,7 +4729,7 @@
         "x": 11,
         "y": 92
       },
-      "id": 85,
+      "id": 59,
       "options": {
         "legend": {
           "calcs": [],
@@ -4704,7 +4747,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -4722,7 +4765,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4752,7 +4795,7 @@
         "x": 0,
         "y": 95
       },
-      "id": 82,
+      "id": 60,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -4775,7 +4818,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -4794,7 +4837,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4826,7 +4869,7 @@
         "x": 0,
         "y": 98
       },
-      "id": 87,
+      "id": 61,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -4844,7 +4887,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter6\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -4859,7 +4902,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4920,7 +4963,7 @@
         "x": 4,
         "y": 98
       },
-      "id": 88,
+      "id": 62,
       "options": {
         "legend": {
           "calcs": [],
@@ -4938,7 +4981,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter6\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -4953,7 +4996,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4985,7 +5028,7 @@
         "x": 12,
         "y": 98
       },
-      "id": 89,
+      "id": 63,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -5003,7 +5046,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter6\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -5018,7 +5061,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5080,7 +5123,7 @@
         "x": 16,
         "y": 98
       },
-      "id": 90,
+      "id": 64,
       "options": {
         "legend": {
           "calcs": [],
@@ -5098,7 +5141,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter6\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -5113,7 +5156,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5174,7 +5217,7 @@
         "x": 0,
         "y": 104
       },
-      "id": 121,
+      "id": 65,
       "options": {
         "legend": {
           "calcs": [],
@@ -5191,7 +5234,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg_over_time(ping_avg_time{job=\"ping_exporter6\"}[5m])",
@@ -5206,7 +5249,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5267,7 +5310,7 @@
         "x": 12,
         "y": 104
       },
-      "id": 124,
+      "id": 66,
       "options": {
         "legend": {
           "calcs": [],
@@ -5284,7 +5327,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "rate(windows_net_packets_outbound_errors_total{job=\"windows_exporter6\"}[5m]) + rate(windows_net_packets_received_errors_total{job=\"windows_exporter6\"}[5m])/ rate(windows_net_packets_total{job=\"windows_exporter6\"}[5m])",
@@ -5299,7 +5342,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5329,7 +5372,7 @@
         "x": 0,
         "y": 111
       },
-      "id": 91,
+      "id": 67,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -5349,7 +5392,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -5366,7 +5409,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5407,7 +5450,7 @@
         "x": 5,
         "y": 111
       },
-      "id": 93,
+      "id": 68,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -5425,7 +5468,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "nvidia_smi_utilization_gpu_ratio{job=\"NVIDIA7\"}",
@@ -5440,7 +5483,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5471,7 +5514,7 @@
         "x": 8,
         "y": 111
       },
-      "id": 94,
+      "id": 69,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -5489,10 +5532,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter7\", instance=\"192.168.4.167:9182\",mode=\"idle\"}[2m])))*100",
+          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter7\",mode=\"idle\"}[2m])))*100",
           "instant": false,
           "range": true,
           "refId": "A"
@@ -5504,7 +5547,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5565,7 +5608,7 @@
         "x": 11,
         "y": 111
       },
-      "id": 95,
+      "id": 70,
       "options": {
         "legend": {
           "calcs": [],
@@ -5583,7 +5626,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -5601,7 +5644,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5631,7 +5674,7 @@
         "x": 0,
         "y": 114
       },
-      "id": 92,
+      "id": 71,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -5654,7 +5697,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -5673,7 +5716,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5705,7 +5748,7 @@
         "x": 0,
         "y": 117
       },
-      "id": 97,
+      "id": 72,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -5723,7 +5766,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter7\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -5738,7 +5781,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5799,7 +5842,7 @@
         "x": 4,
         "y": 117
       },
-      "id": 98,
+      "id": 73,
       "options": {
         "legend": {
           "calcs": [],
@@ -5817,7 +5860,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter7\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -5832,7 +5875,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5864,7 +5907,7 @@
         "x": 12,
         "y": 117
       },
-      "id": 99,
+      "id": 74,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -5882,7 +5925,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter7\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -5897,7 +5940,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5959,7 +6002,7 @@
         "x": 16,
         "y": 117
       },
-      "id": 100,
+      "id": 75,
       "options": {
         "legend": {
           "calcs": [],
@@ -5977,7 +6020,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter7\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -5992,7 +6035,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6053,7 +6096,7 @@
         "x": 0,
         "y": 123
       },
-      "id": 122,
+      "id": 76,
       "options": {
         "legend": {
           "calcs": [],
@@ -6070,7 +6113,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg_over_time(ping_avg_time{job=\"ping_exporter7\"}[5m])",
@@ -6085,7 +6128,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6146,7 +6189,7 @@
         "x": 13,
         "y": 123
       },
-      "id": 96,
+      "id": 77,
       "options": {
         "legend": {
           "calcs": [],
@@ -6163,7 +6206,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "rate(windows_net_packets_outbound_errors_total{job=\"windows_exporter7\"}[5m]) + rate(windows_net_packets_received_errors_total{job=\"windows_exporter7\"}[5m])/ rate(windows_net_packets_total{job=\"windows_exporter7\"}[5m])",
@@ -6178,7 +6221,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6208,7 +6251,7 @@
         "x": 0,
         "y": 130
       },
-      "id": 101,
+      "id": 78,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -6228,7 +6271,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -6245,7 +6288,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6286,7 +6329,7 @@
         "x": 5,
         "y": 130
       },
-      "id": 105,
+      "id": 79,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -6304,7 +6347,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "nvidia_smi_utilization_gpu_ratio{job=\"NVIDIA8\"}",
@@ -6319,7 +6362,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6350,7 +6393,7 @@
         "x": 8,
         "y": 130
       },
-      "id": 106,
+      "id": 80,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -6368,10 +6411,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter8\", instance=\"192.168.4.167:9182\",mode=\"idle\"}[2m])))*100",
+          "expr": "100 - (avg(irate(windows_cpu_time_total{job=\"windows_exporter8\",mode=\"idle\"}[2m])))*100",
           "instant": false,
           "range": true,
           "refId": "A"
@@ -6383,7 +6426,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6444,7 +6487,7 @@
         "x": 11,
         "y": 130
       },
-      "id": 107,
+      "id": 81,
       "options": {
         "legend": {
           "calcs": [],
@@ -6462,7 +6505,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -6480,7 +6523,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6510,7 +6553,7 @@
         "x": 0,
         "y": 133
       },
-      "id": 102,
+      "id": 82,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -6533,7 +6576,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -6552,7 +6595,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6584,7 +6627,7 @@
         "x": 0,
         "y": 136
       },
-      "id": 103,
+      "id": 83,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -6602,7 +6645,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter8\",nic!~'isatap.|VPN.'}[5m])*8/1000000\n",
@@ -6617,7 +6660,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6678,7 +6721,7 @@
         "x": 4,
         "y": 136
       },
-      "id": 104,
+      "id": 84,
       "options": {
         "legend": {
           "calcs": [],
@@ -6696,7 +6739,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_received_total{job=~\"windows_exporter8\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -6711,7 +6754,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6743,7 +6786,7 @@
         "x": 12,
         "y": 136
       },
-      "id": 109,
+      "id": 85,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -6761,7 +6804,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter8\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -6776,7 +6819,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6838,7 +6881,7 @@
         "x": 16,
         "y": 136
       },
-      "id": 110,
+      "id": 86,
       "options": {
         "legend": {
           "calcs": [],
@@ -6856,7 +6899,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "irate(windows_net_bytes_sent_total{job=~\"windows_exporter8\",nic!~'isatap.|VPN.'}[5m])*8/1000000",
@@ -6871,7 +6914,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6932,7 +6975,7 @@
         "x": 0,
         "y": 142
       },
-      "id": 123,
+      "id": 87,
       "options": {
         "legend": {
           "calcs": [],
@@ -6949,7 +6992,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg_over_time(ping_avg_time{job=\"ping_exporter8\"}[5m])",
@@ -6964,7 +7007,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7025,7 +7068,7 @@
         "x": 12,
         "y": 142
       },
-      "id": 108,
+      "id": 88,
       "options": {
         "legend": {
           "calcs": [],
@@ -7042,7 +7085,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "rate(windows_net_packets_outbound_errors_total{job=\"windows_exporter8\"}[5m]) + rate(windows_net_packets_received_errors_total{job=\"windows_exporter8\"}[5m])/ rate(windows_net_packets_total{job=\"windows_exporter8\"}[5m])",
@@ -7057,7 +7100,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7089,7 +7132,7 @@
         "x": 0,
         "y": 148
       },
-      "id": 111,
+      "id": 89,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -7107,7 +7150,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(irate(windows_net_bytes_received_total{job=~\"windows_exporter[1-8]\",nic!~'isatap.|VPN.'}[5m])*8/1000000)\n",
@@ -7122,7 +7165,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7183,7 +7226,7 @@
         "x": 4,
         "y": 148
       },
-      "id": 112,
+      "id": 90,
       "options": {
         "legend": {
           "calcs": [],
@@ -7201,7 +7244,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(irate(windows_net_bytes_received_total{job=~\"windows_exporter[1-8]\",nic!~'isatap.|VPN.'}[5m])*8/1000000)",
@@ -7216,7 +7259,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7248,7 +7291,7 @@
         "x": 12,
         "y": 148
       },
-      "id": 113,
+      "id": 91,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -7266,7 +7309,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(irate(windows_net_bytes_sent_total{job=~\"windows_exporter[1-8]\",nic!~'isatap.|VPN.'}[5m])*8/1000000)",
@@ -7281,7 +7324,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7343,7 +7386,7 @@
         "x": 16,
         "y": 148
       },
-      "id": 114,
+      "id": 92,
       "options": {
         "legend": {
           "calcs": [],
@@ -7361,7 +7404,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(irate(windows_net_bytes_sent_total{job=~\"windows_exporter[1-8]\",nic!~'isatap.|VPN.'}[5m])*8/1000000)",
@@ -7376,7 +7419,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7437,7 +7480,7 @@
         "x": 0,
         "y": 154
       },
-      "id": 115,
+      "id": 93,
       "options": {
         "legend": {
           "calcs": [],
@@ -7454,7 +7497,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(\n    (\n        rate(windows_net_packets_outbound_errors_total{job=~\"windows_exporter[1-8]\"}[5m]) + \n        rate(windows_net_packets_received_errors_total{job=~\"windows_exporter[1-8]\"}[5m])\n    ) \n    / \n    rate(windows_net_packets_total{job=~\"windows_exporter[1-8]\"}[5m])\n)\n",
@@ -7469,7 +7512,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7530,7 +7573,7 @@
         "x": 6,
         "y": 154
       },
-      "id": 125,
+      "id": 94,
       "options": {
         "legend": {
           "calcs": [],
@@ -7547,7 +7590,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ae3192bb-e1fe-4bdd-b087-f67f269b4079"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(avg_over_time(ping_avg_time{job=~\"ping_exporter[1-8]\"}[5m]))",
@@ -7573,8 +7616,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "XR_CUBE",
-  "uid": "b4307069-b390-4c30-adac-e7397c3e672bdsk",
-  "version": 13,
+  "title": "XR_CUBEi",
+  "uid": "b4307069-b390-4c30-adac-e7397c3e672bdskk",
+  "version": 3,
   "weekStart": ""
 }
