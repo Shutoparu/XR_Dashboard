@@ -15,6 +15,7 @@ fi
 mkdir configs/grafana_conf
 mkdir configs/nginx_conf
 mkdir configs/OvenSpace_conf
+mkdir configs/prometheus_conf
 python misc/parse_config.py
 
 
