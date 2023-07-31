@@ -1,6 +1,6 @@
 #!/bin/bash
 
-Host=$(cat ip.txt | grep Host | cut -d ' ' -f 2)
+Host=$(cat config.cfg | grep dns_hostname | cut -d ' ' -f 3)
 
 openssl genrsa -out ssl_pem/cert-key.pem 4096
 openssl req -new -sha256 -subj "/CN=$Host" -key ssl_pem/cert-key.pem -out ssl_pem/cert.csr

@@ -23,9 +23,9 @@
             <div id="dashboard" class="row container d-flex flex-column display-panel">
                 <!-- This row might need to remove. Change to iframe -->
                 <div id="general_info" class="container d-flex flex-row justify-content-center">
-                    <iframe class="col-4" id='1' height="200" frameborder="0"></iframe>
-                    <iframe class="col-4" id='2' height="200" frameborder="0"></iframe>
-                    <iframe class="col-4" id='3' height="200" frameborder="0"></iframe>
+                    <iframe class="col-4" id="num_connection" height="200" frameborder="0"></iframe>
+                    <iframe class="col-4" id='num_edge' height="200" frameborder="0"></iframe>
+                    <iframe class="col-4" id='num_terminal' height="200" frameborder="0"></iframe>
                 </div>
                 <div class="container d-flex flex-row">
                     <iframe class="col-6" id='download' height="200" frameborder="0"></iframe>
@@ -55,9 +55,9 @@
                     document.getElementById("latency").src = get_src(94);
 
                     // TODO fix here with proper panel id
-                    document.getElementById("1").src = get_src(1);
-                    document.getElementById("2").src = get_src(2);
-                    document.getElementById("3").src = get_src(3);
+                    document.getElementById("num_connection").src = get_src(95);
+                    document.getElementById("num_edge").src = get_src(96);
+                    document.getElementById("num_terminal").src = get_src(97);
                 </script>
             </div>
         </div>
