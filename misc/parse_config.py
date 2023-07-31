@@ -43,11 +43,15 @@ with open('config_template/nginx.conf','r', encoding="utf-8") as f:
     f.close()
 
 # Set config for OvenSpace
-config_ovenspace = configparser.ConfigParser()
-config_ovenspace.read('config_template/ovenspace.cfg', encoding="utf-8")
-config_ovenspace['OVENSPACE']['OME_HOST'] = host
-with open('configs/OvenSpace_conf/ovenspace.cfg', 'w', encoding="utf-8") as f:
-    config_ovenspace.write(f)
+with open('config_template/ovenspace.cfg','r', encoding="utf-8") as f:
+    with open('configs/OvenSpace_conf/ovenspace.cfg','w', encoding="utf-8") as g:
+        for line in f:
+            if line.strip().split(' ')[0] == 'OME_HOST':
+                new_line = 'OME_HOST = "' + ip + '"\n' 
+                g.write(new_line)
+            else:
+                g.write(line)
+        g.close()
     f.close()
 
 # Set config for OpenSSL
