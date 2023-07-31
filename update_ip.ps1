@@ -1,5 +1,5 @@
 # Create new configs and certificates
-source env\Script\activate
+.\env\Script\activate
 python misc\parse_config.py
 .\misc\generate_cert.ps1
 

@@ -22,7 +22,6 @@ exporters['windows_exporter'] = config['EDGE.SCRAPE.PORT']['windows_exporter']
 config_grafana = configparser.ConfigParser()
 config_grafana.read('config_template/grafana.ini', encoding="utf-8")
 config_grafana['server']['domain'] = host
-config_grafana['server']['http_addr'] = ip
 with open('configs/grafana_conf/grafana.ini', 'w', encoding="utf-8") as f:
     config_grafana.write(f)
     f.close()
