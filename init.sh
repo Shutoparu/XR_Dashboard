@@ -7,7 +7,7 @@ pip install -r requirements.txt
 
 
 # Set up configs
-if[ ! -d ssl_pem ]; then
+if [ ! -d ssl_pem ]; then
     mkdir ssl_pem
     touch ssl_pem/extfile.conf
     chmod 777 ssl_pem/extfile.conf

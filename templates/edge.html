@@ -59,52 +59,48 @@
                 </div>
             </div>
             <div class="body" id="page-area">
-                <div class="container flex-grow-1 pt-4 tabcontent" id="detail">
-                    <div id="detail_inner" class="row">
-                        <div class="container d-flex flex-column align-items-center">
-                            <div class="container row d-flex">
-                                <div class="col-8">
-                                    <div class="seat mb-4 ratio ratio-16x9" id="seat">
-                                        <div class="player-area">
-                                            <div id="player_edge"></div>
-                                        </div>
-                                        <div class="name-holder h-25">
-                                            <p id="stream-name" class="fa-2x">EDGE GPU {{edge_id}}
-                                                (<span id="edge_resolution">Cannot get
-                                                    resolution</span>)
-                                            </p>
-                                        </div>
-                                    </div>
+                <div class="container d-flex flex-column  flex-grow-1 pt-4">
+                    <div class="row container tab-content align-content-center mb-4">
+                        <div class="col-8">
+                            <div class="seat ratio ratio-16x9" id="seat">
+                                <div class="player-area">
+                                    <div id="player_edge"></div>
                                 </div>
-                                <div class="container col-4 d-flex flex-column">
-                                    <div id="about"
-                                        class="container d-flex flex-column align-items-center p-0 flex-fill">
-                                        <div id="about_IP"
-                                            class="container d-flex flex-row justify-content-center px-0">
-                                            <iframe id='IP' frameborder="0"></iframe>
-                                        </div>
-                                        <div id="about_gpu_name"
-                                            class="container d-flex flex-row justify-content-center px-0">
-                                            <iframe id='gpu_name' frameborder="0"></iframe>
-                                        </div>
-                                    </div>
-                                    <div id="hardware"
-                                        class="container d-flex flex-row justify-content-center p-0 flex-fill">
-                                        <iframe id='cpu' class="col-6" frameborder="0"></iframe>
-                                        <iframe id='gpu' class="col-6" frameborder="0"></iframe>
-                                    </div>
+                                <div class="name-holder h-25">
+                                    <p id="stream-name" class="fa-2x">EDGE GPU {{edge_id}}
+                                        (<span id="edge_resolution">Cannot get
+                                            resolution</span>)
+                                    </p>
                                 </div>
-                            </div>
-                            <div id="net"
-                                class="container row d-flex flex-row justify-content-center">
-                                <iframe id='latency' class="col-4" height="200"
-                                    frameborder="0"></iframe>
-                                <iframe id='throughput' class="col-4" height="200"
-                                    frameborder="0"></iframe>
-                                <iframe id='packet_loss' class="col-4" height="200"
-                                    frameborder="0"></iframe>
                             </div>
                         </div>
+                        <div id="about" class="container col-4 d-flex flex-column">
+                            <div class="container-fluid d-flex flex-column align-items-center p-0">
+                                <div id="about_IP"
+                                    class="container d-flex flex-row justify-content-center p-0">
+                                    <iframe class="d-flex flex-fill col-12" id='IP' frameborder="0"
+                                        style="padding-bottom: 10px!important;"></iframe>
+                                </div>
+                                <div id="about_gpu_name"
+                                    class="container d-flex flex-row justify-content-center p-0">
+                                    <iframe class="d-flex flex-fill col-12" id='gpu_name'
+                                        frameborder="0"
+                                        style="padding-bottom: 10px!important;"></iframe>
+                                </div>
+                            </div>
+                            <div class="container d-flex flex-row justify-content-center p-0 ">
+                                <iframe id='cpu' class="col-6" frameborder="0"
+                                    style="padding-right: 5px!important;"></iframe>
+                                <iframe id='gpu' class="col-6" frameborder="0"
+                                    style="padding-left: 5px!important;"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="net" class="container row d-flex flex-row justify-content-center">
+                        <iframe id='latency' class="col-4" height="200" frameborder="0"></iframe>
+                        <iframe id='throughput' class="col-4" height="200" frameborder="0"></iframe>
+                        <iframe id='packet_loss' class="col-4" height="200"
+                            frameborder="0"></iframe>
                     </div>
                 </div>
             </div>
