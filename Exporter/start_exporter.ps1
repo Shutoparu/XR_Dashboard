@@ -1,7 +1,7 @@
 # Define the paths to your .exe files
-$exe1 = ".\nvidia_gpu_exporter_1.2.0_windows_x86_64\nvidia_gpu_exporter.exe"
-$exe2 = ".\ping_exporter-main\main.exe"
-$exe3 = ".\windows_exporter\windows_exporter.exe"
+$exe1 = ".\nvidia_gpu_exporter.exe"
+$exe2 = ".\ping_exporter.exe"
+$exe3 = ".\windows_exporter.exe"
 
 # Get the IP address of the current machine
 $ip = Read-Host "Please enter the IP address to ping: "
