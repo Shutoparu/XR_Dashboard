@@ -1,3 +1,7 @@
+# Uncomment the two lines to set up alias for python3.6 and openssl
+# sal -Name python36 -Value path/to/python3.6.exe
+# sal -Name openssl -Value path/to/openssl.exe
+
 # Set up python venv using python 3.6
 python36 -m venv env
 .\env\Scripts/Activate.ps1

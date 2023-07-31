@@ -1,3 +1,6 @@
+# Uncomment the line to set up alias for openssl
+# sal -Name openssl -Value path/to/openssl.exe
+
 $myHost = (Get-Content "ip.txt" | Select-String -Pattern "Host" | ForEach-Object { $_.ToString().Split(' ')[1] })
 
 openssl genrsa -out "ssl_pem\cert-key.pem" 4096
