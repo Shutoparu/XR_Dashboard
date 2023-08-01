@@ -1,5 +1,5 @@
 # Activate the virtual environment (assuming it's called 'env')
-.\env\Scripts\Activate
+.\env\Scripts\activate
 
 # Stop the previous process using 'stop.ps1'
 .\stop.ps1
