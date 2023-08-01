@@ -15,5 +15,3 @@ configs/nginx_conf
 configs/OvenSpace_conf
 configs/prometheus_conf
 *.log
-parse.py
-XR_CUBE_T.json

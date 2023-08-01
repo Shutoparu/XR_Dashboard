@@ -1,7 +1,7 @@
 # Activate the virtual environment (assuming it's called 'env')
 .\env\Scripts\Activate
 
-# Stop the previous process using 'stop.sh' (assuming it's a bash script)
+# Stop the previous process using 'stop.ps1'
 .\stop.ps1
 
 # Start the Gunicorn server
