@@ -58,7 +58,7 @@ if (-Not (Test-Path "ssl_pem\ca-key.pem" -PathType Leaf)) {
     echo "ca already exists. skip creating ca"
 }
 echo "creating server certificate"
-.\misc\generate_cert_windows.ps1
+.\misc\generate_cert.ps1
 
 # Set up docker containers if doesn't exist
 echo "creating docker containers"
