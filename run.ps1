@@ -5,4 +5,5 @@
 .\stop.ps1
 
 # Start the Gunicorn server
-Start-Process -NoNewWindow -FilePath "gunicorn" -ArgumentList "--bind", "0.0.0.0:5000", "--worker-class", "eventlet", "-w", "1", "--threads", "1", "OvenSpace:app" -RedirectStandardOutput "OvenSpace.log" -RedirectStandardError "OvenSpace.log"
+# Start-Process -NoNewWindow -FilePath "gunicorn" -ArgumentList "--bind", "0.0.0.0:5000", "--worker-class", "eventlet", "-w", "1", "--threads", "1", "OvenSpace:app" -RedirectStandardOutput "OvenSpace.log" -RedirectStandardError "OvenSpace.log"
+& gunicorn --bind 0.0.0.0:5000 --worker-class eventlet -w 1 --threads 1 OvenSpace:app 2>&1 >> OvenSpace.log
