@@ -6,6 +6,7 @@ python misc/parse_config.py
 ./misc/generate_cert.sh
 
 # Restart docker containers
+echo "restarting containers"
 docker restart OME_XR
 docker restart Nginx_XR
 docker restart Grafana_XR
