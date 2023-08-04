@@ -61,28 +61,28 @@ echo "creating server certificate"
 # Set up docker containers if doesn't exist
 if [ ! "$(docker ps -aq -f name=OME_XR)" ]; then
     echo "creating OME_XR"
-    docker run -v ./configs/OME_conf/Server.xml:/opt/ovenmediaengine/bin/origin_conf/Server.xml -v ./ssl_pem:/etc/cert -p 3333:3333 -p 3334:3334 -p 3478:3478 -p 8081:8081 -p 8082:8082 -p 10000-10010:10000-10010/udp --name OME_XR -d airensoft/ovenmediaengine:dev
+    docker run -v /$(pwd)/configs/OME_conf/Server.xml:/opt/ovenmediaengine/bin/origin_conf/Server.xml -v /$(pwd)/ssl_pem:/etc/cert -p 3333:3333 -p 3334:3334 -p 3478:3478 -p 8081:8081 -p 8082:8082 -p 10000-10010:10000-10010/udp --name OME_XR -d airensoft/ovenmediaengine:dev
 else
     echo "OME_XR already exists. restarting OME_XR"
     docker restart OME_XR
 fi
 if [ ! "$(docker ps -aq -f name=Nginx_XR)" ]; then
     echo "creating Nginx_XR"
-    docker run -v ./configs/nginx_conf/nginx.conf:/etc/nginx/conf.d/default.conf -v ./ssl_pem:/etc/nginx/cert -p 7777:80 -p 7778:443 --name Nginx_XR -d nginx
+    docker run -v /$(pwd)/configs/nginx_conf/nginx.conf:/etc/nginx/conf.d/default.conf -v /$(pwd)/ssl_pem:/etc/nginx/cert -p 7777:80 -p 7778:443 --name Nginx_XR -d nginx
 else
     echo "Nginx_XR already exists. restarting Nginx_XR"
     docker restart Nginx_XR
 fi
 if [ ! "$(docker ps -aq -f name=Grafana_XR)" ]; then
     echo "creating Grafana_XR"
-    docker run -v ./configs/grafana_conf/grafana.ini:/etc/grafana/grafana.ini -v ./ssl_pem:/etc/grafana/cert -p 3000:3000 --name Grafana_XR -d grafana/grafana-enterprise
+    docker run -v /$(pwd)/configs/grafana_conf/grafana.ini:/etc/grafana/grafana.ini -v /$(pwd)/ssl_pem:/etc/grafana/cert -p 3000:3000 --name Grafana_XR -d grafana/grafana-enterprise
 else
     echo "Grafana_XR already exists. restarting Grafana_XR"
     docker restart Grafana_XR
 fi
 if [ ! "$(docker ps -aq -f name=Prometheus_XR)" ]; then
     echo "creating Prometheus_XR"
-    docker run -v ./configs/prometheus_conf/prometheus.yml:/etc/prometheus/prometheus.yml -p 9090:9090 --name Prometheus_XR -d prom/prometheus
+    docker run -v /$(pwd)/configs/prometheus_conf/prometheus.yml:/etc/prometheus/prometheus.yml -p 9090:9090 --name Prometheus_XR -d prom/prometheus
 else
     echo "Prometheus_XR already exists. restarting Prometheus_XR"
     docker restart Prometheus_XR
