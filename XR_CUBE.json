@@ -7610,7 +7610,8 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "#2a3340",
+            "mode": "fixed"
           },
           "mappings": [],
           "noValue": "8",
@@ -7638,7 +7639,7 @@
       },
       "id": 95,
       "options": {
-        "colorMode": "value",
+        "colorMode": "background_solid",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -7663,7 +7664,8 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "#3fbec9",
+            "mode": "fixed"
           },
           "mappings": [],
           "thresholds": {
@@ -7690,7 +7692,7 @@
       },
       "id": 96,
       "options": {
-        "colorMode": "value",
+        "colorMode": "background_solid",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -7728,7 +7730,8 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "#3fbec9",
+            "mode": "fixed"
           },
           "mappings": [],
           "noValue": "8",
@@ -7756,7 +7759,7 @@
       },
       "id": 97,
       "options": {
-        "colorMode": "value",
+        "colorMode": "background_solid",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -7802,6 +7805,6 @@
   "timezone": "",
   "title": "XR_CUBE",
   "uid": "b4307069-b390-4c30-adac-e7397c3e672bdsk",
-  "version": 3,
+  "version": 2,
   "weekStart": ""
 }
