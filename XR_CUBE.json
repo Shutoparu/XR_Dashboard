@@ -7613,8 +7613,8 @@
             "fixedColor": "#2a3340",
             "mode": "fixed"
           },
+          "displayName": "XR Connections",
           "mappings": [],
-          "noValue": "XR Connections: 8",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -7632,7 +7632,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 10,
         "w": 12,
         "x": 0,
         "y": 160
@@ -7640,9 +7640,9 @@
       "id": 95,
       "options": {
         "colorMode": "background_solid",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "vertical",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -7650,9 +7650,26 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "text": {
+          "titleSize": 100,
+          "valueSize": 100
+        },
+        "textMode": "value_and_name"
       },
       "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "3",
+          "instant": false,
+          "range": true,
+          "refId": "A"
+        }
+      ],
       "title": "XR Connections",
       "transparent": true,
       "type": "stat"
@@ -7668,7 +7685,7 @@
             "fixedColor": "#3fbec9",
             "mode": "fixed"
           },
-          "displayName": "Edge GPUs:",
+          "displayName": "Edge GPUs",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -7687,7 +7704,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 10,
         "w": 12,
         "x": 12,
         "y": 160
@@ -7697,7 +7714,7 @@
         "colorMode": "background_solid",
         "graphMode": "none",
         "justifyMode": "center",
-        "orientation": "auto",
+        "orientation": "vertical",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -7740,8 +7757,8 @@
             "fixedColor": "#3fbec9",
             "mode": "fixed"
           },
+          "displayName": "Terminal Devices",
           "mappings": [],
-          "noValue": "Terminal Devices: 8",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -7759,17 +7776,17 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 12,
+        "h": 11,
+        "w": 13,
         "x": 6,
-        "y": 168
+        "y": 170
       },
       "id": 97,
       "options": {
         "colorMode": "background_solid",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "vertical",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -7777,7 +7794,11 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "text": {
+          "titleSize": 100,
+          "valueSize": 100
+        },
+        "textMode": "value_and_name"
       },
       "pluginVersion": "10.0.2",
       "targets": [
@@ -7787,7 +7808,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "",
+          "expr": "8",
           "instant": false,
           "range": true,
           "refId": "A"
@@ -7813,6 +7834,6 @@
   "timezone": "",
   "title": "XR_CUBE",
   "uid": "b4307069-b390-4c30-adac-e7397c3e6",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
