@@ -9,76 +9,115 @@ rule_files:
 scrape_configs:
   - job_name: prometheus
     static_configs:
-      - targets: [':9090']
+      - targets: ['localhost:9090']
+
   - job_name: NVIDIA1
     static_configs:
-      - targets: [':9385']
+      - targets: ['']
+
   - job_name: windows_exporter1
     static_configs:
-      - targets: [':9182']
+      - targets: ['']
+
   - job_name: ping_exporter1
     static_configs:
-      - targets: [':8888']
+      - targets: ['']
+
   - job_name: NVIDIA2
     static_configs:
-      - targets: [':9385']
+      - targets: ['']
+  
+
   - job_name: windows_exporter2
     static_configs:
-      - targets: [':9182']
+      - targets: ['']
+
   - job_name: ping_exporter2
     static_configs:
-      - targets: [':8888']
+      - targets: ['']
+
+
   - job_name: NVIDIA3
     static_configs:
-      - targets: [':9385']
+      - targets: ['']
+  
+
   - job_name: windows_exporter3
     static_configs:
-      - targets: [':9182']
+      - targets: ['']
+
   - job_name: ping_exporter3
     static_configs:
-      - targets: [':8888']
+      - targets: ['']
+
+
   - job_name: NVIDIA4
     static_configs:
-      - targets: [':9385']
+      - targets: ['']
+  
+
   - job_name: windows_exporter4
     static_configs:
-      - targets: [':9182']
+      - targets: ['']
+
   - job_name: ping_exporter4
     static_configs:
-      - targets: [':8888']
+      - targets: ['']
+
   - job_name: NVIDIA5
     static_configs:
-      - targets: [':9385']
+      - targets: ['']
+  
+
   - job_name: windows_exporter5
     static_configs:
-      - targets: [':9182']
+      - targets: ['']
+
   - job_name: ping_exporter5
     static_configs:
-      - targets: [':8888']
+      - targets: ['']
+
+
   - job_name: NVIDIA6
     static_configs:
-      - targets: [':9385']
+      - targets: ['']
+  
+
   - job_name: windows_exporter6
     static_configs:
-      - targets: [':9182']
+      - targets: ['']
+
   - job_name: ping_exporter6
     static_configs:
-      - targets: [':8888']
+      - targets: ['']
+
   - job_name: NVIDIA7
     static_configs:
-      - targets: [':9385']
+      - targets: ['']
+  
+
   - job_name: windows_exporter7
     static_configs:
-      - targets: [':9182']
+      - targets: ['']
+
   - job_name: ping_exporter7
     static_configs:
-      - targets: [':8888']
+      - targets: ['']
+
   - job_name: NVIDIA8
     static_configs:
-      - targets: [':9385']
+      - targets: ['']
+  
+
   - job_name: windows_exporter8
     static_configs:
-      - targets: [':9182']
+      - targets: ['']
+
   - job_name: ping_exporter8
     static_configs:
-      - targets: [':8888']
+      - targets: ['']
+
+
+ 
+
+
