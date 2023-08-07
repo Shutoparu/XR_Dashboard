@@ -23,8 +23,8 @@
                 <IceCandidates>
                     <TcpRelay>*:3478</TcpRelay>
                     <!-- <TcpRelay>[::]:3478</TcpRelay> -->
-                    <IceCandidate>*:10000-10005/udp</IceCandidate>
-                    <!-- <IceCandidate>[::]:10000-10005/udp</IceCandidate> -->
+                    <IceCandidate>*:10000-10010/udp</IceCandidate>
+                    <!-- <IceCandidate>[::]:10000-10010/udp</IceCandidate> -->
                 </IceCandidates>
             </WebRTC>
         </Providers>
@@ -37,8 +37,8 @@
                 <IceCandidates>
                     <TcpRelay>*:3478</TcpRelay>
                     <!-- <TcpRelay>[::]:3478</TcpRelay> -->
-                    <IceCandidate>*:10000-10005/udp</IceCandidate>
-                    <!-- <IceCandidate>[::]:10000-10005/udp</IceCandidate> -->
+                    <IceCandidate>*:10000-10010/udp</IceCandidate>
+                    <!-- <IceCandidate>[::]:10000-10010/udp</IceCandidate> -->
                 </IceCandidates>
             </WebRTC>
             <LLHLS>
