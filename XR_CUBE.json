@@ -7613,8 +7613,8 @@
             "fixedColor": "#2a3340",
             "mode": "fixed"
           },
+          "displayName": "XR Connections",
           "mappings": [],
-          "noValue": "8",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -7632,7 +7632,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 10,
         "w": 12,
         "x": 0,
         "y": 160
@@ -7640,9 +7640,9 @@
       "id": 95,
       "options": {
         "colorMode": "background_solid",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "vertical",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -7650,10 +7650,28 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "text": {
+          "titleSize": 100,
+          "valueSize": 100
+        },
+        "textMode": "value_and_name"
       },
       "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "3",
+          "instant": false,
+          "range": true,
+          "refId": "A"
+        }
+      ],
       "title": "XR Connections",
+      "transparent": true,
       "type": "stat"
     },
     {
@@ -7667,6 +7685,7 @@
             "fixedColor": "#3fbec9",
             "mode": "fixed"
           },
+          "displayName": "Edge GPUs",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -7685,7 +7704,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 10,
         "w": 12,
         "x": 12,
         "y": 160
@@ -7693,9 +7712,9 @@
       "id": 96,
       "options": {
         "colorMode": "background_solid",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "vertical",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -7703,7 +7722,11 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "text": {
+          "titleSize": 100,
+          "valueSize": 100
+        },
+        "textMode": "value_and_name"
       },
       "pluginVersion": "10.0.2",
       "targets": [
@@ -7720,6 +7743,7 @@
         }
       ],
       "title": "Edge GPUs",
+      "transparent": true,
       "type": "stat"
     },
     {
@@ -7733,8 +7757,8 @@
             "fixedColor": "#3fbec9",
             "mode": "fixed"
           },
+          "displayName": "Terminal Devices",
           "mappings": [],
-          "noValue": "8",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -7752,17 +7776,17 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 12,
+        "h": 11,
+        "w": 13,
         "x": 6,
-        "y": 168
+        "y": 170
       },
       "id": 97,
       "options": {
         "colorMode": "background_solid",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "vertical",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -7770,7 +7794,11 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "text": {
+          "titleSize": 100,
+          "valueSize": 100
+        },
+        "textMode": "value_and_name"
       },
       "pluginVersion": "10.0.2",
       "targets": [
@@ -7780,13 +7808,14 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "",
+          "expr": "8",
           "instant": false,
           "range": true,
           "refId": "A"
         }
       ],
       "title": "Terminal Devices",
+      "transparent": true,
       "type": "stat"
     }
   ],
@@ -7804,7 +7833,7 @@
   "timepicker": {},
   "timezone": "",
   "title": "XR_CUBE",
-  "uid": "b4307069-b390-4c30-adac-e7397c3e672bdsk",
+  "uid": "b4307069-b390-4c30-adac-e7397c3e6",
   "version": 2,
   "weekStart": ""
 }
