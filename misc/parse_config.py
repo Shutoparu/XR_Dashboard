@@ -18,6 +18,8 @@ exporters['NVIDIA'] = config['EDGE.SCRAPE.PORT']['NVIDIA_exporter']
 exporters['ping_exporter'] = config['EDGE.SCRAPE.PORT']['ping_exporter']
 exporters['windows_exporter'] = config['EDGE.SCRAPE.PORT']['windows_exporter']
 
+dashboard_settings = dict(config['DASHBOARD.DISPLAY'])
+
 #  Set config for Grafana
 config_grafana = configparser.ConfigParser()
 config_grafana.read('config_template/grafana.ini', encoding="utf-8")
@@ -50,6 +52,9 @@ with open('config_template/ovenspace.cfg','r', encoding="utf-8") as f:
                 g.write(new_line)
             else:
                 g.write(line)
+        for k in dashboard_settings.keys():
+            new_line = k.upper() + ' = "' + dashboard_settings[k] + '"\n'
+            g.write(new_line)
         g.close()
     f.close()
 
