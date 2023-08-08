@@ -7664,7 +7664,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "3",
+          "expr": "sum(client_ip_address{job=~\"ping_exporter[1-8]\"})",
           "instant": false,
           "range": true,
           "refId": "A"
@@ -7834,6 +7834,6 @@
   "timezone": "",
   "title": "XR_CUBE",
   "uid": "b4307069-b390-4c30-adac-e7397c3e6",
-  "version": 2,
+  "version": 3,
   "weekStart": ""
 }
