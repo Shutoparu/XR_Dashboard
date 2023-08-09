@@ -1,25 +1,22 @@
 @echo off
 
-REM Define the paths to your .exe files
 set "exe1=.\nvidia_gpu_exporter.exe"
-set "exe2=.\ping_exporter.exe"
+set "exe2=.\xrcube_exporter.exe"
 set "exe3=.\windows_exporter.exe"
-
-REM Get the IP address of the current machine
-set /p ip="Please enter the IP address to ping: "
-
-REM Define the arguments for the main.exe
-set "main_args=-port 8888 -pingaddr %ip% -count 4"
 
 REM Create a temporary PowerShell script
 set "ps1_file=%temp%\temp_script.ps1"
 
 REM Add NVSMI to path so that nvidia_smi can be found
-echo Set-Item -Path Env:Path -Value ($Env:Path + ";C:\Program Files\NVIDIA Corporation\NVSMI\") >> "%ps1_file%"
+echo Set-Item -Path Env:Path -Value ($Env:Path + ";C:\Program Files\NVIDIA Corporation\NVSMI") >> "%ps1_file%"
 
-REM Script to execute .exe's
+
 echo Start-Process "%exe1%"  >> "%ps1_file%"
-echo Start-Process "%exe2%" -ArgumentList "%main_args%"  >> "%ps1_file%"
+
+
+echo $ip = (Test-Connection -ComputerName (hostname) -Count 1).IPv4Address.IPAddressToString >> "%ps1_file%"
+echo Start-Process "%exe2%" -ArgumentList "-ip", $ip  >> "%ps1_file%"
+
 echo Start-Process "%exe3%"  >> "%ps1_file%"
 
 REM Execute the temporary PowerShell script
