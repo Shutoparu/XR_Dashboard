@@ -10,8 +10,8 @@ package.json
 package-lock.json
 target
 ssl_pem/
-configs/grafana_conf
-configs/nginx_conf
-configs/OvenSpace_conf
-configs/prometheus_conf
+configs/grafana_conf/grafana.ini
+configs/nginx_conf/nginx.conf
+configs/OvenSpace_conf/ovenspace.cfg
+configs/prometheus_conf/prometheus.yml
 *.log
