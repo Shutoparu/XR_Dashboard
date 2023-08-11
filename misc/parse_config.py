@@ -16,7 +16,7 @@ for i in range(1,9):
 exporters = {}
 
 exporters['NVIDIA'] = config['EDGE.SCRAPE.PORT']['NVIDIA_exporter']
-exporters['ping_exporter'] = config['EDGE.SCRAPE.PORT']['ping_exporter']
+exporters['XRCube_exporter'] = config['EDGE.SCRAPE.PORT']['XRCube_exporter']
 exporters['windows_exporter'] = config['EDGE.SCRAPE.PORT']['windows_exporter']
 
 dashboard_settings = dict(config['DASHBOARD.DISPLAY'])

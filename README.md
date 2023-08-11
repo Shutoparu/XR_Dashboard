@@ -109,7 +109,7 @@ Below are the three exporters we use:
 - [Nvidia Gpu Exporter](https://github.com/utkuozdemir/nvidia_gpu_exporter)
     - Default port: 9835
   
-- [XRCube Exporter]() // HYPERLINK TO BE UPDATED
+- [XRCube Exporter](https://github.com/williamGts/XR_Cube_Exporter) // HYPERLINK TO BE UPDATED
     - Default port: 8888
 
 - [Windows Exporter](https://github.com/prometheus-community/windows_exporter)
@@ -139,7 +139,7 @@ edge_8 = 192.168.3.54
 [EDGE.SCRAPE.PORT]
 windows_exporter = 9182
 NVIDIA_exporter = 9835
-ping_exporter = 8888
+XRCube_exporter = 8888
 ```
 
 Change the IP addresses and ports to the ones you are using. If default ports are used, you can leave it as it is.
@@ -255,8 +255,8 @@ Here, we provide two methods for you to choose from.
 ##### 2. Uncomment the following lines in `init.ps1` and `.\misc\generate_cert.ps1`
    1. Uncomment and modify the following lines in `init.ps1`
       ```
-      sal -Name python36 -Value path/to/python3.6.exe
-      sal -Name openssl -Value path/to/openssl.exe
+      sal -Name python36 -Value "path/to/python3.6.exe"
+      sal -Name openssl -Value "path/to/openssl.exe"
       ```
    2. Uncomment and modify the following line in `.\misc\generate_cert.ps1`
       ```
