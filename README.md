@@ -109,7 +109,7 @@ Below are the three exporters we use:
 - [Nvidia Gpu Exporter](https://github.com/utkuozdemir/nvidia_gpu_exporter)
     - Default port: 9835
   
-- [XRCube Exporter](https://github.com/2767321434/ping_exporter)
+- [XRCube Exporter]() // HYPERLINK TO BE UPDATED
     - Default port: 8888
 
 - [Windows Exporter](https://github.com/prometheus-community/windows_exporter)

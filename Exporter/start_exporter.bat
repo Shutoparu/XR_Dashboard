@@ -12,11 +12,8 @@ echo Set-Item -Path Env:Path -Value ($Env:Path + ";C:\Program Files\NVIDIA Corpo
 
 
 echo Start-Process "%exe1%"  >> "%ps1_file%"
-
-
 echo $ip = (Test-Connection -ComputerName (hostname) -Count 1).IPv4Address.IPAddressToString >> "%ps1_file%"
 echo Start-Process "%exe2%" -ArgumentList "-ip", $ip  >> "%ps1_file%"
-
 echo Start-Process "%exe3%"  >> "%ps1_file%"
 
 REM Execute the temporary PowerShell script

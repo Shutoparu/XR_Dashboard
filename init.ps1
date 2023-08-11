@@ -21,31 +21,8 @@ if (-Not (Test-Path "ssl_pem" -PathType Container)) {
     Set-Acl -Path "ssl_pem\extfile.conf" -AclObject $acl
 }else{
     echo "ssl_pem already exists. skip creating ssl_pem folder"
-# }
-# if(-Not (Test-Path "configs\grafana_conf" -PathType Container)){
-#     echo "creating configs\grafana_conf folder"
-#     mkdir configs\grafana_conf
-# }else{
-#     echo "configs\grafana_conf already exists. skip creating configs\grafana_conf folder"
-# }
-# if(-Not (Test-Path "configs\nginx_conf" -PathType Container)){
-#     echo "creating configs\nginx_conf folder"
-#     mkdir configs\OME_conf
-# }else{
-#     echo "configs\nginx_conf already exists. skip creating configs\nginx_conf folder"
-# }
-# if(-Not (Test-Path "configs\OvenSpace_conf" -PathType Container)){
-#     echo "creating configs\OvenSpace_conf folder"
-#     mkdir configs\OME_conf
-# }else{
-#     echo "configs\OvenSpace_conf already exists. skip creating configs\OvenSpace_conf folder"
-# }
-# if(-Not (Test-Path "configs\prometheus_conf" -PathType Container)){
-#     echo "creating configs\prometheus_conf folder"
-#     mkdir configs\OME_conf
-# }else{
-#     echo "configs\prometheus_conf already exists. skip creating configs\prometheus_conf folder"
-# }
+}
+
 echo "parsing config..."
 python misc\parse_config.py
 
