@@ -18,30 +18,7 @@ if [ ! -d ssl_pem ]; then
 else
     echo "ssl_pem already exists. skip creating ssl_pem folder"
 fi
-# if [ ! -d configs/grafana_conf ]; then
-#     echo "creating configs/grafana_conf folder"
-#     mkdir configs/grafana_conf
-# else
-#     echo "configs/grafana_conf already exists. skip creating configs/grafana_conf folder"
-# fi
-# if [ ! -d configs/nginx_conf ]; then
-#     echo "creating configs/nginx_conf folder"
-#     mkdir configs/nginx_conf
-# else
-#     echo "configs/nginx_conf already exists. skip creating configs/nginx_conf folder"
-# fi
-# if [ ! -d configs/OvenSpace_conf ]; then
-#     echo "creating configs/OvenSpace_conf folder"
-#     mkdir configs/OvenSpace_conf
-# else
-#     echo "configs/OvenSpace_conf already exists. skip creating configs/OvenSpace_conf folder"
-# fi
-# if [ ! -d configs/prometheus_conf ]; then
-#     echo "creating configs/prometheus_conf folder"
-#     mkdir configs/prometheus_conf
-# else
-#     echo "configs/prometheus_conf already exists. skip creating configs/prometheus_conf folder"
-# fi
+
 echo "parsing config..."
 python misc/parse_config.py
 

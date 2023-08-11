@@ -4,8 +4,9 @@ import yaml
 config = configparser.ConfigParser()
 config.read('config.cfg', encoding="utf-8")
 
-host = config['HOST.IP']['DNS_Hostname']
-ip = config['HOST.IP']['IP_Address']
+host = config['HOST.INFO']['DNS_Hostname']
+ip = config['HOST.INFO']['IP_Address']
+isLinux = config['HOST.INFO']['is_Linux'].lower() == 'true'
 
 edge_ip = {} # 1-indexed
 
@@ -38,6 +39,9 @@ with open('config_template/nginx.conf','r', encoding="utf-8") as f:
             elif line.strip().split(' ')[0] == 'rewrite':
                 new_line = '  rewrite ^(.*)$ https://' + ip + '$1 permanent;\n'
                 g.write(new_line)
+            elif line.strip().split(' ')[0] == 'proxy_pass' and isLinux:
+                new_line = new_line.replace('host.docker.internal','172.17.0.1')
+                g.write(new_line)
             else:
                 g.write(line)
         g.close()
@@ -64,7 +68,6 @@ with open('ssl_pem/extfile.conf','w', encoding="utf-8") as f:
     f.close()
 
 # Set config for Prometheus
-
 with open('config_template/prometheus.yml', 'r', encoding='utf-8') as f:
     prom_conf = yaml.safe_load(f)
     for job in prom_conf['scrape_configs']:

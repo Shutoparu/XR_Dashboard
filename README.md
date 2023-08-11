@@ -221,7 +221,7 @@ Click Sign in on top right of the screen. Log in with the default username and p
 2. Click `Connection -> Add new connection` and search for `Prometheus`.
 3. Click on `Prometheus` and click `Create a Prometheus data source`.
 4. Give the data source a name, e.g. `Prometheus_XR`.
-5. In the `Prometheus server URL` section, enter `http://172.17.0.1:9090` and hit `Save & Test`.
+5. In the `Prometheus server URL` section, enter `http://host.docker.internal:9090`, or `http://172.17.0.1:9090` if you are using Linux as host, and hit `Save & Test`.
 
 ### Import Dashboard
 
