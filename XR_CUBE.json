@@ -21,7 +21,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "10.0.2"
+      "version": "10.0.1"
     },
     {
       "type": "datasource",
@@ -113,7 +113,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -129,7 +129,7 @@
           "refId": "A"
         }
       ],
-      "title": "[1]GPU",
+      "title": "[1] GPU Name",
       "type": "stat"
     },
     {
@@ -151,10 +151,6 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "#6ED0E0",
-                "value": 40
               },
               {
                 "color": "#EAB839",
@@ -189,7 +185,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -203,7 +199,7 @@
           "refId": "A"
         }
       ],
-      "title": "[1] GPU",
+      "title": "[1] GPU Usage (%)",
       "type": "gauge"
     },
     {
@@ -253,7 +249,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -267,7 +263,7 @@
           "refId": "A"
         }
       ],
-      "title": "[1]CPU usage",
+      "title": "[1] CPU Usage (%)",
       "type": "gauge"
     },
     {
@@ -284,23 +280,26 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 54,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
             "lineWidth": 2,
             "pointSize": 1,
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -324,7 +323,7 @@
               }
             ]
           },
-          "unit": "mbps"
+          "unit": "Mbps"
         },
         "overrides": []
       },
@@ -340,7 +339,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -364,7 +363,7 @@
           "refId": "A"
         }
       ],
-      "title": "[1]Throughput",
+      "title": "[1] Throughput (Mbps)",
       "type": "timeseries"
     },
     {
@@ -418,7 +417,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -436,7 +435,7 @@
           "refId": "A"
         }
       ],
-      "title": "[1]IP Address",
+      "title": "[1] IP Address",
       "type": "stat"
     },
     {
@@ -487,7 +486,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -501,7 +500,7 @@
           "refId": "A"
         }
       ],
-      "title": "[1]Download bandwidth(mbps)",
+      "title": "[1] Download Bandwidth (Mbps)",
       "type": "gauge"
     },
     {
@@ -518,23 +517,23 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 63,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 1,
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -574,7 +573,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -595,7 +594,7 @@
           "refId": "A"
         }
       ],
-      "title": "[1]download bandwidth(mbps)",
+      "title": "[1] Download Bandwidth (Mbps)",
       "type": "timeseries"
     },
     {
@@ -646,7 +645,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -660,7 +659,7 @@
           "refId": "A"
         }
       ],
-      "title": "[1]Upload bandwidth",
+      "title": "[1] Upload Bandwidth (Mbps)",
       "type": "gauge"
     },
     {
@@ -677,23 +676,23 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 71,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -734,7 +733,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -755,7 +754,7 @@
           "refId": "A"
         }
       ],
-      "title": "[1]upload bandwidth",
+      "title": "[1] Upload Bandwidth (Mbps)",
       "type": "timeseries"
     },
     {
@@ -772,11 +771,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 69,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -788,7 +787,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -828,7 +827,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -848,7 +847,7 @@
           "refId": "A"
         }
       ],
-      "title": "[1]latency",
+      "title": "[1] Latency (ms)",
       "type": "timeseries"
     },
     {
@@ -865,11 +864,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -881,7 +880,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -941,7 +940,7 @@
           "refId": "A"
         }
       ],
-      "title": "[1]Packet Loss",
+      "title": "[1] Packet Loss (%)",
       "type": "timeseries"
     },
     {
@@ -992,7 +991,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -1032,10 +1031,6 @@
                 "value": null
               },
               {
-                "color": "#6ED0E0",
-                "value": 40
-              },
-              {
                 "color": "#EAB839",
                 "value": 60
               },
@@ -1068,7 +1063,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -1132,7 +1127,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -1163,11 +1158,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 54,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -1179,7 +1174,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -1219,7 +1214,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -1297,7 +1292,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -1366,7 +1361,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -1397,11 +1392,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 63,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -1413,7 +1408,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -1453,7 +1448,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -1525,7 +1520,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -1556,11 +1551,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 71,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -1572,7 +1567,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -1613,7 +1608,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -1651,11 +1646,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 69,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -1667,7 +1662,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -1707,7 +1702,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -1744,11 +1739,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -1760,7 +1755,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -1871,7 +1866,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -1911,10 +1906,6 @@
                 "value": null
               },
               {
-                "color": "#6ED0E0",
-                "value": 40
-              },
-              {
                 "color": "#EAB839",
                 "value": 60
               },
@@ -1947,7 +1938,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -2011,7 +2002,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -2042,11 +2033,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 54,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -2058,7 +2049,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -2098,7 +2089,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -2176,7 +2167,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -2245,7 +2236,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -2276,11 +2267,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 63,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -2292,7 +2283,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -2332,7 +2323,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -2404,7 +2395,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -2435,11 +2426,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 71,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -2451,7 +2442,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -2492,7 +2483,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -2530,11 +2521,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 69,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -2546,7 +2537,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -2586,7 +2577,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -2623,11 +2614,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -2639,7 +2630,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -2750,7 +2741,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -2790,10 +2781,6 @@
                 "value": null
               },
               {
-                "color": "#6ED0E0",
-                "value": 40
-              },
-              {
                 "color": "#EAB839",
                 "value": 60
               },
@@ -2826,7 +2813,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -2890,7 +2877,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -2921,11 +2908,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 54,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -2937,7 +2924,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -2977,7 +2964,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -3055,7 +3042,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -3124,7 +3111,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -3155,11 +3142,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 63,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -3171,7 +3158,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -3211,7 +3198,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -3283,7 +3270,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -3314,11 +3301,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 71,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -3330,7 +3317,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -3371,7 +3358,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -3409,11 +3396,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 69,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -3425,7 +3412,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -3465,7 +3452,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -3502,11 +3489,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -3518,7 +3505,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -3629,7 +3616,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -3669,10 +3656,6 @@
                 "value": null
               },
               {
-                "color": "#6ED0E0",
-                "value": 40
-              },
-              {
                 "color": "#EAB839",
                 "value": 60
               },
@@ -3705,7 +3688,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -3769,7 +3752,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -3800,11 +3783,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 54,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -3816,7 +3799,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -3856,7 +3839,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -3934,7 +3917,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -4003,7 +3986,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -4034,11 +4017,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 63,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -4050,7 +4033,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -4090,7 +4073,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -4162,7 +4145,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -4193,11 +4176,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 71,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -4209,7 +4192,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -4250,7 +4233,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -4288,11 +4271,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 69,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -4304,7 +4287,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -4344,7 +4327,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -4381,11 +4364,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -4397,7 +4380,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -4508,7 +4491,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -4548,10 +4531,6 @@
                 "value": null
               },
               {
-                "color": "#6ED0E0",
-                "value": 40
-              },
-              {
                 "color": "#EAB839",
                 "value": 60
               },
@@ -4584,7 +4563,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -4648,7 +4627,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -4679,11 +4658,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 54,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -4695,7 +4674,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -4735,7 +4714,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -4813,7 +4792,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -4882,7 +4861,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -4913,11 +4892,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 63,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -4929,7 +4908,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -4969,7 +4948,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -5041,7 +5020,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -5072,11 +5051,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 71,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -5088,7 +5067,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -5129,7 +5108,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -5167,11 +5146,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 69,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -5183,7 +5162,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -5223,7 +5202,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -5260,11 +5239,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -5276,7 +5255,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -5387,7 +5366,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -5427,10 +5406,6 @@
                 "value": null
               },
               {
-                "color": "#6ED0E0",
-                "value": 40
-              },
-              {
                 "color": "#EAB839",
                 "value": 60
               },
@@ -5463,7 +5438,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -5527,7 +5502,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -5558,11 +5533,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 54,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -5574,7 +5549,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -5614,7 +5589,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -5692,7 +5667,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -5761,7 +5736,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -5792,11 +5767,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 63,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -5808,7 +5783,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -5848,7 +5823,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -5920,7 +5895,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -5951,11 +5926,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 71,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -5967,7 +5942,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -6008,7 +5983,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -6046,11 +6021,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 69,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -6062,7 +6037,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -6102,7 +6077,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -6139,11 +6114,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -6155,7 +6130,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -6266,7 +6241,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -6306,10 +6281,6 @@
                 "value": null
               },
               {
-                "color": "#6ED0E0",
-                "value": 40
-              },
-              {
                 "color": "#EAB839",
                 "value": 60
               },
@@ -6342,7 +6313,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -6406,7 +6377,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -6437,11 +6408,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 54,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -6453,7 +6424,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -6493,7 +6464,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -6571,7 +6542,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -6640,7 +6611,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -6671,11 +6642,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 63,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -6687,7 +6658,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -6727,7 +6698,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -6799,7 +6770,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -6830,11 +6801,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 71,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -6846,7 +6817,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -6887,7 +6858,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -6925,11 +6896,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 69,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -6941,7 +6912,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -6981,7 +6952,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -7018,11 +6989,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -7034,7 +7005,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -7145,7 +7116,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -7159,7 +7130,7 @@
           "refId": "A"
         }
       ],
-      "title": "[AVG]Download bandwidth(mbps)",
+      "title": "[SUM] Download Bandwidth (Mbps)",
       "type": "gauge"
     },
     {
@@ -7176,23 +7147,23 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 63,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 1,
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -7216,7 +7187,7 @@
               }
             ]
           },
-          "unit": "mbps"
+          "unit": "Mbps"
         },
         "overrides": []
       },
@@ -7232,7 +7203,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -7247,13 +7218,13 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "avg(irate(windows_net_bytes_received_total{job=~\"windows_exporter[1-8]\",nic!~'isatap.|VPN.'}[5m])*8/1000000)",
+          "expr": "sum(irate(windows_net_bytes_received_total{job=~\"windows_exporter[1-8]\",nic!~'isatap.|VPN.'}[5m])*8/1000000)",
           "instant": false,
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "[AVG]download bandwidth(mbps)",
+      "title": "[SUM] Download Bandwidth (Mbps)",
       "type": "timeseries"
     },
     {
@@ -7304,7 +7275,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -7318,7 +7289,7 @@
           "refId": "A"
         }
       ],
-      "title": "[AVG]Upload bandwidth",
+      "title": "[SUM] Upload Bandwidth (Mbps)",
       "type": "gauge"
     },
     {
@@ -7335,11 +7306,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 71,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -7351,7 +7322,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -7376,7 +7347,7 @@
               }
             ]
           },
-          "unit": "mbps"
+          "unit": "Mbps"
         },
         "overrides": []
       },
@@ -7392,7 +7363,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -7407,13 +7378,13 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "avg(irate(windows_net_bytes_sent_total{job=~\"windows_exporter[1-8]\",nic!~'isatap.|VPN.'}[5m])*8/1000000)",
+          "expr": "sum(irate(windows_net_bytes_sent_total{job=~\"windows_exporter[1-8]\",nic!~'isatap.|VPN.'}[5m])*8/1000000)",
           "instant": false,
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "[AVG]upload bandwidth",
+      "title": "[SUM] Upload Bandwidth (Mbps)",
       "type": "timeseries"
     },
     {
@@ -7430,11 +7401,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -7446,7 +7417,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -7506,7 +7477,7 @@
           "refId": "A"
         }
       ],
-      "title": "[AVG]Packet Loss",
+      "title": "[AVG] Packet Loss (%)",
       "type": "timeseries"
     },
     {
@@ -7523,11 +7494,11 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisPlacement": "right",
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 69,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -7539,7 +7510,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -7579,7 +7550,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -7599,7 +7570,7 @@
           "refId": "A"
         }
       ],
-      "title": "[AVG]latency",
+      "title": "[AVG] Latency (ms)",
       "type": "timeseries"
     },
     {
@@ -7607,6 +7578,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
+      "description": "XR Connections",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -7615,6 +7587,7 @@
           },
           "displayName": "XR Connections",
           "mappings": [],
+          "noValue": "0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -7651,12 +7624,12 @@
           "values": false
         },
         "text": {
-          "titleSize": 100,
-          "valueSize": 100
+          "titleSize": 33,
+          "valueSize": 66
         },
         "textMode": "value_and_name"
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -7664,13 +7637,14 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
+          "exemplar": false,
           "expr": "sum(client_ip_address{job=~\"ping_exporter[1-8]\"})",
+          "hide": false,
           "instant": false,
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "XR Connections",
       "transparent": true,
       "type": "stat"
     },
@@ -7679,6 +7653,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
+      "description": "Edge GPUs",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -7687,6 +7662,7 @@
           },
           "displayName": "Edge GPUs",
           "mappings": [],
+          "noValue": "0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -7723,12 +7699,12 @@
           "values": false
         },
         "text": {
-          "titleSize": 100,
-          "valueSize": 100
+          "titleSize": 33,
+          "valueSize": 66
         },
         "textMode": "value_and_name"
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -7742,7 +7718,6 @@
           "refId": "A"
         }
       ],
-      "title": "Edge GPUs",
       "transparent": true,
       "type": "stat"
     },
@@ -7751,6 +7726,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
+      "description": "Terminal Devices",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -7759,6 +7735,7 @@
           },
           "displayName": "Terminal Devices",
           "mappings": [],
+          "noValue": "0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -7795,12 +7772,12 @@
           "values": false
         },
         "text": {
-          "titleSize": 100,
-          "valueSize": 100
+          "titleSize": 33,
+          "valueSize": 66
         },
         "textMode": "value_and_name"
       },
-      "pluginVersion": "10.0.2",
+      "pluginVersion": "10.0.1",
       "targets": [
         {
           "datasource": {
@@ -7814,7 +7791,6 @@
           "refId": "A"
         }
       ],
-      "title": "Terminal Devices",
       "transparent": true,
       "type": "stat"
     }
@@ -7832,8 +7808,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "XR_CUBE",
-  "uid": "b4307069-b390-4c30-adac-e7397c3e672bdsk",
+  "title": "sXR_CUBE",
+  "uid": "b4307069-b390-4c30-adac-e7397c3e672w",
   "version": 2,
   "weekStart": ""
 }
